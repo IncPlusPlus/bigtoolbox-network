@@ -1,0 +1,24 @@
+{"WiFiInterfaces" : [
+  {
+    "interface-name" : "Intel(R) Wireless-AC 9260",
+	"interface-id" : "f69da0ed-2623-4739-8bfd-b3bfacc13f20",
+	"ConnectionMode" : "Profile",
+	"RadioOn" : true,
+	"Connected" : false,
+	"Profile" : null
+    "WiFi-networks" : [
+    {
+        "SSID" : "wifiAPName",
+		"BSS" : "Infrastructure",
+		"SignalQuality" : 92,
+		"Security" : true
+	},
+	{
+        "SSID" : "xfinitywifi",
+		"BSS" : "Infrastructure",
+		"SignalQuality" : 61,
+		"Security" : false
+	}
+    ]
+  }
+]}

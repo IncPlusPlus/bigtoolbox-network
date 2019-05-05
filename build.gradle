@@ -63,7 +63,7 @@ task finalize() {
     //Use this space to move the exe into a usable folder
 }
 
-finalize.dependsOn(project(':bigtoolbox-child:network').tasks.msbuild)
+finalize.dependsOn(project(':network').tasks.msbuild)
 
 build.finalizedBy(finalize)
 

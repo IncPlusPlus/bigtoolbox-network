@@ -5,12 +5,12 @@
     <parent>
         <groupId>com.incplusplus.bigtoolbox</groupId>
         <artifactId>bigtoolbox</artifactId>
-        <version>1.0.44</version>
+        <version>1.0.45</version>
     </parent>
     <artifactId>network</artifactId>
     <name>Big Tool Box: Network</name>
     <packaging>jar</packaging>
-    <version>1.0.44</version>
+    <version>1.0.45</version>
 
 
     <build>

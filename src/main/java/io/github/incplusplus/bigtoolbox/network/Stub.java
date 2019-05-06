@@ -1,4 +1,4 @@
-package com.incplusplus.bigtoolbox.network;
+package io.github.incplusplus.bigtoolbox.network;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -34,24 +34,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ManagedNativeWifi, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Include\ManagedNativeWifi.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Core">
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.DirectoryServices" >
-	  <SpecificVersion>False</SpecificVersion>
-	  <HintPath>..\Include\System.DirectoryServices.dll</HintPath>
-	</Reference>
-	<Reference Include="System.DirectoryServices.AccountManagement" >
-	  <SpecificVersion>False</SpecificVersion>
-	  <HintPath>..\Include\System.DirectoryServices.AccountManagement.dll</HintPath>
-	</Reference>
+    <Reference Include="System.DirectoryServices">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Include\System.DirectoryServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices.AccountManagement">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Include\System.DirectoryServices.AccountManagement.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <Private>False</Private>
     </Reference>
@@ -79,6 +75,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ManagedNativeWifi\ManagedNativeWifi.csproj">
+      <Project>{ebff4686-23e6-42bf-97ca-cf82641bcfa7}</Project>
+      <Name>ManagedNativeWifi</Name>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

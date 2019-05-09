@@ -17,25 +17,47 @@ public class Stub
 		String output = "";
 		try
 		{
-			Process p = Runtime.getRuntime().exec("cmd /c ManagedNativeWifi.Demo.exe");
-			p.waitFor();
-			BufferedReader reader = new BufferedReader(
-					new InputStreamReader(p.getInputStream())
-			);
-			String line;
-			while((line = reader.readLine()) != null)
-			{
-				output += line;
-			}
+			Process p = Runtime.getRuntime().exec("cmd /c network\\build\\msbuild\\obj\\ManagedNativeWifi.Demo.exe");
+			BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()),8*1024);
+
+			BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+
+			String line = "";
+			System.out.println("OUTPUT");
+			String out = "";
+			while ((line = stdInput.readLine()) != null)
+				out += line + "\n";
+			stdInput.close();
+			System.out.println(out);
+
+			//System.out.println("ERROR");
+			//while ((line = stdError.readLine()) != null)
+			//	System.out.println(line);
+			//stdError.close();
+
+
+
+
+
+			//p.waitFor();
+			//
+			//BufferedReader reader = new BufferedReader(
+			//		new InputStreamReader(p.getInputStream())
+			//);
+			//String line;
+			//while((line = reader.readLine()) != null)
+			//{
+			//	output += line;
+			//}
 		}
 		catch(IOException e1)
 		{
 			e1.printStackTrace();
 		}
-		catch(InterruptedException e2)
-		{
-			e2.printStackTrace();
-		}
+		//catch(InterruptedException e2)
+		//{
+		//	e2.printStackTrace();
+		//}
 		System.out.println(output);
 	}
 }

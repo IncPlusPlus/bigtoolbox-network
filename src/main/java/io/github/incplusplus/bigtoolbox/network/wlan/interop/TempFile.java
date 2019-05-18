@@ -71,7 +71,7 @@ public class TempFile
 	}
 
 	/**
-	 * @return Returns the name of the created temp file
+	 * @return Returns the full name of the created temp file
 	 */
 	public String toString()
 	{

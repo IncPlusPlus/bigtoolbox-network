@@ -17,7 +17,8 @@ public class DotNetInteropWrapper
 		try
 		{
 			interopExe = new TempFile("JavaInterop","exe");
-			dotNetApp = Runtime.getRuntime().exec(interopExe.toString(), null, interopExe.getContainingFolder());
+			dotNetApp = Runtime.getRuntime().exec(interopExe.getAsFile().getPath());
+
 
 			stdInput = new BufferedReader(new InputStreamReader(dotNetApp.getInputStream()), 8 * 1024);
 			stdOutput = new BufferedWriter(new OutputStreamWriter(dotNetApp.getOutputStream()), 8 * 1024);

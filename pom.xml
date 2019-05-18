@@ -14,6 +14,15 @@
 
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.exe</include>
+                    <include>**/*.dll</include>
+                </includes>
+            </resource>
+        </resources>
         <finalName>network</finalName>
         <plugins>
             <plugin>

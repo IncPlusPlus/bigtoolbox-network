@@ -15,7 +15,7 @@ public class DotNetInteropWrapper
 	{
 		try
 		{
-			dotNetApp = Runtime.getRuntime().exec("cmd /c JavaInterop.exe", null, new File(this.getClass().getClassLoader().getResource(".").toURI()));
+			dotNetApp = Runtime.getRuntime().exec("cmd /c dir", null, new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath()));
 
 			stdInput = new BufferedReader(new InputStreamReader(dotNetApp.getInputStream()), 8 * 1024);
 			stdOutput = new BufferedWriter(new OutputStreamWriter(dotNetApp.getOutputStream()), 8 * 1024);
@@ -52,11 +52,5 @@ public class DotNetInteropWrapper
 		{
 			e.printStackTrace();
 		}
-		catch(URISyntaxException e)
-		{
-			e.printStackTrace();
-		}
-
-
 	}
 }

@@ -10,24 +10,14 @@ public class DotNetInteropWrapper
 	private BufferedReader stdInput;
 	private BufferedWriter stdOutput;
 	private BufferedReader stdError;
+	private TempFile interopExe;
 
 	public DotNetInteropWrapper()
 	{
 		try
 		{
-			InputStream is = getClass().getClassLoader().getResource("JavaInterop.exe").openStream();
-			OutputStream os = new FileOutputStream("JavaInterop.exe");
-			byte[] b = new byte[2048];
-			int length;
-
-			while ((length = is.read(b)) != -1) {
-				os.write(b, 0, length);
-			}
-
-			is.close();
-			os.close();
-
-			dotNetApp = Runtime.getRuntime().exec("JavaInterop.exe", null, new File("."));
+			interopExe = new TempFile("JavaInterop","exe");
+			dotNetApp = Runtime.getRuntime().exec(interopExe.toString(), null, interopExe.getContainingFolder());
 
 			stdInput = new BufferedReader(new InputStreamReader(dotNetApp.getInputStream()), 8 * 1024);
 			stdOutput = new BufferedWriter(new OutputStreamWriter(dotNetApp.getOutputStream()), 8 * 1024);

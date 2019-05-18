@@ -11,6 +11,7 @@ namespace JavaInterop
             wifi = new Wifi();
             string rawInput = "";
             int input;
+            Console.WriteLine(ResponseToJava.SESSION_OPENED);
             do
             {
                 rawInput = Console.ReadLine();

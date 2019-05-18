@@ -13,7 +13,7 @@ publishing.publications.maven.artifact(javadocJar)
 
 msbuild {
     // mandatory (one of those)
-    projectFile = file('src/main/dotnet/ManagedNativeWifi.Demo/ManagedNativeWifi.Demo.csproj')
+    projectFile = file('src/main/dotnet/WinWiFi/JavaInterop/JavaInterop.csproj')
 
     // MsBuild project name (/p:Project=...)
 //    projectName = ManagedNativeWifi.Demo
@@ -35,10 +35,10 @@ msbuild {
     // Below values can override settings from the project file
 
     // overrides project OutputPath
-//    destinationDir = 'build/msbuild/bin'
+    destinationDir = 'src/resources'
 
     // overrides project IntermediaryOutputPath
-    intermediateDir = 'build/msbuild/obj'
+//    intermediateDir = 'build/msbuild/obj'
 
     // Generates XML documentation file (from javadoc through custom DocLet)
     generateDoc = false

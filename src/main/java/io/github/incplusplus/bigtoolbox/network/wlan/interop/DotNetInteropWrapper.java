@@ -15,7 +15,19 @@ public class DotNetInteropWrapper
 	{
 		try
 		{
-			dotNetApp = Runtime.getRuntime().exec("cmd /c dir", null, new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath()));
+			InputStream is = getClass().getClassLoader().getResource("JavaInterop.exe").openStream();
+			OutputStream os = new FileOutputStream("JavaInterop.exe");
+			byte[] b = new byte[2048];
+			int length;
+
+			while ((length = is.read(b)) != -1) {
+				os.write(b, 0, length);
+			}
+
+			is.close();
+			os.close();
+
+			dotNetApp = Runtime.getRuntime().exec("JavaInterop.exe", null, new File("."));
 
 			stdInput = new BufferedReader(new InputStreamReader(dotNetApp.getInputStream()), 8 * 1024);
 			stdOutput = new BufferedWriter(new OutputStreamWriter(dotNetApp.getOutputStream()), 8 * 1024);

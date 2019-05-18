@@ -35,7 +35,7 @@ msbuild {
     // Below values can override settings from the project file
 
     // overrides project OutputPath
-    destinationDir = 'src/resources'
+    destinationDir = 'src/main/resources'
 
     // overrides project IntermediaryOutputPath
 //    intermediateDir = 'build/msbuild/obj'

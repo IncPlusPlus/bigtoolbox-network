@@ -26,7 +26,7 @@ public class TempFile
 	 * The file must be a resource in the project. It will be extracted
 	 * from the jar to a temporary directory.
 	 *
-	 * @param fileName      The name of the file before the extension
+	 * @param fileName      The name of the resource without the extension
 	 * @param fileExtension The file extension (without the dot)
 	 */
 	public TempFile(String fileName, String fileExtension)
@@ -34,7 +34,7 @@ public class TempFile
 		try
 		{
 			uri = getJarURI();
-			exe = getFile(uri, fileName + "." + fileExtension);
+			exe = getFile(uri, fileName, "exe");
 		}
 		catch(URISyntaxException e)
 		{
@@ -95,7 +95,7 @@ public class TempFile
 	}
 
 	private static URI getFile(final URI where,
-	                           final String fileName)
+	                           final String fileName, String fileExtension)
 			throws ZipException,
 			IOException
 	{
@@ -107,7 +107,7 @@ public class TempFile
 		// not in a JAR, just return the path on disk
 		if(location.isDirectory())
 		{
-			fileURI = URI.create(where.toString() + fileName);
+			fileURI = URI.create(where.toString() + fileName+"."+fileExtension);
 		}
 		else
 		{
@@ -117,7 +117,7 @@ public class TempFile
 
 			try
 			{
-				fileURI = extract(zipFile, fileName);
+				fileURI = extract(zipFile, fileName, fileExtension);
 			}
 			finally
 			{
@@ -129,7 +129,7 @@ public class TempFile
 	}
 
 	private static URI extract(final ZipFile zipFile,
-	                           final String fileName)
+	                           final String fileName, final String fileExtension)
 			throws IOException
 	{
 		final File tempFile;
@@ -137,13 +137,13 @@ public class TempFile
 		final InputStream zipStream;
 		OutputStream fileStream;
 
-		tempFile = File.createTempFile(fileName, Long.toString(System.currentTimeMillis()));
+		tempFile = File.createTempFile(fileName+System.currentTimeMillis(), "."+fileExtension);
 		tempFile.deleteOnExit();
-		entry = zipFile.getEntry(fileName);
+		entry = zipFile.getEntry(fileName+"."+fileExtension);
 
 		if(entry == null)
 		{
-			throw new FileNotFoundException("cannot find file: " + fileName + " in archive: " + zipFile.getName());
+			throw new FileNotFoundException("cannot find file: " + fileName+"."+fileExtension + " in archive: " + zipFile.getName());
 		}
 
 		zipStream = zipFile.getInputStream(entry);

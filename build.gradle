@@ -45,6 +45,8 @@ msbuild {
 
     // Other msbuild options can be set:
     // loggerAssembly, generateDoc, debugType, optimize, debugSymbols, configuration, platform, defineConstants ...
+    debugSymbols=false
+    debugType="None"
 
     // you can also provide properties by name (/p:SomeProperty=Value)
 //    parameters.SomeProperty = 'Value'

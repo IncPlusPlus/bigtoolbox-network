@@ -19,6 +19,7 @@ namespace SimpleWifi
         private bool _isConnectionStatusSet = false;
         private bool? _scanSuccessful = null;
         public bool NoWifiAvailable = false;
+        public string _lastFailReason="";
 
         public Wifi()
         {
@@ -50,27 +51,12 @@ namespace SimpleWifi
                         return false;
                     }
                 }
-                catch (System.ComponentModel.Win32Exception e)
-                {
-                    if (e.Message.Equals(
-                        "The wireless local area network interface is powered down and doesn't support the requested operation")
-                    )
-                    {
-                        Console.WriteLine(e.Message);
-                    }
-                    else
-                    {
-                        Console.WriteLine(e);
-                    }
-                    return false;
-                }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    _lastFailReason = e.Message;
                     return false;
                 }
             }
-
             return true;
         }
 
@@ -82,6 +68,7 @@ namespace SimpleWifi
             }
             else if(e.NotificationCode.Equals(WlanNotificationCodeAcm.ScanFail))
             {
+                _lastFailReason = e.NotificationCode.ToString();
                 _scanSuccessful = false;
             }
         }

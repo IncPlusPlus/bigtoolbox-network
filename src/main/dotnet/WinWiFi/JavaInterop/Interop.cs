@@ -6,7 +6,7 @@ namespace JavaInterop
 {
     public static class Interop
     {
-        private static string _lastFailReason;
+        
         private static Wifi wifi;
         public static void Start()
         {
@@ -16,14 +16,16 @@ namespace JavaInterop
             Write(SESSION_OPENED);
             do
             {
-                _lastFailReason = "";
+                wifi._lastFailReason = "";
                 rawInput = Console.ReadLine();
                 if (!int.TryParse(rawInput, out input))
                 {
                     Console.WriteLine("Warning! Received garbage input: " + rawInput);
                 }
-
-                Execute(input);
+                else
+                {
+                    Execute(input);
+                }
             } while (input != 0);
         }
 
@@ -58,6 +60,7 @@ namespace JavaInterop
         private static void Scan()
         {
             Write(wifi.Scan() ? SCAN_COMPLETED : SCAN_FAILED);
+            WriteStr(wifi._lastFailReason);
         }
 
         private static void ListAPs()
@@ -85,6 +88,11 @@ namespace JavaInterop
         private static void Write(ResponseToJava responseToJava)
         {
             Console.WriteLine((int)responseToJava);
+        }
+
+        private static void WriteStr(string response)
+        {
+            Console.WriteLine(response);
         }
     }
 }

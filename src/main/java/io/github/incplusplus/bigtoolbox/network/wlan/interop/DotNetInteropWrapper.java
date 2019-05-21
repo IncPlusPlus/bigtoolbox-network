@@ -96,11 +96,9 @@ public class DotNetInteropWrapper
 	private void readln()
 	{
 		debugMsg("Reading stdIn...");
-
-
 		try
 		{
-			stdInput.readLine();
+			lastStdInput = stdInput.readLine();
 		}
 		catch(IOException e)
 		{

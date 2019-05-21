@@ -1,19 +1,22 @@
 using System;
 using SimpleWifi;
+using static JavaInterop.ResponseToJava;
 
 namespace JavaInterop
 {
-    public class Interop
+    public static class Interop
     {
+        private static string _lastFailReason;
         private static Wifi wifi;
         public static void Start()
         {
             wifi = new Wifi();
             string rawInput = "";
             int input;
-            Console.WriteLine((int)ResponseToJava.SESSION_OPENED);
+            Write(SESSION_OPENED);
             do
             {
+                _lastFailReason = "";
                 rawInput = Console.ReadLine();
                 if (!int.TryParse(rawInput, out input))
                 {
@@ -54,14 +57,7 @@ namespace JavaInterop
 
         private static void Scan()
         {
-            if (wifi.Scan())
-            {
-                Console.WriteLine(ResponseToJava.SCAN_COMPLETED);
-            }
-            else
-            {
-                Console.WriteLine(ResponseToJava.SCAN_FAILED);
-            }
+            Write(wifi.Scan() ? SCAN_COMPLETED : SCAN_FAILED);
         }
 
         private static void ListAPs()
@@ -82,7 +78,13 @@ namespace JavaInterop
 
         private static void CloseSession()
         {
-            Console.WriteLine((int)ResponseToJava.SESSION_CLOSED);
+            Write(SESSION_CLOSED);
+            Environment.Exit(0);
+        }
+
+        private static void Write(ResponseToJava responseToJava)
+        {
+            Console.WriteLine((int)responseToJava);
         }
     }
 }

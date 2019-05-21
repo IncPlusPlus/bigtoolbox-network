@@ -62,7 +62,6 @@ namespace SimpleWifi
                     {
                         Console.WriteLine(e);
                     }
-
                     return false;
                 }
                 catch (Exception e)

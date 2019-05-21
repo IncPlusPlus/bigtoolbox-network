@@ -1,8 +1,9 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop;
 
 import java.io.*;
-import java.net.URISyntaxException;
-import java.util.Arrays;
+
+import static io.github.incplusplus.bigtoolbox.network.wlan.interop.DotNetInteropWrapper.JavaRequest.*;
+
 
 public class DotNetInteropWrapper
 {
@@ -13,13 +14,14 @@ public class DotNetInteropWrapper
 	private TempFile interopExe;
 	private String lastStdInput;
 	private String lastStdError;
+	private final boolean DEBUG = true;
 
 	public DotNetInteropWrapper()
 	{
 		try
 		{
-			interopExe = new TempFile("JavaInterop","exe");
-			dotNetApp = Runtime.getRuntime().exec("cmd /c " + interopExe.getAsFile().getPath());
+			interopExe = new TempFile("JavaInterop", "exe");
+			dotNetApp = Runtime.getRuntime().exec(interopExe.getAsFile().getPath());
 
 
 			stdInput = new BufferedReader(new InputStreamReader(dotNetApp.getInputStream()), 8 * 1024);
@@ -28,9 +30,22 @@ public class DotNetInteropWrapper
 
 			lastStdInput = "";
 			System.out.println("OUTPUT");
-			while ((lastStdInput = stdInput.readLine()) != null)
+			while((lastStdInput = stdInput.readLine()) != null)
 			{
-				//if(lastStdInput.equals())
+				System.out.println("Received '" + lastStdInput + "'");
+				if(lastStdInput.equals(Integer.toString(ResponseToJava.SESSION_OPENED.getValue())))
+				{
+					System.out.println("Writing '" + CLOSE_SESSION.getValue() + "'");
+					writeln(CLOSE_SESSION);
+				}
+				try
+				{
+					System.out.println("Exit value " + dotNetApp.exitValue());
+				}
+				catch(IllegalThreadStateException e)
+				{
+					System.out.println(e.getMessage());
+				}
 			}
 			stdInput.close();
 
@@ -54,6 +69,7 @@ public class DotNetInteropWrapper
 
 	/**
 	 * Scan for wireless networks
+	 *
 	 * @return true if successful, false if not
 	 */
 	public boolean scan()
@@ -61,7 +77,49 @@ public class DotNetInteropWrapper
 		return false;
 	}
 
-	private enum JavaRequest
+	private void writeln(JavaRequest jr)
+	{
+		debugMsg("Writing " + jr.name());
+
+		try
+		{
+			stdOutput.write(jr.getValue());
+			stdOutput.newLine();
+			stdOutput.flush();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	private void readln()
+	{
+		debugMsg("Reading stdIn...");
+
+
+		try
+		{
+			stdInput.readLine();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	private void debugMsg(String message)
+	{
+		if(DEBUG)
+		{
+			StringBuilder out = new StringBuilder(message.length() + 8);
+			out.append("[DEBUG]");
+			out.append(message);
+			System.out.println(out);
+		}
+	}
+
+	enum JavaRequest
 	{
 		CLOSE_SESSION(0),
 		SCAN(1),
@@ -83,7 +141,7 @@ public class DotNetInteropWrapper
 		}
 	}
 
-	private enum ResponseToJava
+	enum ResponseToJava
 	{
 		SESSION_CLOSED(0),
 		SESSION_OPENED(1),
@@ -114,9 +172,5 @@ public class DotNetInteropWrapper
 		{
 			return this.value;
 		}
-	}
-
-	public static void main(String[] args) {
-		System.out.println((JavaRequest.CLOSE_SESSION));
 	}
 }

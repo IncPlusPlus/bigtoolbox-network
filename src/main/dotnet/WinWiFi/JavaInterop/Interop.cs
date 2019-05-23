@@ -1,13 +1,14 @@
 using System;
 using SimpleWifi;
+using Newtonsoft.Json;
 using static JavaInterop.ResponseToJava;
 
 namespace JavaInterop
 {
     public static class Interop
     {
-        
         private static Wifi wifi;
+
         public static void Start()
         {
             wifi = new Wifi();
@@ -18,15 +19,19 @@ namespace JavaInterop
             {
                 wifi._lastFailReason = "";
                 rawInput = Console.ReadLine();
-                if (!int.TryParse(rawInput, out input))
+                if (!string.IsNullOrEmpty(rawInput))
                 {
-                    Console.WriteLine("Warning! Received garbage input: " + rawInput);
-                }
-                else
-                {
-                    Execute(input);
-                }
-            } while (input != 0);
+                    if (!int.TryParse(rawInput, out input))
+                    {
+                        string s = new string(rawInput.ToCharArray());
+                        Console.WriteLine("Warning! Received garbage input: " + "\"" + s + "\"");
+                    }
+                    else
+                    {
+                        Execute(input);
+                    }
+                }else{Console.WriteLine("Warning! Received null or empty input.");}
+            } while (true);
         }
 
         private static void Execute(int input)
@@ -59,8 +64,9 @@ namespace JavaInterop
 
         private static void Scan()
         {
-            Write(wifi.Scan() ? SCAN_COMPLETED : SCAN_FAILED);
-            WriteStr(wifi._lastFailReason);
+            string jsonout = JsonConvert.SerializeObject(wifi.Scan());
+//            Write(wifi.Scan().successful() ? SCAN_COMPLETED : SCAN_FAILED);
+            WriteStr(jsonout);
         }
 
         private static void ListAPs()
@@ -87,7 +93,7 @@ namespace JavaInterop
 
         private static void Write(ResponseToJava responseToJava)
         {
-            Console.WriteLine((int)responseToJava);
+            Console.WriteLine((int) responseToJava);
         }
 
         private static void WriteStr(string response)

@@ -32,7 +32,7 @@ namespace SimpleWifi
                 inte.WlanNotification += inte_WlanNotification;
         }
 
-        public bool Scan()
+        public MessageBool Scan()
         {
             _scanSuccessful = null;
             foreach (WlanInterface wlanInterface in _client.Interfaces)
@@ -48,16 +48,16 @@ namespace SimpleWifi
                     wlanInterface.WlanNotification -= WlanNotificationChanged;
                     if (_scanSuccessful == false)
                     {
-                        return false;
+                        return new MessageBool(false,_lastFailReason);
                     }
                 }
                 catch (Exception e)
                 {
                     _lastFailReason = e.Message;
-                    return false;
+                    return new MessageBool(false,_lastFailReason);
                 }
             }
-            return true;
+            return new MessageBool(true,_lastFailReason);
         }
 
         private void WlanNotificationChanged(WlanNotificationData e)

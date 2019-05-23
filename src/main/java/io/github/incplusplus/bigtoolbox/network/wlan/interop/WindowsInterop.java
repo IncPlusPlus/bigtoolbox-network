@@ -1,11 +1,14 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop;
 
+import com.google.gson.Gson;
+import io.github.incplusplus.bigtoolbox.network.wlan.WiFiAdapterPoweredDownException;
+
 import java.io.*;
 
-import static io.github.incplusplus.bigtoolbox.network.wlan.interop.DotNetInteropWrapper.JavaRequest.*;
+import static io.github.incplusplus.bigtoolbox.network.wlan.interop.WindowsInterop.JavaRequest.*;
 
 
-public class DotNetInteropWrapper
+public class WindowsInterop extends WLanController
 {
 	private Process dotNetApp;
 	private BufferedReader stdInput;
@@ -16,7 +19,7 @@ public class DotNetInteropWrapper
 	private String lastStdError;
 	private final boolean DEBUG = true;
 
-	public DotNetInteropWrapper()
+	public WindowsInterop()
 	{
 		try
 		{
@@ -28,43 +31,46 @@ public class DotNetInteropWrapper
 			stdOutput = new BufferedWriter(new OutputStreamWriter(dotNetApp.getOutputStream()), 8 * 1024);
 			stdError = new BufferedReader(new InputStreamReader(dotNetApp.getErrorStream()));
 
-			lastStdInput = "";
-			System.out.println("OUTPUT");
-			while((lastStdInput = stdInput.readLine()) != null)
+			if(! readln().equals(Integer.toString(ResponseToJava.SESSION_OPENED.getValue())))
 			{
-				System.out.println("Received '" + lastStdInput + "'");
-				if(lastStdInput.equals(Integer.toString(ResponseToJava.SESSION_OPENED.getValue())))
-				{
-					System.out.println("Writing '" + CLOSE_SESSION.getValue() + "'");
-					writeln(CLOSE_SESSION);
-				}
-				try
-				{
-					System.out.println("Exit value " + dotNetApp.exitValue());
-				}
-				catch(IllegalThreadStateException e)
-				{
-					System.out.println(e.getMessage());
-				}
+				throw new RuntimeException("Started session but response was: " + "\"" + lastStdInput + "\"");
 			}
-			stdInput.close();
-
-			System.out.println("ERROR");
-			while((lastStdError = stdError.readLine()) != null)
-			{
-				System.out.println(lastStdError);
-			}
-			stdError.close();
-			dotNetApp.waitFor();
+			//	System.out.println("OUTPUT:");
+			//	while((lastStdInput = stdInput.readLine()) != null)
+			//	{
+			//		debugMsg("Received '" + lastStdInput + "'");
+			//		if(lastStdInput.equals(Integer.toString(ResponseToJava.SESSION_OPENED.getValue())))
+			//		{
+			//			debugMsg("Writing '" + CLOSE_SESSION.getValue() + "'");
+			//			writeln(CLOSE_SESSION);
+			//		}
+			//		try
+			//		{
+			//			debugMsg("Exit value " + dotNetApp.exitValue());
+			//		}
+			//		catch(IllegalThreadStateException e)
+			//		{
+			//			System.out.println(e.getMessage());
+			//		}
+			//	}
+			//	stdInput.close();
+			//
+			//	System.out.println("ERRORS:");
+			//	while((lastStdError = stdError.readLine()) != null)
+			//	{
+			//		System.out.println(lastStdError);
+			//	}
+			//	stdError.close();
+			//	dotNetApp.waitFor();
 		}
 		catch(IOException e)
 		{
 			e.printStackTrace();
 		}
-		catch(InterruptedException e)
-		{
-			e.printStackTrace();
-		}
+		//catch(InterruptedException e)
+		//{
+		//	e.printStackTrace();
+		//}
 	}
 
 	/**
@@ -74,16 +80,36 @@ public class DotNetInteropWrapper
 	 */
 	public boolean scan()
 	{
-		return false;
+		debugMsg("Running scan!");
+		writeln(SCAN);
+		debugMsg("Scan executed.");
+		debugMsg("Reading and deserializing.");
+		MessageBool response = new Gson().fromJson(readln(), MessageBool.class);
+		debugMsg("response: success = " + response.successful());
+		debugMsg("response message: " + response.getMessage());
+		if(! response.successful())
+		{
+			if(response.getMessage().equals(WiFiAdapterPoweredDownException.message))
+			{
+				throw new WiFiAdapterPoweredDownException();
+			}
+			else
+			{
+				throw new RuntimeException(response.getMessage());
+			}
+		}
+		return response.successful();
 	}
 
-	private void writeln(JavaRequest jr)
+	public void writeln(JavaRequest jr)
 	{
 		debugMsg("Writing " + jr.name());
 
 		try
 		{
-			stdOutput.write(jr.getValue());
+			//For some odd reason, writing gets messed up when
+			//using the write method that takes integers :/
+			stdOutput.write(jr.getValue() + "");
 			stdOutput.newLine();
 			stdOutput.flush();
 		}
@@ -91,10 +117,12 @@ public class DotNetInteropWrapper
 		{
 			e.printStackTrace();
 		}
+		debugMsg("Finished writing " + jr.name());
 	}
 
-	private void readln()
+	public String readln()
 	{
+		lastStdInput = "";
 		debugMsg("Reading stdIn...");
 		try
 		{
@@ -104,6 +132,8 @@ public class DotNetInteropWrapper
 		{
 			e.printStackTrace();
 		}
+		debugMsg("Read from stdIn: " + lastStdInput);
+		return lastStdInput;
 	}
 
 	private void debugMsg(String message)
@@ -117,7 +147,7 @@ public class DotNetInteropWrapper
 		}
 	}
 
-	enum JavaRequest
+	public enum JavaRequest
 	{
 		CLOSE_SESSION(0),
 		SCAN(1),

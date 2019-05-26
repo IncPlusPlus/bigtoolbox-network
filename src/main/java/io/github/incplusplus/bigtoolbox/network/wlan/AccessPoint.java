@@ -1,6 +1,6 @@
 package io.github.incplusplus.bigtoolbox.network.wlan;
 
-final class AccessPoint
+public final class AccessPoint
 {
 	public final String interfaceName;
 	public final String name;

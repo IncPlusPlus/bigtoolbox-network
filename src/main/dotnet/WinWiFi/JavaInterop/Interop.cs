@@ -45,9 +45,6 @@ namespace JavaInterop
                 case (int) JavaRequest.SCAN:
                     Scan();
                     break;
-                case (int) JavaRequest.LIST_APS:
-                    ListAPs();
-                    break;
                 case (int) JavaRequest.LIST_APS_DETAIL:
                     ListAPsDetail();
                     break;
@@ -71,10 +68,6 @@ namespace JavaInterop
             string jsonout = JsonConvert.SerializeObject(wifi.Scan());
 //            Write(wifi.Scan().successful() ? SCAN_COMPLETED : SCAN_FAILED);
             WriteStr(jsonout);
-        }
-
-        private static void ListAPs()
-        {
         }
 
         private static void ListAPsDetail()

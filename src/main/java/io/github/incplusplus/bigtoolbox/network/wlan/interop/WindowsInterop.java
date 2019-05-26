@@ -190,7 +190,7 @@ public class WindowsInterop extends WLanController
 	{
 		CLOSE_SESSION(0),
 		SCAN(1),
-		LIST_APS(2),
+		RESERVED(2),
 		LIST_APS_DETAIL(3),
 		CONNECT_TO_AP(4),
 		DISCONNECT(5);

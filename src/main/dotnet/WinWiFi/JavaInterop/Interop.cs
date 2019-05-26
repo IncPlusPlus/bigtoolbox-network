@@ -1,6 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using SimpleWifi;
 using Newtonsoft.Json;
+using SimpleWifi.Win32;
+using SimpleWifi.Win32.Interop;
 using static JavaInterop.ResponseToJava;
 
 namespace JavaInterop
@@ -75,6 +79,15 @@ namespace JavaInterop
 
         private static void ListAPsDetail()
         {
+            var accessPoints = List();
+            List<AccessPoint.JAccessPoint> jAccessPoints = new List<AccessPoint.JAccessPoint>();
+
+            foreach (AccessPoint accessPoint in accessPoints)
+            {
+                jAccessPoints.Add(accessPoint.GetJAccessPoint());
+            }
+            Console.WriteLine(JsonConvert.SerializeObject(jAccessPoints));
+            
         }
 
         private static void Disconnect()
@@ -89,6 +102,13 @@ namespace JavaInterop
         {
             Write(SESSION_CLOSED);
             Environment.Exit(0);
+        }
+        
+        private static IEnumerable<AccessPoint> List()
+        {
+            IEnumerable<AccessPoint> accessPoints = wifi.GetAccessPoints().OrderByDescending(ap => ap.SignalStrength);
+
+            return accessPoints;
         }
 
         private static void Write(ResponseToJava responseToJava)

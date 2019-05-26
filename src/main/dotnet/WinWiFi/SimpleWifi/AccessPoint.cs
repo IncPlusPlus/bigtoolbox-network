@@ -190,5 +190,35 @@ namespace SimpleWifi
 
 			return info.ToString();
 		}
+
+		public JAccessPoint GetJAccessPoint()
+		{
+			return new JAccessPoint(this._interface,this._network, this);
+		}
+
+		public class JAccessPoint
+		{
+			public string InterfaceName;
+			public string name;
+			public uint signalStrength;
+			public bool connectable;
+			public string wlanNotConnectableReason;
+			public string AuthAlgorithm;
+			public string CipherAlgorithm;
+			public string BssType;
+
+			internal JAccessPoint(WlanInterface wlanInterface, WlanAvailableNetwork network, AccessPoint thisAP)
+			{
+				InterfaceName = wlanInterface.InterfaceName;
+				name = thisAP.Name;
+				signalStrength = thisAP.SignalStrength;
+				AuthAlgorithm = Enum.GetName(typeof(Dot11AuthAlgorithm), network.dot11DefaultAuthAlgorithm);
+				CipherAlgorithm = Enum.GetName(typeof(Dot11CipherAlgorithm), network.dot11DefaultCipherAlgorithm);
+				BssType = Enum.GetName(typeof(Dot11BssType), network.dot11BssType);
+				connectable = network.networkConnectable;
+				wlanNotConnectableReason = Enum.GetName(typeof(WlanReasonCode), network.wlanNotConnectableReason);
+				
+			}
+		}
 	}
 }

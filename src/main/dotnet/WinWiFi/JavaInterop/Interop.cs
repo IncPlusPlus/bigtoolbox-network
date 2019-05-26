@@ -73,13 +73,13 @@ namespace JavaInterop
         private static void ListAPsDetail()
         {
             var accessPoints = List();
-            List<AccessPoint.JAccessPoint> jAccessPoints = new List<AccessPoint.JAccessPoint>();
+            JAccessPointPack pack = new JAccessPointPack();
 
             foreach (AccessPoint accessPoint in accessPoints)
             {
-                jAccessPoints.Add(accessPoint.GetJAccessPoint());
+                pack.Add(accessPoint.GetJAccessPoint());
             }
-            Console.WriteLine(JsonConvert.SerializeObject(jAccessPoints));
+            Console.WriteLine(JsonConvert.SerializeObject(pack));
             
         }
 
@@ -112,6 +112,16 @@ namespace JavaInterop
         private static void WriteStr(string response)
         {
             Console.WriteLine(response);
+        }
+
+        private class JAccessPointPack
+        {
+            public List<AccessPoint.JAccessPoint> accessPoints = new List<AccessPoint.JAccessPoint>();
+
+            public void Add(AccessPoint.JAccessPoint newAccessPoint)
+            {
+                accessPoints.Add(newAccessPoint);
+            }
         }
     }
 }

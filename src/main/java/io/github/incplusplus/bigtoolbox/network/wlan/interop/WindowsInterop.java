@@ -1,6 +1,7 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop;
 
 import com.google.gson.Gson;
+import io.github.incplusplus.bigtoolbox.network.wlan.AvailableAccessPointPack;
 import io.github.incplusplus.bigtoolbox.network.wlan.WiFiAdapterPoweredDownException;
 
 import java.io.*;
@@ -120,6 +121,13 @@ public class WindowsInterop extends WLanController
 			}
 		}
 		return response.successful();
+	}
+
+	@Override
+	public AvailableAccessPointPack getAccessPoints()
+	{
+		writeln(LIST_APS_DETAIL);
+		return new Gson().fromJson(readln(), AvailableAccessPointPack.class);
 	}
 
 	@Override

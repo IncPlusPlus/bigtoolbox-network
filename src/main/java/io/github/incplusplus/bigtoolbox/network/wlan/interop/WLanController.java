@@ -1,5 +1,6 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop;
 
+import io.github.incplusplus.bigtoolbox.network.wlan.AvailableAccessPointPack;
 import io.github.incplusplus.bigtoolbox.os.OperationNotImplementedException;
 
 public abstract class WLanController implements java.io.Closeable
@@ -16,6 +17,8 @@ public abstract class WLanController implements java.io.Closeable
 	{
 		throw new UnsupportedOperationException();
 	}
+
+	public abstract AvailableAccessPointPack getAccessPoints();
 
 	/**
 	 * Close any programs opened for this object and

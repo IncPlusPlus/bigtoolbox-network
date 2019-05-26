@@ -8,7 +8,9 @@ plugins {
 
 dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
+    compile(project(":os"))
 }
+
 
 description = 'Big Tool Box: Network'
 publishing.publications.maven.artifact(javadocJar)

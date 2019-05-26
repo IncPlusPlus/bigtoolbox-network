@@ -6,6 +6,7 @@ import io.github.incplusplus.bigtoolbox.network.wlan.WiFiAdapterPoweredDownExcep
 import java.io.*;
 
 import static io.github.incplusplus.bigtoolbox.network.wlan.interop.WindowsInterop.JavaRequest.*;
+import static io.github.incplusplus.bigtoolbox.network.wlan.interop.WindowsInterop.ResponseToJava.*;
 
 
 public class WindowsInterop extends WLanController
@@ -74,6 +75,26 @@ public class WindowsInterop extends WLanController
 	}
 
 	/**
+	 * Close the communication session with the dotnet app
+	 * Warning: the dotnet app won't be able to be relaunched without using the WLanControllerFactory again
+	 */
+	public void closeSession()
+	{
+		debugMsg("Closing session!");
+		writeln(CLOSE_SESSION);
+		debugMsg("Close command sent.");
+		debugMsg("Reading response.");
+		if(readln().equals(Integer.toString(SESSION_CLOSED.getValue())))
+		{
+			debugMsg("Successfully closed session.");
+		}
+		else
+		{
+			throw new RuntimeException("Failed to close the session. Instead, received: " + lastStdInput);
+		}
+	}
+
+	/**
 	 * Scan for wireless networks
 	 *
 	 * @return true if successful, false if not
@@ -99,6 +120,24 @@ public class WindowsInterop extends WLanController
 			}
 		}
 		return response.successful();
+	}
+
+	@Override
+	void conclude()
+	{
+		try
+		{
+			closeSession();
+			stdInput.close();
+			stdError.close();
+			dotNetApp.waitFor();
+		}
+		catch(IOException | InterruptedException e)
+		{
+			debugMsg("There was an error running conclude() on this instance. " +
+					"Message follows: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	public void writeln(JavaRequest jr)

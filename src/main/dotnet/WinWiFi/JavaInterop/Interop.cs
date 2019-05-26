@@ -16,13 +16,12 @@ namespace JavaInterop
         public static void Start()
         {
             wifi = new Wifi();
-            string rawInput = "";
-            int input;
             Write(SESSION_OPENED);
             do
             {
                 wifi._lastFailReason = "";
-                rawInput = Console.ReadLine();
+                int input;
+                string rawInput = Console.ReadLine();
                 if (!string.IsNullOrEmpty(rawInput))
                 {
                     if (!int.TryParse(rawInput, out input))

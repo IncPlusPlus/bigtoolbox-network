@@ -11,7 +11,7 @@ public final class AccessPoint
 	public final String cipherAlgorithm;
 	public final String bssType;
 
-	AccessPoint(String interfaceName, String name, int signalStrength, boolean connectable, String wlanNotConnectableReason, String authAlgorithm, String cipherAlgorithm, String bssType)
+	protected AccessPoint(String interfaceName, String name, int signalStrength, boolean connectable, String wlanNotConnectableReason, String authAlgorithm, String cipherAlgorithm, String bssType)
 	{
 		this.interfaceName = interfaceName;
 		this.name = name;

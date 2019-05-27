@@ -9,7 +9,10 @@ import java.io.*;
 import static io.github.incplusplus.bigtoolbox.network.wlan.interop.WindowsInterop.JavaRequest.*;
 import static io.github.incplusplus.bigtoolbox.network.wlan.interop.WindowsInterop.ResponseToJava.*;
 
-
+/**
+ * See {@link WLanController}'s JavaDoc for important information
+ * @see io.github.incplusplus.bigtoolbox.network.wlan.interop.WLanController
+ */
 public class WindowsInterop extends WLanController
 {
 	private Process dotNetApp;

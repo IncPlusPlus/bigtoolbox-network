@@ -79,7 +79,7 @@ public class WindowsInterop extends WLanController
 	 * Close the communication session with the dotnet app
 	 * Warning: the dotnet app won't be able to be relaunched without using the WLanControllerFactory again
 	 */
-	public void closeSession()
+	private void closeSession()
 	{
 		debugMsg("Closing session!");
 		writeln(CLOSE_SESSION);
@@ -95,13 +95,9 @@ public class WindowsInterop extends WLanController
 		}
 	}
 
-	/**
-	 * Scan for wireless networks
-	 *
-	 * @return true if successful, false if not
-	 */
-	public boolean scan()
+	public boolean scan() throws IOException
 	{
+		ensureOpen();
 		debugMsg("Running scan!");
 		writeln(SCAN);
 		debugMsg("Scan executed.");
@@ -124,23 +120,26 @@ public class WindowsInterop extends WLanController
 	}
 
 	@Override
-	public AvailableAccessPointPack getAccessPoints()
+	public AvailableAccessPointPack getAccessPoints() throws IOException
 	{
+		ensureOpen();
 		writeln(LIST_APS_DETAIL);
 		return new Gson().fromJson(readln(), AvailableAccessPointPack.class);
 	}
 
 	@Override
-	void conclude()
+	void conclude() throws IOException
 	{
+		//ensureOpen();
 		try
 		{
 			closeSession();
 			stdInput.close();
 			stdError.close();
+			stdOutput.close();
 			dotNetApp.waitFor();
 		}
-		catch(IOException | InterruptedException e)
+		catch(InterruptedException e)
 		{
 			debugMsg("There was an error running conclude() on this instance. " +
 					"Message follows: " + e.getMessage());
@@ -182,6 +181,8 @@ public class WindowsInterop extends WLanController
 		debugMsg("Read from stdIn: " + lastStdInput);
 		return lastStdInput;
 	}
+
+
 
 	private void debugMsg(String message)
 	{

@@ -34,7 +34,7 @@ public class TempFile
 		try
 		{
 			uri = getJarURI();
-			exe = getFile(uri, fileName, "exe");
+			exe = getFile(uri, fileName, fileExtension);
 		}
 		catch(URISyntaxException e)
 		{

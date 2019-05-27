@@ -1,13 +1,10 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop;
 
 import io.github.incplusplus.bigtoolbox.network.wlan.AvailableAccessPointPack;
-import jdk.swing.interop.SwingInterOpUtils;
 
 import java.io.Closeable;
 import java.io.IOException;
 import java.lang.ref.Cleaner;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * TODO add more documentation
@@ -98,7 +95,7 @@ public abstract class WLanController implements Closeable
 	{
 		if(!firstInit)
 		{
-			cleaningAction = new CleaningAction("");
+			cleaningAction = new CleaningAction(this);
 			cleanable = cleaner.register(this,cleaningAction);
 			firstInit=true;
 		}
@@ -106,9 +103,9 @@ public abstract class WLanController implements Closeable
 
 	static class CleaningAction implements Runnable
 	{
-		private String controllerToBeClosed;
+		private WLanController controllerToBeClosed;
 
-		private CleaningAction(String controllerToBeClosed)
+		private CleaningAction(WLanController controllerToBeClosed)
 		{
 			this.controllerToBeClosed = controllerToBeClosed;
 		}

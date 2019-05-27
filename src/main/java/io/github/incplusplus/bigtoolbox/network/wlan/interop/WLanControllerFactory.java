@@ -40,6 +40,7 @@ public final class WLanControllerFactory
 	 * You should not need to, however, if you use this method within a try-with-resources block as demonstrated.
 	 * @throws IllegalStateException if the factory is in an unexpected state or if
 	 *                         there already is a non-closed WLanController instance.
+	 * @throws UnsupportedOSException if the current OS is not supported by this library
 	 * @return a new WLanController implementation based on the host's OS
 	 */
 	public static WLanController createWLanController()

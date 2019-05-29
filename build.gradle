@@ -18,6 +18,8 @@ publishing.publications.maven.artifact(javadocJar)
 
 apply plugin: 'nuget'
 
+nugetSources {}
+
 nugetRestore {
     solutionDirectory = 'src/main/dotnet/WinWiFi/JavaInterop/JavaInterop.csproj'
     packagesDirectory = 'src/main/dotnet/WinWiFi/packages/'

@@ -7,6 +7,7 @@ plugins {
 }
 
 dependencies {
+    classpath "com.ullink.gradle:gradle-nuget-plugin:2.17"
     implementation 'com.google.code.gson:gson:2.8.5'
     compile(project(":os"))
 }
@@ -14,6 +15,13 @@ dependencies {
 
 description = 'Big Tool Box: Network'
 publishing.publications.maven.artifact(javadocJar)
+
+apply plugin: 'nuget'
+
+nugetRestore {
+    solutionDirectory = 'src/main/dotnet/WinWiFi/JavaInterop/JavaInterop.csproj'
+    packagesDirectory = 'src/main/dotnet/WinWiFi/packages/'
+}
 
 msbuild {
     // mandatory (one of those)
@@ -26,7 +34,7 @@ msbuild {
 //    verbosity = 'detailed'
 
     // targets to execute (/t:Clean;Rebuild, no default)
-    targets = ['Restore', 'Clean', 'Rebuild']
+    targets = ['Clean', 'Rebuild']
 
 
     // MsBuild resolution

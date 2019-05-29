@@ -4,10 +4,10 @@
 
 plugins {
     id 'com.ullink.msbuild' version '3.1'
+    id 'com.ullink.nuget' version '2.17'
 }
 
 dependencies {
-    classpath "com.ullink.gradle:gradle-nuget-plugin:2.17"
     implementation 'com.google.code.gson:gson:2.8.5'
     compile(project(":os"))
 }

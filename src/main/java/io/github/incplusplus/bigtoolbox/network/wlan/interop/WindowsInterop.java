@@ -7,7 +7,7 @@ import io.github.incplusplus.bigtoolbox.network.wlan.WiFiAdapterPoweredDownExcep
 import java.io.*;
 
 import static io.github.incplusplus.bigtoolbox.network.wlan.interop.WindowsInterop.JavaRequest.*;
-import static io.github.incplusplus.bigtoolbox.network.wlan.interop.WindowsInterop.ResponseToJava.*;
+import static io.github.incplusplus.bigtoolbox.network.wlan.interop.WindowsInterop.ResponseToJava.SESSION_CLOSED;
 
 /**
  * See {@link WLanController}'s JavaDoc for important information
@@ -22,7 +22,7 @@ public class WindowsInterop extends WLanController
 	private TempFile interopExe;
 	private String lastStdInput;
 	private String lastStdError;
-	private final boolean DEBUG = true;
+	private final boolean DEBUG = false;
 
 	public WindowsInterop()
 	{

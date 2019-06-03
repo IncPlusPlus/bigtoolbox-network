@@ -4,7 +4,6 @@ import io.github.incplusplus.bigtoolbox.network.wlan.AvailableAccessPointPack;
 
 import java.io.Closeable;
 import java.io.IOException;
-import java.io.Serializable;
 import java.lang.ref.Cleaner;
 
 //TODO add more documentation
@@ -27,7 +26,7 @@ public abstract class WLanController implements Closeable
 	public WLanController()
 	{
 		ensureInit();
-		System.out.println("IN WLANCONTROLLER CONSTRUCTOR");
+		//System.out.println("IN WLANCONTROLLER CONSTRUCTOR");
 	}
 
 	/**
@@ -60,10 +59,10 @@ public abstract class WLanController implements Closeable
 	 */
 	public void close()
 	{
-		System.out.println("INSIDE WLANCONTROLLER.CLOSE()");
+		//System.out.println("INSIDE WLANCONTROLLER.CLOSE()");
 		if(! isClosed())
 		{
-			System.out.println("CONTINUING WITH WLANCONTROLLER.CLOSE()");
+			//System.out.println("CONTINUING WITH WLANCONTROLLER.CLOSE()");
 			/*
 			 * TODO add an option (maybe a class with static booleans) for using this library without
 			 *  having it try to clean up for you. Create a contract with a boolean that the user will
@@ -75,13 +74,13 @@ public abstract class WLanController implements Closeable
 				final Thread mainThread = Thread.currentThread();
 				try
 				{
-					System.out.println("TRYING TO REMOVE SHUTDOWN HOOK");
+					//System.out.println("TRYING TO REMOVE SHUTDOWN HOOK");
 					Runtime.getRuntime().removeShutdownHook(mainThread);
-					System.out.println("REMOVED SHUTDOWN HOOK");
+					//System.out.println("REMOVED SHUTDOWN HOOK");
 				}
 				catch(IllegalStateException e)
 				{
-					System.out.println("FAILED TO REMOVE SHUTDOWN HOOK");
+					//System.out.println("FAILED TO REMOVE SHUTDOWN HOOK");
 					/*
 					 * This catch block is only reached if the JVM is shutting down
 					 * In that case, it's okay that we can't remove this shutdown hook because
@@ -145,7 +144,7 @@ public abstract class WLanController implements Closeable
 	{
 		return new Thread(() ->
 		{
-			System.out.println("SHUTDOWN HOOK RUNNING");
+			//System.out.println("SHUTDOWN HOOK RUNNING");
 			try
 			{
 				mainThread.join();
@@ -194,10 +193,10 @@ public abstract class WLanController implements Closeable
 		@Override
 		public void run()
 		{
-			System.out.println("INSIDE CLEANINGACTION.RUN()");
+			//System.out.println("INSIDE CLEANINGACTION.RUN()");
 			if(!controllerToBeClosed.isClosed())
 			{
-				System.out.println("RUNNING CLEANINGACTION.RUN()");
+				//System.out.println("RUNNING CLEANINGACTION.RUN()");
 				controllerToBeClosed.close();
 			}
 			controllerToBeClosed = null;

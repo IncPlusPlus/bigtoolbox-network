@@ -68,7 +68,7 @@
             <id>skip-msbuild-on-lgtm</id>
             <activation>
                 <property>
-                    <name>!IS_LGTM</name>
+                    <name>IS_LGTM</name>
                 </property>
             </activation>
             <build>

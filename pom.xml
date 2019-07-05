@@ -5,12 +5,12 @@
     <parent>
         <groupId>io.github.incplusplus</groupId>
         <artifactId>bigtoolbox</artifactId>
-        <version>1.0.49</version>
+        <version>1.0.50</version>
     </parent>
     <artifactId>network</artifactId>
     <name>Big Tool Box: Network</name>
     <packaging>jar</packaging>
-    <version>1.0.49</version>
+    <version>1.0.50</version>
 
 
     <build>
@@ -25,34 +25,7 @@
         </resources>
         <finalName>network</finalName>
         <plugins>
-            <plugin>
-                <groupId>org.fortasoft</groupId>
-                <artifactId>gradle-maven-plugin</artifactId>
-                <version>1.0.8</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.gradle</groupId>
-                        <artifactId>gradle-tooling-api</artifactId>
-                        <version>5.2.1</version>
-                    </dependency>
-                </dependencies>
 
-                <configuration>
-                    <gradleVersion>5.3.1</gradleVersion>
-                    <tasks>
-                        <task>clean</task>
-                        <task>build</task>
-                    </tasks>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>invoke</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -90,6 +63,48 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>skip-msbuild-on-lgtm</id>
+            <activation>
+                <property>
+                    <name>IS_LGTM</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.fortasoft</groupId>
+                        <artifactId>gradle-maven-plugin</artifactId>
+                        <version>1.0.8</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.gradle</groupId>
+                                <artifactId>gradle-tooling-api</artifactId>
+                                <version>5.2.1</version>
+                            </dependency>
+                        </dependencies>
+
+                        <configuration>
+                            <gradleVersion>5.3.1</gradleVersion>
+                            <tasks>
+                                <task>clean</task>
+                                <task>build</task>
+                            </tasks>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>invoke</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     <dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>

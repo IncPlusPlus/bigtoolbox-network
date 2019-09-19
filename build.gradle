@@ -6,14 +6,14 @@ plugins {
     id 'com.ullink.msbuild' version '3.1'
 }
 
-dependencies {
-    implementation 'com.google.code.gson:gson:2.8.5'
-    compile(project(":os"))
-}
+//dependencies {
+//    implementation 'com.google.code.gson:gson:2.8.5'
+//    compile(project(":os"))
+//}
 
 
-description = 'Big Tool Box: Network'
-publishing.publications.maven.artifact(javadocJar)
+//description = 'Big Tool Box: Network'
+//publishing.publications.maven.artifact(javadocJar)
 
 
 msbuild {
@@ -61,18 +61,26 @@ msbuild {
 //    ext["flp1"] = "LogFile=" + file("${project.name}.errors.log").path + ";ErrorsOnly;Verbosity=diag"
 }
 
-apply plugin: 'java'
+//apply plugin: 'java'
 
-task finalize() {
+task printStartedMsbuild() {
     doFirst{
-        print('Finished msbuild')
+        println('travis_fold:start:msbuild')
     }
     //Use this space to move the exe into a usable folder
 }
 
-finalize.dependsOn(project(':network').tasks.msbuild)
+task printFinishedMsbuild() {
+    doFirst{
+        println('travis_fold:end:msbuild')
+    }
+    //Use this space to move the exe into a usable folder
+}
 
-build.finalizedBy(finalize)
+printFinishedMsbuild.dependsOn(project(':network').tasks.msbuild)
+project(':network').tasks.msbuild.dependsOn(printStartedMsbuild)
+
+build.finalizedBy(printFinishedMsbuild)
 
 //assemblyInfoPatcher {
 //    // mandatory if you want to patch your AssemblyInfo.cs/fs/vb

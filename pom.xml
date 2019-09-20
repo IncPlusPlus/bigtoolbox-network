@@ -12,6 +12,24 @@
     <packaging>jar</packaging>
     <version>1.0.52</version>
 
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>
+                    false
+                </enabled>
+            </snapshots>
+            <id>
+                bintray-incplusplus-main-maven
+            </id>
+            <name>
+                bintray
+            </name>
+            <url>
+                https://dl.bintray.com/incplusplus/main-maven
+            </url>
+        </repository>
+    </repositories>
 
     <build>
         <resources>

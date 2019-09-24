@@ -5,12 +5,12 @@
     <parent>
         <groupId>io.github.incplusplus</groupId>
         <artifactId>bigtoolbox</artifactId>
-        <version>1.0.62</version>
+        <version>1.0.95</version>
     </parent>
     <artifactId>network</artifactId>
     <name>Big Tool Box: Network</name>
     <packaging>jar</packaging>
-    <version>1.0.62</version>
+    <version>1.0.95</version>
     <properties>
         <maven.deploy.skip>true</maven.deploy.skip>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -46,7 +46,7 @@
                 </includes>
             </resource>
         </resources>
-        <finalName>network</finalName>
+        <finalName>${project.artifactId}-${project.version}</finalName>
         <plugins>
 
             <plugin>

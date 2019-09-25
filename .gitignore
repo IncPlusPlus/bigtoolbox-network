@@ -1,0 +1,23 @@
+.idea
+*.iml
+*/target/
+**/target/*
+**/pom.xml.versionsBackup
+.gradle
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Cache of project
+.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
+/bigtoolbox/network/network.errors.log
+
+# Don't commit Visual Studio items
+**/.vs/
+**/obj/
+**/build/
+!**/packages/**/build/
+**/bin/

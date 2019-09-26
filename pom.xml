@@ -6,8 +6,9 @@
         <groupId>io.github.incplusplus</groupId>
         <artifactId>bigtoolbox-parent</artifactId>
         <version>1.0.95</version>
+        <relativePath></relativePath>
     </parent>
-    <artifactId>network</artifactId>
+    <artifactId>bigtoolbox-network</artifactId>
     <name>Big Tool Box: Network</name>
     <packaging>jar</packaging>
     <version>1.0.95</version>

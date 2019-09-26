@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.github.incplusplus</groupId>
         <artifactId>bigtoolbox-parent</artifactId>
-        <version>1.0.97</version>
+        <version>1.0.98</version>
 <!--        https://stackoverflow.com/a/6006098/1687436-->
 <!--        <relativePath></relativePath>-->
     </parent>

@@ -1,0 +1,3 @@
+# Exclude the SimpleWifi library from being counted as my code
+# Although I have modified it, I did not write the majority of it.
+src/main/dotnet/WinWiFi/SimpleWifi/* linguist-vendored

@@ -12,7 +12,7 @@
     <artifactId>bigtoolbox-network</artifactId>
     <name>Big Tool Box: Network</name>
     <packaging>jar</packaging>
-    <version>1.0.95</version>
+    <version>1.0.96</version>
     <description>The network module of bigtoolbox</description>
     <url>https://github.com/IncPlusPlus/bigtoolbox-network</url>
 

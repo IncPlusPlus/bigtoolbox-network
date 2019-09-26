@@ -1,6 +1,6 @@
 {
   "package": {
-    "name": "bigtoolbox-parent",
+    "name": "bigtoolbox-network",
     "repo": "main-maven",
     "subject": "incplusplus",
     "desc": "Created automatically via push",
@@ -17,7 +17,9 @@
 
   "files":
   [
-    {"includePattern": "target\/((\\w+-\\w+)-(\\d+.\\d+.\\d+).pom)", "excludePattern": ".*/do-not-deploy/.*", "uploadPattern": "io/github/incplusplus/bigtoolbox-network/$3/$2-$3.pom"}
+    {"includePattern": "target\/((\\w+-\\w+)-(\\d+.\\d+.\\d+).jar)", "excludePattern": ".*/do-not-deploy/.*", "uploadPattern": "io/github/incplusplus/$2/$3/$1"},
+    {"includePattern": "target\/((\\w+-\\w+)-(\\d+.\\d+.\\d+).pom)", "excludePattern": ".*/do-not-deploy/.*", "uploadPattern": "io/github/incplusplus/$2/$3/$1"},
+    {"includePattern": "target\/((\\w+)-(\\d+.\\d+.\\d+)(-(\\w+)){1}.jar)", "excludePattern": ".*/do-not-deploy/.*", "uploadPattern": "io/github/incplusplus/$2/$3/$1"}
   ],
   "publish": true
 }

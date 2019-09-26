@@ -1,0 +1,61 @@
+dist: xenial
+language: java
+cache:
+  directories:
+    - $HOME/.m2/repository
+env:
+- CLI_VERSION=latest
+# Handle git submodules yourself
+git:
+  submodules: false
+# Use sed to replace the SSH URL with the public URL, then initialize submodules
+before_install:
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
+addons:
+  apt:
+    sources:
+    - sourceline: deb https://download.mono-project.com/repo/ubuntu stable-xenial
+        main
+      key_url: http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA6A19B38D3D831EF
+    packages:
+    - mono-devel
+    - msbuild
+    - libmono-system-runtime-interopservices-runtimeinformation4.0-cil
+matrix:
+  include:
+  - jdk: oraclejdk11
+    # See https://github.com/travis-ci/travis-ci/issues/8667
+    install: true
+    script:
+    - mvn clean jacoco:prepare-agent install jacoco:report
+    after_success:
+      - bash <(curl -s https://codecov.io/bash)
+    deploy:
+    - provider: bintray
+      file: bintray_info_maven.JSON
+      user: incplusplus
+      key: "$bintray_key"
+      skip_cleanup: true
+      on:
+        repo: IncPlusPlus/bigtoolbox-network
+        branch: master
+#    - provider: releases
+#      api_key:
+#        secure: LcglvToS0j9N2sFmTl5l29o1WKNzBnf/pzf58g/J/LBf2wkvDU0OiTMUST/4dLLRsIeokMz8sSlNh6jE0CNpF5VJ6I9S8nljCnom6n5vrsFo2rnaC2Ir8o83UnmW6Pi7I3c4n+BAwB8qMH4NXiRnXuspPQivQhvqLp5GbDq5dI5mwDKxhVmIlxMncVA/V5pxhTpMZJUoqJtW6RV4hhdZnNPMHT173lXCx347fbvxcPviio/CIbFeew1x4k7Elck5YBvJdfIvWoV5fNuGy3eWbTwRTE8ETh6z+v9CdVQ3VNDsF7IH2NDHTnAJITdZnZEm98lxRQ5L5su8xH58d3IYL8tcPl9df6oLe3q6/T8XfV/2OA+Y9mH4cYpfjyoA7Vic4cUL7OzIowpdM7OREcxP2Z3Wgbv0izd+uJCWPUieykeTEzCKXHA2vT0JDMVpdidG6lPKbpNGiE621AWZTUtAg9mGMy3PQJNKTsX4IDk4Lu9Gy4XPYy36gqC8L3zVRAVNkOjZWD1M0wWM3SAjigZmTLjsi0IS752d85oziiD/rlVIhBHeuRSMlcjIinlsry9aMO+gjwzCUKOcQ6nu3BlIkjH587rVj6DHjm9gIPTite9CpLLB+8f4fUkNGer5A+Bd9eYW6qm75nI+NGOK2ArMjWF344rmyuIhV0ANmWqU3gg=
+#      file_glob: true
+#      file: target/bigtoolbox-network-*.*.*.jar
+#      skip_cleanup: true
+#      draft: true
+#      on:
+#        repo: IncPlusPlus/bigtoolbox-network
+#        branch: master
+  - jdk: openjdk11
+    # See https://github.com/travis-ci/travis-ci/issues/8667
+    install: true
+    before_script:
+      - "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | sudo bash"
+    script:
+      - mvn clean install
+      - fossa init
+      - fossa analyze

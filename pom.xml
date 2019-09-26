@@ -145,16 +145,29 @@
                                 <version>5.2.1</version>
                             </dependency>
                         </dependencies>
-
-                        <configuration>
-                            <gradleVersion>5.3.1</gradleVersion>
-                            <tasks>
-                                <task>clean</task>
-                                <task>build</task>
-                            </tasks>
-                        </configuration>
                         <executions>
                             <execution>
+                                <id>gradle-clean</id>
+                                <configuration>
+                                    <gradleVersion>5.3.1</gradleVersion>
+                                    <tasks>
+                                        <task>clean</task>
+                                    </tasks>
+                                </configuration>
+                                <phase>clean</phase>
+                                <goals>
+                                    <goal>invoke</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>gradle-clean-build</id>
+                                <configuration>
+                                    <gradleVersion>5.3.1</gradleVersion>
+                                    <tasks>
+                                        <task>clean</task>
+                                        <task>build</task>
+                                    </tasks>
+                                </configuration>
                                 <phase>generate-resources</phase>
                                 <goals>
                                     <goal>invoke</goal>

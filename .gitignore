@@ -21,3 +21,9 @@ gradle-app.setting
 **/build/
 !**/packages/**/build/
 **/bin/
+
+# Ignore stuff from MSBuild (however, it will be included in the .jar during the build)
+src/main/resources/JavaInterop.exe
+src/main/resources/JavaInterop.exe.config
+src/main/resources/SimpleWifi.dll
+src/main/resources/Newtonsoft.Json.xml

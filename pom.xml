@@ -12,11 +12,46 @@
     <name>Big Tool Box: Network</name>
     <packaging>jar</packaging>
     <version>1.0.95</version>
+    <description>The network module of bigtoolbox</description>
+    <url>https://github.com/IncPlusPlus/bigtoolbox-network</url>
+
     <properties>
         <maven.deploy.skip>true</maven.deploy.skip>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <bintray.repo>incplusplus/main-maven</bintray.repo>
+        <bintray.package>bigtoolbox-network</bintray.package>
+        <bintray.subject>incplusplus</bintray.subject>
     </properties>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Ryan Cloherty</name>
+            <email>cloherty.ryan@gmail.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/IncPlusPlus/bigtoolbox-network.git</connection>
+        <developerConnection>scm:git:https://github.com/IncPlusPlus/bigtoolbox-network.git</developerConnection>
+        <url>https://github.com/IncPlusPlus/bigtoolbox-network</url>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>main-maven</id>
+            <url>https://api.bintray.com/maven/${bintray.subject}/${bintray.repo}/${bintray.package}/;publish=1</url>
+        </repository>
+    </distributionManagement>
 
     <repositories>
         <repository>

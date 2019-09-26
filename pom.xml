@@ -7,7 +7,7 @@
         <artifactId>bigtoolbox-parent</artifactId>
         <version>1.0.97</version>
 <!--        https://stackoverflow.com/a/6006098/1687436-->
-        <relativePath></relativePath>
+<!--        <relativePath></relativePath>-->
     </parent>
     <artifactId>bigtoolbox-network</artifactId>
     <name>Big Tool Box: Network</name>

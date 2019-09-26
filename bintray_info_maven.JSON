@@ -1,0 +1,23 @@
+{
+  "package": {
+    "name": "bigtoolbox-parent",
+    "repo": "main-maven",
+    "subject": "incplusplus",
+    "desc": "Created automatically via push",
+    "issue_tracker_url": "https://github.com/IncPlusPlus/bigtoolbox-network/issues",
+    "vcs_url": "https://github.com/IncPlusPlus/bigtoolbox-network.git",
+    "licenses": ["Apache-2.0"],
+    "public_download_numbers": false,
+    "public_stats": false
+  },
+
+  "version": {
+    "name": "1.0.95"
+  },
+
+  "files":
+  [
+    {"includePattern": "target\/((\\w+-\\w+)-(\\d+.\\d+.\\d+).pom)", "excludePattern": ".*/do-not-deploy/.*", "uploadPattern": "io/github/incplusplus/bigtoolbox-network/$3/$2-$3.pom"}
+  ],
+  "publish": true
+}

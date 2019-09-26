@@ -129,6 +129,7 @@
             <activation>
                 <property>
                     <name>IS_LGTM</name>
+                    <value>!TRUE</value>
                 </property>
             </activation>
             <build>

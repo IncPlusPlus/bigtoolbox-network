@@ -129,7 +129,6 @@
             <activation>
                 <property>
                     <name>lgtm</name>
-                    <value>!true</value>
                 </property>
             </activation>
             <build>

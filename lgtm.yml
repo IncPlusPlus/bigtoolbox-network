@@ -275,7 +275,7 @@
 #         - mono-devel
 #         - mono-xbuild
      before_index:
-       export IS_LGTM=TRUE
+       export lgtm=true
        export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 #     # Add an `after-prepare` step if you need to run commands after the prepare step.
 #     # Each command should be listed on a separate line.

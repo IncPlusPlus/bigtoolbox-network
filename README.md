@@ -9,6 +9,8 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/6f8ecc4a621cb348de55/test_coverage)](https://codeclimate.com/github/IncPlusPlus/bigtoolbox-network/test_coverage)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FIncPlusPlus%2Fbigtoolbox-network.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FIncPlusPlus%2Fbigtoolbox-network?ref=badge_shield)
 
+# What is this?
+This is the network module of [bigtoolbox](https://github.com/IncPlusPlus/bigtoolbox). My lofty goal with this is to have a lot of networking related functions implemented here that will work regardless of OS (within reason). Currently, the Windows WiFi functionality is the focus and is in a state of WIP.
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FIncPlusPlus%2Fbigtoolbox-network.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FIncPlusPlus%2Fbigtoolbox-network?ref=badge_large)

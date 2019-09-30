@@ -1,0 +1,26 @@
+{
+  "package": {
+    "name": "bigtoolbox-network",
+    "repo": "main-maven",
+    "subject": "incplusplus",
+    "desc": "Created automatically via push",
+    "issue_tracker_url": "https://github.com/IncPlusPlus/bigtoolbox-network/issues",
+    "vcs_url": "https://github.com/IncPlusPlus/bigtoolbox-network.git",
+    "licenses": ["Apache-2.0"],
+    "public_download_numbers": false,
+    "public_stats": false
+  },
+
+  "version": {
+    "name": "1.0.99"
+  },
+
+  "files":
+  [
+    {"includePattern": "target\/((\\w+-\\w+)-(\\d+.\\d+.\\d+).jar)", "excludePattern": ".*/do-not-deploy/.*", "uploadPattern": "io/github/incplusplus/$2/$3/$1"},
+    {"includePattern": "target\/((\\w+-\\w+)-(\\d+.\\d+.\\d+)-(javadoc-resources).jar)", "excludePattern": ".*/do-not-deploy/.*", "uploadPattern": "io/github/incplusplus/$2/$3/$1"},
+    {"includePattern": "target\/((\\w+-\\w+)-(\\d+.\\d+.\\d+).pom)", "excludePattern": ".*/do-not-deploy/.*", "uploadPattern": "io/github/incplusplus/$2/$3/$1"},
+    {"includePattern": "target\/((\\w+-\\w+)-(\\d+.\\d+.\\d+)(-(\\w+)){1}.jar)", "excludePattern": ".*/do-not-deploy/.*", "uploadPattern": "io/github/incplusplus/$2/$3/$1"}
+  ],
+  "publish": true
+}

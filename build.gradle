@@ -77,8 +77,15 @@ task printFinishedMsbuild() {
     //Use this space to move the exe into a usable folder
 }
 
-printFinishedMsbuild.dependsOn(project(':network').tasks.msbuild)
-project(':network').tasks.msbuild.dependsOn(printStartedMsbuild)
+clean.doFirst {
+    delete "${rootDir}/src/main/resources/JavaInterop.exe"
+    delete "${rootDir}/src/main/resources/JavaInterop.exe.config"
+    delete "${rootDir}/src/main/resources/Newtonsoft.Json.xml"
+    delete "${rootDir}/src/main/resources/SimpleWifi.dll"
+}
+
+printFinishedMsbuild.dependsOn(project.tasks.msbuild)
+project.tasks.msbuild.dependsOn(printStartedMsbuild)
 
 build.finalizedBy(printFinishedMsbuild)
 

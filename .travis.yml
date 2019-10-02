@@ -2,7 +2,7 @@ dist: xenial
 language: java
 cache:
   directories:
-    - $HOME/.m2/repository
+  - "$HOME/.m2/repository"
 env:
 - CLI_VERSION=latest
 addons:
@@ -23,7 +23,7 @@ matrix:
     script:
     - mvn clean jacoco:prepare-agent install jacoco:report
     after_success:
-      - bash <(curl -s https://codecov.io/bash)
+    - bash <(curl -s https://codecov.io/bash)
     deploy:
     - provider: bintray
       file: bintray_info_maven.JSON
@@ -33,22 +33,23 @@ matrix:
       on:
         repo: IncPlusPlus/bigtoolbox-network
         branch: master
-#    - provider: releases
-#      api_key:
-#        secure: LcglvToS0j9N2sFmTl5l29o1WKNzBnf/pzf58g/J/LBf2wkvDU0OiTMUST/4dLLRsIeokMz8sSlNh6jE0CNpF5VJ6I9S8nljCnom6n5vrsFo2rnaC2Ir8o83UnmW6Pi7I3c4n+BAwB8qMH4NXiRnXuspPQivQhvqLp5GbDq5dI5mwDKxhVmIlxMncVA/V5pxhTpMZJUoqJtW6RV4hhdZnNPMHT173lXCx347fbvxcPviio/CIbFeew1x4k7Elck5YBvJdfIvWoV5fNuGy3eWbTwRTE8ETh6z+v9CdVQ3VNDsF7IH2NDHTnAJITdZnZEm98lxRQ5L5su8xH58d3IYL8tcPl9df6oLe3q6/T8XfV/2OA+Y9mH4cYpfjyoA7Vic4cUL7OzIowpdM7OREcxP2Z3Wgbv0izd+uJCWPUieykeTEzCKXHA2vT0JDMVpdidG6lPKbpNGiE621AWZTUtAg9mGMy3PQJNKTsX4IDk4Lu9Gy4XPYy36gqC8L3zVRAVNkOjZWD1M0wWM3SAjigZmTLjsi0IS752d85oziiD/rlVIhBHeuRSMlcjIinlsry9aMO+gjwzCUKOcQ6nu3BlIkjH587rVj6DHjm9gIPTite9CpLLB+8f4fUkNGer5A+Bd9eYW6qm75nI+NGOK2ArMjWF344rmyuIhV0ANmWqU3gg=
-#      file_glob: true
-#      file: target/bigtoolbox-network-*.*.*.jar
-#      skip_cleanup: true
-#      draft: true
-#      on:
-#        repo: IncPlusPlus/bigtoolbox-network
-#        branch: master
+    - provider: releases
+      api_key:
+        secure: mDXAQIz8/BzrHerP2sS+xLHQpH+Be8uXNFAyCAIiQ17dkaznbCdOzm4n2DpDBQRLSKLch+KkKxaG+ZLaQ8TKlkK30twOg1L6g5S7VYXOqoCfsHMwVb3xKAsSUozUxEjTpIbZYG7QP//hJo6YPw7vLgk11bWQ3tB+2K6AeLFgiQDBRpOJfTO9nUujI1Lzh5Akaj/ihIXAFcfxix8RGZauvyAHzY5+Z4I8aCnq/mPM68SqWze4Udvg7//0wVJkYz1lCqXZZ2WwexLmaBSfTD+vnFQ8FfMjteNKbjx6cswnM709SyfFbyZx2cqW+IB9TH18HzJ+dlJJDJs04SK7v0gc9sb6wA8fXCmDDejhYVBIwI0ADOXI4EGaM9TmSvjLUC/mdIjM3kSupB4qQVdPwGeAaiX7m1OV6VJUfc+F6OTFPsEdt1UPLQH71Bk+0pgz2XSdA3ozJFJWAF6reQT6+kk598nEKyZ+2dtt6SE9dhV9eGLqo8QpPXirJJJ6iB160XorbwPM7ffSULNYHqiQV8Cvxh9Pyhg0LN61IAn0sobn6/x4tnhbdCEb4qKKqukxZm8nycE30zKN8PsTI7zVummYABhTAcMXQLiFgYYpHFWQzNQ5QIME8ny7/waCoIT8rSCBHo+q3QlAuWv1Juv6X34GUy4r6hZjFhh+oqm/IVQXaHU=
+      file_glob: true
+      file: target/bigtoolbox-network-*.*.*.jar
+      skip_cleanup: true
+      draft: true
+      on:
+        repo: IncPlusPlus/bigtoolbox-network
+        branch: master
   - jdk: openjdk11
     # See https://github.com/travis-ci/travis-ci/issues/8667
     install: true
     before_script:
-      - "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | sudo bash"
+    - 'curl -H ''Cache-Control: no-cache'' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh
+      | sudo bash'
     script:
-      - mvn clean install
-      - fossa init
-      - fossa analyze
+    - mvn clean install
+    - fossa init
+    - fossa analyze

@@ -7,7 +7,7 @@
     <version>1.0.102</version>
   </parent>
   <artifactId>bigtoolbox-network</artifactId>
-  <version>1.0.98</version>
+  <version>1.0.99</version>
   <packaging>jar</packaging>
   <name>Big Tool Box: Network</name>
   <description>The network module of bigtoolbox</description>

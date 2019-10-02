@@ -39,10 +39,11 @@ matrix:
       file_glob: true
       file: target/bigtoolbox-network-*.*.*.jar
       skip_cleanup: true
-      draft: true
+      prerelease: true
       on:
         repo: IncPlusPlus/bigtoolbox-network
         branch: master
+        tags: true
   - jdk: openjdk11
     # See https://github.com/travis-ci/travis-ci/issues/8667
     install: true

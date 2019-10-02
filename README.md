@@ -3,6 +3,7 @@
 [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/IncPlusPlus/bigtoolbox-network.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/IncPlusPlus/bigtoolbox-network/context:java)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6f8ecc4a621cb348de55/maintainability)](https://codeclimate.com/github/IncPlusPlus/bigtoolbox-network/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/6f8ecc4a621cb348de55/test_coverage)](https://codeclimate.com/github/IncPlusPlus/bigtoolbox-network/test_coverage)
+[![codecov](https://codecov.io/gh/IncPlusPlus/bigtoolbox-network/branch/master/graph/badge.svg)](https://codecov.io/gh/IncPlusPlus/bigtoolbox-network)
 [![Build Status](https://travis-ci.com/IncPlusPlus/bigtoolbox-network.svg?branch=master)](https://travis-ci.com/IncPlusPlus/bigtoolbox-network)
 [![Known Vulnerabilities](https://snyk.io//test/github/IncPlusPlus/bigtoolbox-network/badge.svg?targetFile=pom.xml)](https://snyk.io//test/github/IncPlusPlus/bigtoolbox-network?targetFile=pom.xml)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/IncPlusPlus/bigtoolbox-network.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/IncPlusPlus/bigtoolbox-network/alerts/)

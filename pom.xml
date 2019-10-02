@@ -29,7 +29,7 @@
     <dependency>
       <groupId>io.github.incplusplus</groupId>
       <artifactId>bigtoolbox</artifactId>
-      <version>1.0.51</version>
+      <version>1.0.100</version>
     </dependency>
   </dependencies>
 

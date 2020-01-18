@@ -15,11 +15,16 @@ addons:
     - mono-devel
     - msbuild
     - libmono-system-runtime-interopservices-runtimeinformation4.0-cil
+    - zeroc-ice-compilers
 matrix:
   include:
   - jdk: oraclejdk11
     # See https://github.com/travis-ci/travis-ci/issues/8667
     install: true
+    before_install:
+    - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv B6391CB2CFBA643D
+    - sudo apt-add-repository "deb http://zeroc.com/download/ice/3.7/ubuntu18.04 stable main"
+    - sudo apt update
     script:
     - mvn clean jacoco:prepare-agent install jacoco:report
     after_success:

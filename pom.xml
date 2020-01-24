@@ -28,8 +28,13 @@
     </dependency>
     <dependency>
       <groupId>io.github.incplusplus</groupId>
-      <artifactId>bigtoolbox</artifactId>
-      <version>1.0.51</version>
+      <artifactId>bigtoolbox-io</artifactId>
+      <version>1.0.99</version>
+    </dependency>
+    <dependency>
+      <groupId>io.github.incplusplus</groupId>
+      <artifactId>bigtoolbox-os</artifactId>
+      <version>1.0.98</version>
     </dependency>
   </dependencies>
 

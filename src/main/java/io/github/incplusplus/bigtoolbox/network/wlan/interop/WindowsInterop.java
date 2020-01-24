@@ -1,6 +1,7 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop;
 
 import com.google.gson.Gson;
+import io.github.incplusplus.bigtoolbox.io.filesys.TempFile;
 import io.github.incplusplus.bigtoolbox.network.wlan.AvailableAccessPointPack;
 import io.github.incplusplus.bigtoolbox.network.wlan.WiFiAdapterPoweredDownException;
 

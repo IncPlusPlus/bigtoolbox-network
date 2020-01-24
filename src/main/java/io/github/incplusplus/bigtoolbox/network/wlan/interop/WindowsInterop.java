@@ -4,8 +4,10 @@ import com.google.gson.Gson;
 import io.github.incplusplus.bigtoolbox.io.filesys.TempFile;
 import io.github.incplusplus.bigtoolbox.network.wlan.AvailableAccessPointPack;
 import io.github.incplusplus.bigtoolbox.network.wlan.WiFiAdapterPoweredDownException;
+import io.github.incplusplus.simplewifijava.SimpleWifiJavaEntryPoint;
 
 import java.io.*;
+import java.net.URISyntaxException;
 
 import static io.github.incplusplus.bigtoolbox.network.wlan.interop.WindowsInterop.JavaRequest.*;
 import static io.github.incplusplus.bigtoolbox.network.wlan.interop.WindowsInterop.ResponseToJava.SESSION_CLOSED;
@@ -29,7 +31,7 @@ public class WindowsInterop extends WLanController
 	{
 		try
 		{
-			interopExe = new TempFile("JavaInterop", "exe");
+			interopExe = new TempFile("JavaInterop", "exe", SimpleWifiJavaEntryPoint.class);
 			dotNetApp = Runtime.getRuntime().exec(interopExe.getAsFile().getPath());
 
 
@@ -69,7 +71,7 @@ public class WindowsInterop extends WLanController
 			//	stdError.close();
 			//	dotNetApp.waitFor();
 		}
-		catch(IOException e)
+		catch(IOException | URISyntaxException e)
 		{
 			e.printStackTrace();
 		}

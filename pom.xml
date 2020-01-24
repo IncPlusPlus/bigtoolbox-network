@@ -37,6 +37,11 @@
       <version>1.0.98</version>
     </dependency>
     <dependency>
+      <groupId>io.github.incplusplus</groupId>
+      <artifactId>simplewifi-java</artifactId>
+      <version>0.0.2</version>
+    </dependency>
+    <dependency>
       <groupId>com.zeroc</groupId>
       <artifactId>ice</artifactId>
       <version>3.7.3</version>

@@ -36,6 +36,11 @@
       <artifactId>bigtoolbox-os</artifactId>
       <version>1.0.98</version>
     </dependency>
+    <dependency>
+      <groupId>com.zeroc</groupId>
+      <artifactId>ice</artifactId>
+      <version>3.7.3</version>
+    </dependency>
   </dependencies>
 
   <build>

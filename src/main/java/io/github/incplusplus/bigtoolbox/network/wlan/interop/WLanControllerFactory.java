@@ -46,8 +46,7 @@ public final class WLanControllerFactory
 	 * @throws UnsupportedOSException if the current OS is not supported by this library
 	 * @return a new WLanController implementation based on the host's OS
 	 */
-	public static WLanController createWLanController()
-	{
+	public static WLanController createWLanController() throws UnsupportedOSException {
 		if(numberInstantiated == 0)
 		{
 			if(primaryController != null)
@@ -83,8 +82,7 @@ public final class WLanControllerFactory
 				"despite the fact that this is a singleton factory.");
 	}
 
-	private static WLanController getByOSFamily(OperatingSystem.OSFamily family)
-	{
+	private static WLanController getByOSFamily(OperatingSystem.OSFamily family) throws UnsupportedOSException {
 		switch(family)
 		{
 			case Windows:

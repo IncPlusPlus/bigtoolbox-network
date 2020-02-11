@@ -22,7 +22,6 @@ public class WindowsInterop extends WLanController
 	private TempFile interopExe;
 	private String lastStdInput;
 	private String lastStdError;
-	private final boolean DEBUG = false;
 	com.zeroc.Ice.Communicator communicator;
 	private ApiHandlePrx wifi;
 	private com.zeroc.Ice.ObjectPrx apiBase;
@@ -131,23 +130,10 @@ public class WindowsInterop extends WLanController
 		}
 		catch(InterruptedException e)
 		{
-			debugMsg("There was an error running conclude() on this instance. " +
-					"Message follows: " + e.getMessage());
-			e.printStackTrace();
+			throw new IOException("There was an error running conclude() on this instance. ", e);
 		}
 	}
 	
-	private void debugMsg(String message)
-	{
-		if(DEBUG)
-		{
-			StringBuilder out = new StringBuilder(message.length() + 8);
-			out.append("[DEBUG]");
-			out.append(message);
-			System.out.println(out);
-		}
-	}
-
 	public enum JavaRequest
 	{
 		CLOSE_SESSION(0),

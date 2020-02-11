@@ -44,38 +44,6 @@ public class WindowsInterop extends WLanController
 		stdInput = new BufferedReader(new InputStreamReader(dotNetApp.getInputStream()), 8 * 1024);
 		stdOutput = new BufferedWriter(new OutputStreamWriter(dotNetApp.getOutputStream()), 8 * 1024);
 		stdError = new BufferedReader(new InputStreamReader(dotNetApp.getErrorStream()));
-		
-		//			if(! readln().equals(Integer.toString(ResponseToJava.SESSION_OPENED.getValue())))
-		//			{
-		//				throw new RuntimeException("Started session but response was: " + "\"" + lastStdInput + "\"");
-		//			}
-		//	System.out.println("OUTPUT:");
-		//	while((lastStdInput = stdInput.readLine()) != null)
-		//	{
-		//		debugMsg("Received '" + lastStdInput + "'");
-		//		if(lastStdInput.equals(Integer.toString(ResponseToJava.SESSION_OPENED.getValue())))
-		//		{
-		//			debugMsg("Writing '" + CLOSE_SESSION.getValue() + "'");
-		//			writeln(CLOSE_SESSION);
-		//		}
-		//		try
-		//		{
-		//			debugMsg("Exit value " + dotNetApp.exitValue());
-		//		}
-		//		catch(IllegalThreadStateException e)
-		//		{
-		//			System.out.println(e.getMessage());
-		//		}
-		//	}
-		//	stdInput.close();
-		//
-		//	System.out.println("ERRORS:");
-		//	while((lastStdError = stdError.readLine()) != null)
-		//	{
-		//		System.out.println(lastStdError);
-		//	}
-		//	stdError.close();
-		//	dotNetApp.waitFor();
 	}
 	
 	public boolean scan() throws IOException
@@ -83,21 +51,6 @@ public class WindowsInterop extends WLanController
 		ensureOpen();
 		Arrays.stream(wifi.getWlanInterfaces()).forEach(WlanInterfacePrx::scan);
 		return true;
-//		MessageBool response = new Gson().fromJson(readln(), MessageBool.class);
-//		debugMsg("response: success = " + response.successful());
-//		debugMsg("response message: " + response.getMessage());
-//		if(! response.successful())
-//		{
-//			if(response.getMessage().equals(WiFiAdapterPoweredDownException.message))
-//			{
-//				throw new WiFiAdapterPoweredDownException();
-//			}
-//			else
-//			{
-//				throw new RuntimeException(response.getMessage());
-//			}
-//		}
-//		return response.successful();
 	}
 
 	@Override
@@ -109,7 +62,6 @@ public class WindowsInterop extends WLanController
 
 	protected void conclude() throws IOException
 	{
-		//ensureOpen();
 		try
 		{
 			wifi.terminateApi();

@@ -38,6 +38,7 @@ public abstract class WLanController implements Closeable
 	 *                                       operation is not supported by this adapter implementation
 	 * @throws IOException                   if the controller has already run {@link WLanController#close()}
 	 */
+	//TODO: make this method's behavior less ambiguous
 	public boolean scan() throws IOException
 	{
 		throw new UnsupportedOperationException();

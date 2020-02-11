@@ -3,10 +3,12 @@ package io.github.incplusplus.bigtoolbox.network.wlan.interop.win;
 import io.github.incplusplus.bigtoolbox.io.filesys.TempFile;
 import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
 import io.github.incplusplus.bigtoolbox.network.wlan.interop.WLanController;
+import io.github.incplusplus.simplewifijava.SimpleWifiJavaEntryPoint;
 import io.github.incplusplus.simplewifijava.generated.WiFiApi.ApiHandlePrx;
 import io.github.incplusplus.simplewifijava.generated.WiFiApi.WlanInterfacePrx;
 
 import java.io.*;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 
 /**
@@ -29,18 +31,16 @@ public class WindowsInterop extends WLanController
 	public WindowsInterop()
 	{
 		try {
-			//			interopExe = new TempFile("JavaInterop", "exe", SimpleWifiJavaEntryPoint.class);
-			//			dotNetApp = Runtime.getRuntime().exec(interopExe.getAsFile().getPath());
-			
-			
+			interopExe = new TempFile("JavaInterop", "exe", SimpleWifiJavaEntryPoint.class);
+			dotNetApp = Runtime.getRuntime().exec(interopExe.getAsFile().getPath());
 			communicator = com.zeroc.Ice.Util.initialize();
 			apiBase = communicator.stringToProxy("SimpleWiFi:default -p 10001");
 			wifi = ApiHandlePrx.checkedCast(apiBase);
 			
-			
-//			stdInput = new BufferedReader(new InputStreamReader(dotNetApp.getInputStream()), 8 * 1024);
-//			stdOutput = new BufferedWriter(new OutputStreamWriter(dotNetApp.getOutputStream()), 8 * 1024);
-//			stdError = new BufferedReader(new InputStreamReader(dotNetApp.getErrorStream()));
+			//These three aren't necessary. However, it could be useful to have them for the future.
+			stdInput = new BufferedReader(new InputStreamReader(dotNetApp.getInputStream()), 8 * 1024);
+			stdOutput = new BufferedWriter(new OutputStreamWriter(dotNetApp.getOutputStream()), 8 * 1024);
+			stdError = new BufferedReader(new InputStreamReader(dotNetApp.getErrorStream()));
 			
 			//			if(! readln().equals(Integer.toString(ResponseToJava.SESSION_OPENED.getValue())))
 			//			{
@@ -74,17 +74,10 @@ public class WindowsInterop extends WLanController
 			//	stdError.close();
 			//	dotNetApp.waitFor();
 		}
-		finally {
-		
+		catch (URISyntaxException | IOException e) {
+			//TODO: Make a proper `throws` chain
+			e.printStackTrace();
 		}
-//		catch(IOException | URISyntaxException e)
-//		{
-//			e.printStackTrace();
-//		}
-		//catch(InterruptedException e)
-		//{
-		//	e.printStackTrace();
-		//}
 	}
 	
 	public boolean scan() throws IOException

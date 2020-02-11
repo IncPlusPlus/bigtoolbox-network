@@ -1,5 +1,8 @@
 package io.github.incplusplus.bigtoolbox.network.wlan;
 
+import io.github.incplusplus.bigtoolbox.network.wlan.interop.win.AuthRequestImpl;
+import org.apache.commons.lang3.NotImplementedException;
+
 public final class AccessPointImpl implements AccessPoint {
 	public final String interfaceName;
 	public final String name;
@@ -31,6 +34,21 @@ public final class AccessPointImpl implements AccessPoint {
 	@Override
 	public String getInterfaceName() {
 		return interfaceName;
+	}
+	
+	@Override
+	public boolean connect() {
+		throw new NotImplementedException("I didn't make this yet and probably will delete this class anyways!");
+	}
+	
+	@Override
+	public boolean connect(AuthRequestImpl authRequest) {
+		return false;
+	}
+	
+	@Override
+	public String getProfileXML() {
+		return null;
 	}
 	
 	@Override

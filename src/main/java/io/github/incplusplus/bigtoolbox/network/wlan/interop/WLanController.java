@@ -1,5 +1,6 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop;
 
+import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
 import io.github.incplusplus.bigtoolbox.network.wlan.AvailableAccessPointPack;
 
 import java.io.Closeable;
@@ -46,13 +47,13 @@ public abstract class WLanController implements Closeable
 	 * @return a new {@link AvailableAccessPointPack}
 	 * @throws IOException if the controller has already run {@link WLanController#close()}
 	 */
-	public abstract AvailableAccessPointPack getAccessPoints() throws IOException;
+	public abstract AccessPoint[] getAccessPoints() throws IOException;
 
 	/**
 	 * Close any programs opened for this object and
 	 * ready this object for disposal
 	 */
-	abstract void conclude() throws IOException;
+	protected abstract void conclude() throws IOException;
 
 	/**
 	 * Closes any open resources
@@ -113,7 +114,7 @@ public abstract class WLanController implements Closeable
 	/**
 	 * Checks to make sure that the streams have not been closed
 	 */
-	final void ensureOpen() throws IOException
+	protected final void ensureOpen() throws IOException
 	{
 		if(isClosed())
 			throw new IOException("WLanController closed");

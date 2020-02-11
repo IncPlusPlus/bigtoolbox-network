@@ -22,12 +22,12 @@ public final class WLanControllerFactory
 	 * try(WLanController controller = WLanControllerFactory.createWLanController())
 	 * {
 	 * 	controller.scan();
-	 * 	AvailableAccessPointPack pack = controller.getAccessPoints();
+	 * 	AccessPoint[] aps = controller.getAccessPoints();
 	 * 	System.out.println();
-	 * 	for(AccessPoint ap : pack.accessPoints)
+	 * 	for(AccessPoint ap : aps)
 	 * 	{
-	 * 		System.out.println("Name: "+ap.name);
-	 * 		System.out.println("Signal Strength: "+ap.signalStrength);
+	 * 		System.out.println("Name: "+ap.getName());
+	 * 		System.out.println("Signal Strength: "+ap.getSignalStrength());
 	 * 		System.out.println();
 	 * 	}
 	 * }

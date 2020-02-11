@@ -4,6 +4,8 @@ import io.github.incplusplus.bigtoolbox.network.wlan.interop.win.WindowsInterop;
 import io.github.incplusplus.bigtoolbox.os.UnsupportedOSException;
 import io.github.incplusplus.bigtoolbox.os.opsys.OperatingSystem;
 
+import java.io.IOException;
+
 /**
  * The {@link WLanControllerFactory} is a pseudo-singleton pattern factory. The goal of this class is to allow for
  * the creation of {@link WLanController}s one at a time.
@@ -46,7 +48,7 @@ public final class WLanControllerFactory
 	 * @throws UnsupportedOSException if the current OS is not supported by this library
 	 * @return a new WLanController implementation based on the host's OS
 	 */
-	public static WLanController createWLanController() throws UnsupportedOSException {
+	public static WLanController createWLanController() throws UnsupportedOSException, IOException {
 		if(numberInstantiated == 0)
 		{
 			if(primaryController != null)
@@ -82,7 +84,7 @@ public final class WLanControllerFactory
 				"despite the fact that this is a singleton factory.");
 	}
 
-	private static WLanController getByOSFamily(OperatingSystem.OSFamily family) throws UnsupportedOSException {
+	private static WLanController getByOSFamily(OperatingSystem.OSFamily family) throws UnsupportedOSException, IOException {
 		switch(family)
 		{
 			case Windows:

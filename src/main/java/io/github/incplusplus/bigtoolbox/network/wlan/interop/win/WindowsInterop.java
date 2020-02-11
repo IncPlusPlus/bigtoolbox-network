@@ -28,56 +28,54 @@ public class WindowsInterop extends WLanController
 	private ApiHandlePrx wifi;
 	private com.zeroc.Ice.ObjectPrx apiBase;
 
-	public WindowsInterop()
-	{
+	public WindowsInterop() throws IOException {
 		try {
 			interopExe = new TempFile("JavaInterop", "exe", SimpleWifiJavaEntryPoint.class);
-			dotNetApp = Runtime.getRuntime().exec(interopExe.getAsFile().getPath());
-			communicator = com.zeroc.Ice.Util.initialize();
-			apiBase = communicator.stringToProxy("SimpleWiFi:default -p 10001");
-			wifi = ApiHandlePrx.checkedCast(apiBase);
-			
-			//These three aren't necessary. However, it could be useful to have them for the future.
-			stdInput = new BufferedReader(new InputStreamReader(dotNetApp.getInputStream()), 8 * 1024);
-			stdOutput = new BufferedWriter(new OutputStreamWriter(dotNetApp.getOutputStream()), 8 * 1024);
-			stdError = new BufferedReader(new InputStreamReader(dotNetApp.getErrorStream()));
-			
-			//			if(! readln().equals(Integer.toString(ResponseToJava.SESSION_OPENED.getValue())))
-			//			{
-			//				throw new RuntimeException("Started session but response was: " + "\"" + lastStdInput + "\"");
-			//			}
-			//	System.out.println("OUTPUT:");
-			//	while((lastStdInput = stdInput.readLine()) != null)
-			//	{
-			//		debugMsg("Received '" + lastStdInput + "'");
-			//		if(lastStdInput.equals(Integer.toString(ResponseToJava.SESSION_OPENED.getValue())))
-			//		{
-			//			debugMsg("Writing '" + CLOSE_SESSION.getValue() + "'");
-			//			writeln(CLOSE_SESSION);
-			//		}
-			//		try
-			//		{
-			//			debugMsg("Exit value " + dotNetApp.exitValue());
-			//		}
-			//		catch(IllegalThreadStateException e)
-			//		{
-			//			System.out.println(e.getMessage());
-			//		}
-			//	}
-			//	stdInput.close();
-			//
-			//	System.out.println("ERRORS:");
-			//	while((lastStdError = stdError.readLine()) != null)
-			//	{
-			//		System.out.println(lastStdError);
-			//	}
-			//	stdError.close();
-			//	dotNetApp.waitFor();
 		}
-		catch (URISyntaxException | IOException e) {
-			//TODO: Make a proper `throws` chain
-			e.printStackTrace();
+		catch (URISyntaxException e) {
+			throw new IOException(e);
 		}
+		dotNetApp = Runtime.getRuntime().exec(interopExe.getAsFile().getPath());
+		communicator = com.zeroc.Ice.Util.initialize();
+		apiBase = communicator.stringToProxy("SimpleWiFi:default -p 10001");
+		wifi = ApiHandlePrx.checkedCast(apiBase);
+		
+		//These three aren't necessary. However, it could be useful to have them for the future.
+		stdInput = new BufferedReader(new InputStreamReader(dotNetApp.getInputStream()), 8 * 1024);
+		stdOutput = new BufferedWriter(new OutputStreamWriter(dotNetApp.getOutputStream()), 8 * 1024);
+		stdError = new BufferedReader(new InputStreamReader(dotNetApp.getErrorStream()));
+		
+		//			if(! readln().equals(Integer.toString(ResponseToJava.SESSION_OPENED.getValue())))
+		//			{
+		//				throw new RuntimeException("Started session but response was: " + "\"" + lastStdInput + "\"");
+		//			}
+		//	System.out.println("OUTPUT:");
+		//	while((lastStdInput = stdInput.readLine()) != null)
+		//	{
+		//		debugMsg("Received '" + lastStdInput + "'");
+		//		if(lastStdInput.equals(Integer.toString(ResponseToJava.SESSION_OPENED.getValue())))
+		//		{
+		//			debugMsg("Writing '" + CLOSE_SESSION.getValue() + "'");
+		//			writeln(CLOSE_SESSION);
+		//		}
+		//		try
+		//		{
+		//			debugMsg("Exit value " + dotNetApp.exitValue());
+		//		}
+		//		catch(IllegalThreadStateException e)
+		//		{
+		//			System.out.println(e.getMessage());
+		//		}
+		//	}
+		//	stdInput.close();
+		//
+		//	System.out.println("ERRORS:");
+		//	while((lastStdError = stdError.readLine()) != null)
+		//	{
+		//		System.out.println(lastStdError);
+		//	}
+		//	stdError.close();
+		//	dotNetApp.waitFor();
 	}
 	
 	public boolean scan() throws IOException

@@ -8,7 +8,7 @@ public interface AccessPoint {
 	 */
 	boolean connect();
 	
-	boolean connect(AuthRequestImpl authRequest);
+	boolean connect(AuthRequest authRequest);
 	
 	String getProfileXML();
 	

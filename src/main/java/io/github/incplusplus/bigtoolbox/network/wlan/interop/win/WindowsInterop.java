@@ -1,11 +1,15 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop.win;
 
+import com.google.protobuf.Empty;
 import io.github.incplusplus.bigtoolbox.io.filesys.TempFile;
 import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
 import io.github.incplusplus.bigtoolbox.network.wlan.interop.WLanController;
 import io.github.incplusplus.simplewifijava.SimpleWifiJavaEntryPoint;
 import io.github.incplusplus.simplewifijava.generated.WiFiApi.ApiHandlePrx;
 import io.github.incplusplus.simplewifijava.generated.WiFiApi.WlanInterfacePrx;
+import io.github.incplusplus.simplewifijava.generated.WiFiApiGrpc;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -24,9 +28,8 @@ public class WindowsInterop extends WLanController
 	private TempFile interopExe;
 	private String lastStdInput;
 	private String lastStdError;
-	com.zeroc.Ice.Communicator communicator;
-	private ApiHandlePrx wifi;
-	private com.zeroc.Ice.ObjectPrx apiBase;
+	private final ManagedChannel channel;
+	private final WiFiApiGrpc.WiFiApiBlockingStub wifi;
 
 	public WindowsInterop() throws IOException {
 		try {
@@ -36,7 +39,13 @@ public class WindowsInterop extends WLanController
 			throw new IOException(e);
 		}
 		dotNetApp = Runtime.getRuntime().exec(interopExe.getAsFile().getPath());
-		communicator = com.zeroc.Ice.Util.initialize();
+		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051)
+				// Channels are secure by default (via SSL/TLS). For the example we disable TLS to avoid
+				// needing certificates.
+				.usePlaintext()
+				.build();
+		this.channel = channel;
+		wifi = WiFiApiGrpc.newBlockingStub(channel);
 		apiBase = communicator.stringToProxy("SimpleWiFi:default -p 10001");
 		wifi = ApiHandlePrx.checkedCast(apiBase);
 		
@@ -49,7 +58,7 @@ public class WindowsInterop extends WLanController
 	public boolean scan() throws IOException
 	{
 		ensureOpen();
-		Arrays.stream(wifi.getWlanInterfaces()).forEach(WlanInterfacePrx::scan);
+		Arrays.stream(wifi.getWlanInterfaces(Empty.getDefaultInstance())).forEach(WlanInterfacePrx::scan);
 		return true;
 	}
 
@@ -57,7 +66,7 @@ public class WindowsInterop extends WLanController
 	public AccessPoint[] getAccessPoints() throws IOException
 	{
 		ensureOpen();
-		return Arrays.stream(wifi.ListAPsDetail()).map(WindowsAccessPoint::new).toArray(WindowsAccessPoint[]::new);
+		return wifi.listAll(Empty.getDefaultInstance()).getAccessPointsList().stream().map(ap->new WindowsAccessPoint(ap,wifi)).toArray(WindowsAccessPoint[]::new);
 	}
 
 	protected void conclude() throws IOException

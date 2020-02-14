@@ -1,13 +1,18 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop.win;
 
 import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
-import io.github.incplusplus.simplewifijava.generated.WiFiApi.JAccessPointPrx;
+import io.github.incplusplus.bigtoolbox.network.wlan.AuthRequest;
+import io.github.incplusplus.simplewifijava.generated.JAccessPoint;
+import io.github.incplusplus.simplewifijava.generated.WiFiApiGrpc;
 
 public class WindowsAccessPoint implements AccessPoint {
-	private JAccessPointPrx remoteAccessPointInstance;
+	private JAccessPoint remoteAccessPointInstance;
+	private WiFiApiGrpc.WiFiApiBlockingStub api;
 	
-	public WindowsAccessPoint(JAccessPointPrx accessPoint) {
+	public WindowsAccessPoint(JAccessPoint accessPoint,
+	                          WiFiApiGrpc.WiFiApiBlockingStub api) {
 		this.remoteAccessPointInstance = accessPoint;
+		this.api = api;
 	}
 	
 	@Override
@@ -16,7 +21,7 @@ public class WindowsAccessPoint implements AccessPoint {
 	}
 	
 	@Override
-	public boolean connect(AuthRequestImpl authRequest) {
+	public boolean connect(AuthRequest authRequest) {
 		return remoteAccessPointInstance.connectWithAuth(authRequest);
 	}
 	

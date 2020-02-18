@@ -55,7 +55,7 @@ public class WindowsInterop extends WLanController
 		
 		//Make sure the API is actually accessible
 		try {
-			GenericMessage genericMessage = wifiApi.ensureApiAlive(Empty.getDefaultInstance());
+			wifiApi.ensureApiAlive(Empty.getDefaultInstance());
 		}
 		catch (Exception e) {
 			//If the app is dead or there's something of note in stdErr

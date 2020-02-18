@@ -2,6 +2,7 @@ package io.github.incplusplus.bigtoolbox.network.wlan.interop.win;
 
 import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
 import io.github.incplusplus.bigtoolbox.network.wlan.AuthRequest;
+import io.github.incplusplus.simplewifijava.generated.ConnectionRequest;
 import io.github.incplusplus.simplewifijava.generated.JAccessPoint;
 import io.github.incplusplus.simplewifijava.generated.WiFiApiGrpc;
 
@@ -17,12 +18,22 @@ public class WindowsAccessPoint implements AccessPoint {
 	
 	@Override
 	public boolean connect() {
-		return remoteAccessPointInstance.connect();
+		return api.connectWithAuth(ConnectionRequest.newBuilder()
+				.setAuthRequest(
+						io.github.incplusplus.simplewifijava.generated.AuthRequest.newBuilder()
+								.build()).build())
+				.getResult();
 	}
 	
 	@Override
 	public boolean connect(AuthRequest authRequest) {
-		return remoteAccessPointInstance.connectWithAuth(authRequest);
+		return api.connectWithAuth(ConnectionRequest.newBuilder().setAuthRequest(
+				io.github.incplusplus.simplewifijava.generated.AuthRequest.newBuilder()
+						.setPassword(authRequest.getPassword())
+						.setDomain(authRequest.getDomain())
+						.setUsername(authRequest.getUsername())
+						.build()).build())
+				.getResult();
 	}
 	
 	@Override
@@ -47,7 +58,7 @@ public class WindowsAccessPoint implements AccessPoint {
 	
 	@Override
 	public boolean isConnectable() {
-		return remoteAccessPointInstance.isConnectable();
+		return remoteAccessPointInstance.getConnectable();
 	}
 	
 	@Override

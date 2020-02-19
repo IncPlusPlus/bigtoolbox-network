@@ -1,8 +1,9 @@
+feature: ['feature/*', 'feat/*']
+bug: ['bug/*', 'fix/*', 'bugfix/*']
+chore: ['chore/*', 'maintenance/*']
+hotfix: hotfix/*
+🛠 Improvement: improvement/*
 # Add a label for release-drafter to ignore this commit as it is probably just being used to get master/develop up to speed with the other
-ignore-develop-sync:
-  head: "master"
-  base: "develop"
+ignore-develop-sync: master
 # Add a label for release-drafter to ignore this commit as it is probably just being used to get master/develop up to speed with the other
-ignore-master-sync:
-  head: "develop"
-  base: "master"
+ignore-master-sync: develop

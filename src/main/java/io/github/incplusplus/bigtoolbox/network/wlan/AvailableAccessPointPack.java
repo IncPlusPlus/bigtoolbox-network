@@ -6,7 +6,7 @@ public class AvailableAccessPointPack
 {
 	public final AccessPoint[] accessPoints;
 
-	AvailableAccessPointPack(AccessPoint[] accessPoints)
+	public AvailableAccessPointPack(AccessPoint[] accessPoints)
 	{
 		this.accessPoints = accessPoints;
 	}

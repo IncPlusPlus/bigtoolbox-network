@@ -1,7 +1,5 @@
 package io.github.incplusplus.bigtoolbox.network.wlan;
 
-import io.github.incplusplus.bigtoolbox.network.wlan.interop.win.AuthRequestImpl;
-
 public interface AccessPoint {
 	/**
 	 * Document me for the love of god

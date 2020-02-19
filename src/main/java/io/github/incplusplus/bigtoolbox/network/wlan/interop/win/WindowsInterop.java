@@ -24,8 +24,6 @@ public class WindowsInterop extends WLanController
 	private BufferedReader stdInput;
 	private BufferedWriter stdOutput;
 	private BufferedReader stdError;
-	private String lastStdInput;
-	private String lastStdError;
 	private final ManagedChannel channel;
 	private final WiFiApiGrpc.WiFiApiBlockingStub wifiApi;
 	private final WlanInterfaceApiGrpc.WlanInterfaceApiBlockingStub wlanInterfaceApi;
@@ -54,6 +52,7 @@ public class WindowsInterop extends WLanController
 		
 		//Make sure the API is actually accessible
 		try {
+			//noinspection ResultOfMethodCallIgnored
 			wifiApi.ensureApiAlive(Empty.getDefaultInstance());
 		}
 		catch (Exception e) {
@@ -75,9 +74,9 @@ public class WindowsInterop extends WLanController
 		}
 	}
 	
-	public boolean scan() throws IOException
-	{
+	public boolean scan() throws IOException {
 		ensureOpen();
+		//noinspection ResultOfMethodCallIgnored
 		wifiApi.getWlanInterfaces(Empty.getDefaultInstance()).getInterfacesList().forEach(wlanInterfaceApi::scan);
 		return true;
 	}

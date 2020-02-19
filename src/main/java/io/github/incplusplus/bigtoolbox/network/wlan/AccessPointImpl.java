@@ -42,7 +42,7 @@ public final class AccessPointImpl implements AccessPoint {
 	}
 	
 	@Override
-	public boolean connect(AuthRequestImpl authRequest) {
+	public boolean connect(AuthRequest authRequest) {
 		return false;
 	}
 	

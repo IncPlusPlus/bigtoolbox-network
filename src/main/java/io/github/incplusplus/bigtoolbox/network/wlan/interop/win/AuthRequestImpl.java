@@ -1,10 +1,30 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop.win;
 
-import io.github.incplusplus.simplewifijava.generated.WiFiApi.AuthRequestStruct;
+import io.github.incplusplus.bigtoolbox.network.wlan.AuthRequest;
 
-public class AuthRequestImpl extends AuthRequestStruct {
+public class AuthRequestImpl implements AuthRequest {
+	private String password;
+	private String username;
+	private String domain;
 	
 	public AuthRequestImpl(String password, String username, String domain) {
-		super(password, username, domain);
+		this.password = password;
+		this.username = username;
+		this.domain = domain;
+	}
+	
+	@Override
+	public String getPassword() {
+		return password;
+	}
+	
+	@Override
+	public String getUsername() {
+		return username;
+	}
+	
+	@Override
+	public String getDomain() {
+		return domain;
 	}
 }

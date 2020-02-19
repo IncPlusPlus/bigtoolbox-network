@@ -5,7 +5,6 @@ import io.github.incplusplus.bigtoolbox.io.filesys.TempFile;
 import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
 import io.github.incplusplus.bigtoolbox.network.wlan.interop.WLanController;
 import io.github.incplusplus.simplewifijava.SimpleWifiJavaEntryPoint;
-import io.github.incplusplus.simplewifijava.generated.GenericMessage;
 import io.github.incplusplus.simplewifijava.generated.WiFiApiGrpc;
 import io.github.incplusplus.simplewifijava.generated.WlanInterfaceApiGrpc;
 import io.grpc.ManagedChannel;

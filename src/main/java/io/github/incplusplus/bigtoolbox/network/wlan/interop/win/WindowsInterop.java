@@ -24,7 +24,6 @@ public class WindowsInterop extends WLanController
 	private BufferedReader stdInput;
 	private BufferedWriter stdOutput;
 	private BufferedReader stdError;
-	private TempFile interopExe;
 	private String lastStdInput;
 	private String lastStdError;
 	private final ManagedChannel channel;
@@ -32,6 +31,7 @@ public class WindowsInterop extends WLanController
 	private final WlanInterfaceApiGrpc.WlanInterfaceApiBlockingStub wlanInterfaceApi;
 
 	public WindowsInterop() throws IOException {
+		TempFile interopExe;
 		try {
 			interopExe = new TempFile("JavaInterop", "exe", SimpleWifiJavaEntryPoint.class);
 		}

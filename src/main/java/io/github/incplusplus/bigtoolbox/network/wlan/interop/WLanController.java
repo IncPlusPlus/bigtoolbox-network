@@ -31,18 +31,13 @@ public abstract class WLanController implements Closeable
 	}
 
 	/**
-	 * Force the WiFi adapter to scan for networks (a.k.a. "refresh").
+	 * Ask all WiFi adapters to scan for networks (a.k.a. "refresh").
 	 *
-	 * @return whether a scan succeeded or not
-	 * @throws UnsupportedOperationException if the {@code scan}
-	 *                                       operation is not supported by this adapter implementation
-	 * @throws IOException                   if the controller has already run {@link WLanController#close()}
+	 * @return true if all scans completed successfully; false if any failed
+	 * @throws IOException if the controller has already run {@link WLanController#close()} or
+	 *                     if some other IOException occurs.
 	 */
-	//TODO: make this method's behavior less ambiguous
-	public boolean scan() throws IOException
-	{
-		throw new UnsupportedOperationException();
-	}
+	public abstract boolean scanAll() throws IOException;
 
 	/**
 	 * @return a new {@link AvailableAccessPointPack}

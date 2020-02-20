@@ -74,16 +74,15 @@ public class WindowsInterop extends WLanController
 		}
 	}
 	
-	public boolean scan() throws IOException {
+	public boolean scanAll() throws IOException {
 		ensureOpen();
-		//noinspection ResultOfMethodCallIgnored
-		wifiApi.getWlanInterfaces(Empty.getDefaultInstance()).getInterfacesList().forEach(wlanInterfaceApi::scan);
+		wlanInterfaceApi.getWlanInterfaces(Empty.getDefaultInstance()).getInterfacesList().forEach(
+				wlanInterfaceApi::scan);
 		return true;
 	}
-
+	
 	@Override
-	public AccessPoint[] getAccessPoints() throws IOException
-	{
+	public AccessPoint[] getAccessPoints() throws IOException {
 		ensureOpen();
 		return wifiApi.listAll(Empty.getDefaultInstance()).getAccessPointsList().stream().map(ap->new WindowsAccessPoint(ap,
 				wifiApi)).toArray(WindowsAccessPoint[]::new);

@@ -23,15 +23,15 @@ public final class WLanControllerFactory
 	 * {@code
 	 * try(WLanController controller = WLanControllerFactory.createWLanController())
 	 * {
-	 * 	controller.scan();
+	 * 	controller.scanAll();
 	 * 	AccessPoint[] aps = controller.getAccessPoints();
 	 * 	System.out.println();
 	 * 	for(AccessPoint ap : aps)
-	 * 	{
+	 *    {
 	 * 		System.out.println("Name: "+ap.getName());
 	 * 		System.out.println("Signal Strength: "+ap.getSignalStrength());
 	 * 		System.out.println();
-	 * 	}
+	 *    }
 	 * }
 	 * catch(IOException e)
 	 * {

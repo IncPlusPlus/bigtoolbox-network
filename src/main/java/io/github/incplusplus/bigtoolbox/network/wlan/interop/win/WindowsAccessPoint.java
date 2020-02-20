@@ -80,4 +80,9 @@ public class WindowsAccessPoint implements AccessPoint {
 	public String getBssType() {
 		return remoteAccessPointInstance.getBssType();
 	}
+	
+	@Override
+	public String toString() {
+		return "[SSID:" + getName() + ", Signal:" + getSignalStrength() + "]";
+	}
 }

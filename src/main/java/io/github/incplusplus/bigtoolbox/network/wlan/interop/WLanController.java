@@ -7,10 +7,11 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.lang.ref.Cleaner;
 
-//TODO add more documentation
-
 /**
- * IMPORTANT: Treat this class like a resource. Either use the .close method when you are
+ * A WLanController acts as a handle for the wireless LAN API. It is <b><i>not</i></b> a representative of a
+ * physical networking card or adapter. You <i>may</i>, however, use it to obtain a list of wifi adapters.
+ *
+ * <b><i>IMPORTANT:</i></b> Treat this class like a resource. Either use the .close method when you are
  * done with it (or intend to exit the program) or use this within a try-with-resources block.
  * See {@link WLanControllerFactory#createWLanController()} for more details.
  *
@@ -112,8 +113,8 @@ public abstract class WLanController implements Closeable
 	 */
 	protected final void ensureOpen() throws IOException
 	{
-		if(isClosed())
-			throw new IOException("WLanController closed");
+		if (isClosed())
+			throw new IOException("WLanController closed. Create a new instance to use the WiFi API.");
 	}
 
 	private void ensureInit()

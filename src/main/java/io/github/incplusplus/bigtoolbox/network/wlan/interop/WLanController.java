@@ -46,13 +46,21 @@ public abstract class WLanController implements Closeable
 	 * @throws IOException if the controller has already run {@link WLanController#close()}
 	 */
 	public abstract AccessPoint[] getAllAccessPoints() throws IOException;
-
+	
+	/**
+	 * Get all wireless adapters/interfaces.
+	 *
+	 * @return a list of all accessible interfaces
+	 * @throws IOException if any issues occur communicating with the system
+	 */
+	public abstract Interface[] getInterfaces() throws IOException;
+	
 	/**
 	 * Close any programs opened for this object and
 	 * ready this object for disposal
 	 */
 	protected abstract void conclude() throws IOException;
-
+	
 	/**
 	 * Closes any open resources
 	 */

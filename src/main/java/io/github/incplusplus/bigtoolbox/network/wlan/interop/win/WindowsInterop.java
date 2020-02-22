@@ -3,6 +3,7 @@ package io.github.incplusplus.bigtoolbox.network.wlan.interop.win;
 import com.google.protobuf.Empty;
 import io.github.incplusplus.bigtoolbox.io.filesys.TempFile;
 import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
+import io.github.incplusplus.bigtoolbox.network.wlan.Interface;
 import io.github.incplusplus.bigtoolbox.network.wlan.interop.WLanController;
 import io.github.incplusplus.simplewifijava.SimpleWifiJavaEntryPoint;
 import io.github.incplusplus.simplewifijava.generated.WiFiApiGrpc;
@@ -88,11 +89,16 @@ public class WindowsInterop extends WLanController
 				ap -> new WindowsAccessPoint(ap,
 						wifiApi)).toArray(WindowsAccessPoint[]::new);
 	}
-
-	protected void conclude() throws IOException
-	{
-		try
-		{
+	
+	@Override
+	public Interface[] getInterfaces() throws IOException {
+		return wlanInterfaceApi.getWlanInterfaces(Empty.getDefaultInstance()).getInterfacesList().stream().map(
+				wlanInterface -> new WindowsInterface(wlanInterface, wlanInterfaceApi)).toArray(
+				WindowsInterface[]::new);
+	}
+	
+	protected void conclude() throws IOException {
+		try {
 			channel.shutdown();
 			stdOutput.write("\n");
 			stdOutput.flush();

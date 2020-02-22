@@ -82,10 +82,11 @@ public class WindowsInterop extends WLanController
 	}
 	
 	@Override
-	public AccessPoint[] getAccessPoints() throws IOException {
+	public AccessPoint[] getAllAccessPoints() throws IOException {
 		ensureOpen();
-		return wifiApi.listAll(Empty.getDefaultInstance()).getAccessPointsList().stream().map(ap->new WindowsAccessPoint(ap,
-				wifiApi)).toArray(WindowsAccessPoint[]::new);
+		return wifiApi.listAll(Empty.getDefaultInstance()).getAccessPointsList().stream().map(
+				ap -> new WindowsAccessPoint(ap,
+						wifiApi)).toArray(WindowsAccessPoint[]::new);
 	}
 
 	protected void conclude() throws IOException

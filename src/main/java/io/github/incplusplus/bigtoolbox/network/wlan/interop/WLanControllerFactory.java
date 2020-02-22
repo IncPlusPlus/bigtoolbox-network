@@ -24,7 +24,7 @@ public final class WLanControllerFactory
 	 * try(WLanController controller = WLanControllerFactory.createWLanController())
 	 * {
 	 * 	controller.scanAll();
-	 * 	AccessPoint[] aps = controller.getAccessPoints();
+	 * 	AccessPoint[] aps = controller.getAllAccessPoints();
 	 * 	System.out.println();
 	 * 	for(AccessPoint ap : aps)
 	 *    {

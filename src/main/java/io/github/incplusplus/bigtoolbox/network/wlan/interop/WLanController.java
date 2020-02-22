@@ -1,7 +1,7 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop;
 
 import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
-import io.github.incplusplus.bigtoolbox.network.wlan.AvailableAccessPointPack;
+import io.github.incplusplus.bigtoolbox.network.wlan.Interface;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -39,12 +39,13 @@ public abstract class WLanController implements Closeable
 	 *                     if some other IOException occurs.
 	 */
 	public abstract boolean scanAll() throws IOException;
-
+	
 	/**
-	 * @return a new {@link AvailableAccessPointPack}
+	 * @return a list of {@linkplain AccessPoint}s. This contains the list of all access
+	 * points seen by all {@linkplain Interface}s. This means it will contain duplicates.
 	 * @throws IOException if the controller has already run {@link WLanController#close()}
 	 */
-	public abstract AccessPoint[] getAccessPoints() throws IOException;
+	public abstract AccessPoint[] getAllAccessPoints() throws IOException;
 
 	/**
 	 * Close any programs opened for this object and

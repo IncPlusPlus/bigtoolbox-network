@@ -13,4 +13,14 @@ public class WindowsInterface implements Interface {
 		this.wlanInterface = wlanInterface;
 		this.wlanInterfaceApi = wlanInterfaceApi;
 	}
+	
+	@Override
+	public String getInterfaceId() {
+		return wlanInterface.getInterfaceGuid();
+	}
+	
+	@Override
+	public String getInterfaceDescription() {
+		return wlanInterface.getInterfaceDescription();
+	}
 }

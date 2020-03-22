@@ -7,8 +7,8 @@ import io.github.incplusplus.simplewifijava.generated.JAccessPoint;
 import io.github.incplusplus.simplewifijava.generated.WiFiApiGrpc;
 
 public class WindowsAccessPoint implements AccessPoint {
-	private JAccessPoint remoteAccessPointInstance;
-	private WiFiApiGrpc.WiFiApiBlockingStub api;
+	private final JAccessPoint remoteAccessPointInstance;
+	private final WiFiApiGrpc.WiFiApiBlockingStub api;
 	
 	public WindowsAccessPoint(JAccessPoint accessPoint,
 	                          WiFiApiGrpc.WiFiApiBlockingStub api) {
@@ -79,5 +79,10 @@ public class WindowsAccessPoint implements AccessPoint {
 	@Override
 	public String getBssType() {
 		return remoteAccessPointInstance.getBssType();
+	}
+	
+	@Override
+	public String toString() {
+		return "[SSID:" + getName() + ", Signal:" + getSignalStrength() + "]";
 	}
 }

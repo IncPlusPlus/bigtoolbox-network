@@ -1,16 +1,17 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop;
 
 import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
-import io.github.incplusplus.bigtoolbox.network.wlan.AvailableAccessPointPack;
+import io.github.incplusplus.bigtoolbox.network.wlan.Interface;
 
 import java.io.Closeable;
 import java.io.IOException;
 import java.lang.ref.Cleaner;
 
-//TODO add more documentation
-
 /**
- * IMPORTANT: Treat this class like a resource. Either use the .close method when you are
+ * A WLanController acts as a handle for the wireless LAN API. It is <b><i>not</i></b> a representative of a
+ * physical networking card or adapter. You <i>may</i>, however, use it to obtain a list of wifi adapters.
+ *
+ * <b><i>IMPORTANT:</i></b> Treat this class like a resource. Either use the .close method when you are
  * done with it (or intend to exit the program) or use this within a try-with-resources block.
  * See {@link WLanControllerFactory#createWLanController()} for more details.
  *
@@ -31,31 +32,35 @@ public abstract class WLanController implements Closeable
 	}
 
 	/**
-	 * Force the WiFi adapter to scan for networks (a.k.a. "refresh").
+	 * Ask all WiFi adapters to scan for networks (a.k.a. "refresh").
 	 *
-	 * @return whether a scan succeeded or not
-	 * @throws UnsupportedOperationException if the {@code scan}
-	 *                                       operation is not supported by this adapter implementation
-	 * @throws IOException                   if the controller has already run {@link WLanController#close()}
+	 * @return true if all scans completed successfully; false if any failed
+	 * @throws IOException if the controller has already run {@link WLanController#close()} or
+	 *                     if some other IOException occurs.
 	 */
-	//TODO: make this method's behavior less ambiguous
-	public boolean scan() throws IOException
-	{
-		throw new UnsupportedOperationException();
-	}
-
+	public abstract boolean scanAll() throws IOException;
+	
 	/**
-	 * @return a new {@link AvailableAccessPointPack}
+	 * @return a list of {@linkplain AccessPoint}s. This contains the list of all access
+	 * points seen by all {@linkplain Interface}s. This means it will contain duplicates.
 	 * @throws IOException if the controller has already run {@link WLanController#close()}
 	 */
-	public abstract AccessPoint[] getAccessPoints() throws IOException;
-
+	public abstract AccessPoint[] getAllAccessPoints() throws IOException;
+	
+	/**
+	 * Get all wireless adapters/interfaces.
+	 *
+	 * @return a list of all accessible interfaces
+	 * @throws IOException if any issues occur communicating with the system
+	 */
+	public abstract Interface[] getInterfaces() throws IOException;
+	
 	/**
 	 * Close any programs opened for this object and
 	 * ready this object for disposal
 	 */
 	protected abstract void conclude() throws IOException;
-
+	
 	/**
 	 * Closes any open resources
 	 */
@@ -117,8 +122,8 @@ public abstract class WLanController implements Closeable
 	 */
 	protected final void ensureOpen() throws IOException
 	{
-		if(isClosed())
-			throw new IOException("WLanController closed");
+		if (isClosed())
+			throw new IOException("WLanController closed. Create a new instance to use the WiFi API.");
 	}
 
 	private void ensureInit()

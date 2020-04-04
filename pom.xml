@@ -55,6 +55,14 @@
       <artifactId>dbus-java</artifactId>
       <version>3.2.0</version>
     </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-nop</artifactId>
+      <version>1.7.25</version>
+      <!-- This gets rid of annoying SLF4J error when running classes directly in this library without
+       dumping SLF4J-NOP onto the classpath of projects that depend on this library. -->
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 
   <build>

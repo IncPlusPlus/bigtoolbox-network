@@ -1,5 +1,6 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop;
 
+import io.github.incplusplus.bigtoolbox.network.wlan.interop.lin.LinuxNetToolFinder;
 import io.github.incplusplus.bigtoolbox.network.wlan.interop.win.WindowsInterop;
 import io.github.incplusplus.bigtoolbox.os.UnsupportedOSException;
 import io.github.incplusplus.bigtoolbox.os.opsys.OperatingSystem;
@@ -90,7 +91,7 @@ public final class WLanControllerFactory
 			case Windows:
 				return new WindowsInterop();
 			case Linux:
-				throw new UnsupportedOSException();
+				return LinuxNetToolFinder.getControllerByInstalledTool();
 			case Mac:
 				throw new UnsupportedOSException();
 			default:

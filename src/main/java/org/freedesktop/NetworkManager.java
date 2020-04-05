@@ -1,6 +1,5 @@
 package org.freedesktop;
 
-import org.freedesktop.dbus.DBusPath;
 import org.freedesktop.dbus.annotations.DBusInterfaceName;
 import org.freedesktop.dbus.exceptions.DBusException;
 import org.freedesktop.dbus.interfaces.DBusInterface;
@@ -50,40 +49,45 @@ public interface NetworkManager extends DBusInterface, Properties {
 	
 	public void Reload(UInt32 flags);
 	
-	public List<DBusPath> GetDevices();
+	public List<DBusInterface> GetDevices();
 	
-	public List<DBusPath> GetAllDevices();
+	public List<DBusInterface> GetAllDevices();
 	
-	public DBusInterface GetDeviceByIpIface(CharSequence iface);
+	public DBusInterface GetDeviceByIpIface(String iface);
 	
 	public DBusInterface ActivateConnection(DBusInterface connection, DBusInterface device,
-	                                        DBusInterface specific_object);
+	                                        DBusInterface specificObject);
 	
-	public Pair<DBusInterface, DBusInterface> AddAndActivateConnection(
-			Map<CharSequence, Map<CharSequence, Variant<?>>> connection, DBusInterface device,
-			DBusInterface specific_object);
+	public Pair<DBusInterface, DBusInterface> AddAndActivateConnection(Map<String, Map<String, Variant<?>>> connection,
+	                                                                   DBusInterface device,
+	                                                                   DBusInterface specificObject);
 	
-	public void DeactivateConnection(DBusInterface active_connection);
+	public Triplet<DBusInterface, DBusInterface, Map<String, Variant<?>>> AddAndActivateConnection2(
+			Map<String, Map<String, Variant<?>>> connection,
+			DBusInterface device, DBusInterface specificObject,
+			Map<String, Variant<?>> options);
+	
+	public void DeactivateConnection(DBusInterface activeConnection);
 	
 	public void Sleep(boolean sleep);
 	
 	public void Enable(boolean enable);
 	
-	public Map<CharSequence, CharSequence> GetPermissions();
+	public Map<String, String> GetPermissions();
 	
-	public void SetLogging(CharSequence level, CharSequence domains);
+	public void SetLogging(String level, String domains);
 	
-	public Pair<CharSequence, CharSequence> GetLogging();
+	public Pair<String, String> GetLogging();
 	
 	public UInt32 CheckConnectivity();
 	
 	public UInt32 state();
 	
-	public DBusInterface CheckpointCreate(List<DBusInterface> devices, UInt32 rollback_timeout, UInt32 flags);
+	public DBusInterface CheckpointCreate(List<DBusInterface> devices, UInt32 rollbackTimeout, UInt32 flags);
 	
 	public void CheckpointDestroy(DBusInterface checkpoint);
 	
-	public Map<CharSequence, UInt32> CheckpointRollback(DBusInterface checkpoint);
+	public Map<String, UInt32> CheckpointRollback(DBusInterface checkpoint);
 	
-	public void CheckpointAdjustRollbackTimeout(DBusInterface checkpoint, UInt32 add_timeout);
+	public void CheckpointAdjustRollbackTimeout(DBusInterface checkpoint, UInt32 addTimeout);
 }

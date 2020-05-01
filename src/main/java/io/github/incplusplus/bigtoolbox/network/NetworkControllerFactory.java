@@ -1,8 +1,8 @@
 package io.github.incplusplus.bigtoolbox.network;
 
-import io.github.incplusplus.bigtoolbox.network.wlan.interop.SingletonUnavailableException;
-import io.github.incplusplus.bigtoolbox.network.wlan.interop.lin.LinuxNetToolFinder;
-import io.github.incplusplus.bigtoolbox.network.wlan.interop.win.WindowsInterop;
+import io.github.incplusplus.bigtoolbox.network.interop.SingletonUnavailableException;
+import io.github.incplusplus.bigtoolbox.network.interop.lin.LinuxNetToolFinder;
+import io.github.incplusplus.bigtoolbox.network.interop.win.WindowsInterop;
 import io.github.incplusplus.bigtoolbox.os.UnsupportedOSException;
 import io.github.incplusplus.bigtoolbox.os.opsys.OperatingSystem;
 

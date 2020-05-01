@@ -1,7 +1,7 @@
-package io.github.incplusplus.bigtoolbox.network.wlan.interop.lin;
+package io.github.incplusplus.bigtoolbox.network.interop.lin;
 
 import io.github.incplusplus.bigtoolbox.network.NetworkController;
-import io.github.incplusplus.bigtoolbox.network.wlan.interop.lin.nm.NMInterop;
+import io.github.incplusplus.bigtoolbox.network.interop.lin.nm.NMInterop;
 
 public class LinuxNetToolFinder {
 	public static NetworkController getControllerByInstalledTool() {

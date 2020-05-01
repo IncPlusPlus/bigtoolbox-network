@@ -1,4 +1,4 @@
-package io.github.incplusplus.bigtoolbox.network.wlan.interop.lin.dbushelpers.systemd1;
+package io.github.incplusplus.bigtoolbox.network.interop.lin.dbushelpers.systemd1;
 
 import org.freedesktop.dbus.DBusPath;
 import org.freedesktop.dbus.annotations.DBusInterfaceName;

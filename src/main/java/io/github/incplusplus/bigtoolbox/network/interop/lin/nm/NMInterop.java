@@ -1,4 +1,4 @@
-package io.github.incplusplus.bigtoolbox.network.wlan.interop.lin.nm;
+package io.github.incplusplus.bigtoolbox.network.interop.lin.nm;
 
 import io.github.incplusplus.bigtoolbox.network.wlan.Interface;
 import io.github.incplusplus.bigtoolbox.network.NetworkController;

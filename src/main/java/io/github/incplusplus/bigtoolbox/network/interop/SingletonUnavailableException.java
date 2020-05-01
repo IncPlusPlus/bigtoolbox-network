@@ -1,4 +1,4 @@
-package io.github.incplusplus.bigtoolbox.network.wlan.interop;
+package io.github.incplusplus.bigtoolbox.network.interop;
 
 public class SingletonUnavailableException extends RuntimeException
 {

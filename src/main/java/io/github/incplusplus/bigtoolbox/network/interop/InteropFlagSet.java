@@ -1,4 +1,4 @@
-package io.github.incplusplus.bigtoolbox.network.wlan.interop;
+package io.github.incplusplus.bigtoolbox.network.interop;
 
 public interface InteropFlagSet<I extends Enum<?>, S extends Enum<?>> {
 	int getHexVal();

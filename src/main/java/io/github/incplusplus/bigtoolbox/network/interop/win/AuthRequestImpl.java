@@ -1,4 +1,4 @@
-package io.github.incplusplus.bigtoolbox.network.wlan.interop.win;
+package io.github.incplusplus.bigtoolbox.network.interop.win;
 
 import io.github.incplusplus.bigtoolbox.network.wlan.AuthRequest;
 

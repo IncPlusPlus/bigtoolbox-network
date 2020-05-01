@@ -1,6 +1,6 @@
-package io.github.incplusplus.bigtoolbox.network.wlan.interop.lin;
+package io.github.incplusplus.bigtoolbox.network.interop.lin;
 
-import io.github.incplusplus.bigtoolbox.network.wlan.interop.lin.dbushelpers.systemd1.Manager;
+import io.github.incplusplus.bigtoolbox.network.interop.lin.dbushelpers.systemd1.Manager;
 import org.freedesktop.dbus.DBusPath;
 import org.freedesktop.dbus.connections.impl.DBusConnection;
 import org.freedesktop.dbus.exceptions.DBusException;

@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.lang.ref.Cleaner;
 
 /**
- * A NetworkController acts as a handle for the wireless LAN API. It is <b><i>not</i></b> a representative of a
+ * A NetworkController acts as a handle for the networking API. It is <b><i>not</i></b> a representative of a
  * physical networking card or adapter. You <i>may</i>, however, use it to obtain a list of wifi adapters.
  *
  * <b><i>IMPORTANT:</i></b> Treat this class like a resource. Either use the .close method when you are
@@ -38,14 +38,14 @@ public abstract class NetworkController implements Closeable
 	 * @throws IOException if the controller has already run {@link NetworkController#close()} or
 	 *                     if some other IOException occurs.
 	 */
-	public abstract boolean scanAll() throws IOException;
+//	public abstract boolean scanAll() throws IOException;
 	
 	/**
 	 * @return a list of {@linkplain AccessPoint}s. This contains the list of all access
 	 * points seen by all {@linkplain Interface}s. This means it will contain duplicates.
 	 * @throws IOException if the controller has already run {@link NetworkController#close()}
 	 */
-	public abstract AccessPoint[] getAllAccessPoints() throws IOException;
+//	public abstract AccessPoint[] getAllAccessPoints() throws IOException;
 	
 	/**
 	 * Get all wireless adapters/interfaces.

@@ -82,7 +82,6 @@ public class WindowsInterop extends NetworkController
 		return true;
 	}
 	
-	@Override
 	public AccessPoint[] getAllAccessPoints() throws IOException {
 		ensureOpen();
 		return wifiApi.listAll(Empty.getDefaultInstance()).getAccessPointsList().stream().map(

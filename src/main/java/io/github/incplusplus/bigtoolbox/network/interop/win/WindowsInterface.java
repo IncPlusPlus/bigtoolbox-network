@@ -1,6 +1,6 @@
 package io.github.incplusplus.bigtoolbox.network.interop.win;
 
-import io.github.incplusplus.bigtoolbox.network.wlan.Interface;
+import io.github.incplusplus.bigtoolbox.network.Interface;
 import io.github.incplusplus.simplewifijava.generated.WlanInterface;
 import io.github.incplusplus.simplewifijava.generated.WlanInterfaceApiGrpc;
 

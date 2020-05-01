@@ -1,6 +1,6 @@
 package io.github.incplusplus.bigtoolbox.network.interop.lin.nm;
 
-import io.github.incplusplus.bigtoolbox.network.wlan.Interface;
+import io.github.incplusplus.bigtoolbox.network.Interface;
 import io.github.incplusplus.bigtoolbox.network.NetworkController;
 
 import java.io.IOException;

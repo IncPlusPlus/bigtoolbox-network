@@ -1,4 +1,4 @@
-package io.github.incplusplus.bigtoolbox.network.wlan;
+package io.github.incplusplus.bigtoolbox.network;
 
 public interface Interface {
 	String getInterfaceId();

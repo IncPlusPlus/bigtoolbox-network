@@ -8,16 +8,16 @@ import java.io.IOException;
 import java.lang.ref.Cleaner;
 
 /**
- * A WLanController acts as a handle for the wireless LAN API. It is <b><i>not</i></b> a representative of a
+ * A NetworkController acts as a handle for the wireless LAN API. It is <b><i>not</i></b> a representative of a
  * physical networking card or adapter. You <i>may</i>, however, use it to obtain a list of wifi adapters.
  *
  * <b><i>IMPORTANT:</i></b> Treat this class like a resource. Either use the .close method when you are
  * done with it (or intend to exit the program) or use this within a try-with-resources block.
- * See {@link WLanControllerFactory#createWLanController()} for more details.
+ * See {@link NetworkControllerFactory#createNetworkController()} for more details.
  *
- * @see WLanControllerFactory#createWLanController()
+ * @see NetworkControllerFactory#createNetworkController()
  */
-public abstract class WLanController implements Closeable
+public abstract class NetworkController implements Closeable
 {
 	private static volatile boolean firstInit = false;
 	private static volatile boolean closed = false;
@@ -25,17 +25,17 @@ public abstract class WLanController implements Closeable
 	private static Cleaner.Cleanable cleanable;
 	private static CleaningAction cleaningAction;
 
-	public WLanController()
+	public NetworkController()
 	{
 		ensureInit();
-		//System.out.println("IN WLANCONTROLLER CONSTRUCTOR");
+		//System.out.println("IN NetworkController CONSTRUCTOR");
 	}
 
 	/**
 	 * Ask all WiFi adapters to scan for networks (a.k.a. "refresh").
 	 *
 	 * @return true if all scans completed successfully; false if any failed
-	 * @throws IOException if the controller has already run {@link WLanController#close()} or
+	 * @throws IOException if the controller has already run {@link NetworkController#close()} or
 	 *                     if some other IOException occurs.
 	 */
 	public abstract boolean scanAll() throws IOException;
@@ -43,7 +43,7 @@ public abstract class WLanController implements Closeable
 	/**
 	 * @return a list of {@linkplain AccessPoint}s. This contains the list of all access
 	 * points seen by all {@linkplain Interface}s. This means it will contain duplicates.
-	 * @throws IOException if the controller has already run {@link WLanController#close()}
+	 * @throws IOException if the controller has already run {@link NetworkController#close()}
 	 */
 	public abstract AccessPoint[] getAllAccessPoints() throws IOException;
 	
@@ -66,10 +66,10 @@ public abstract class WLanController implements Closeable
 	 */
 	public void close()
 	{
-		//System.out.println("INSIDE WLANCONTROLLER.CLOSE()");
+		//System.out.println("INSIDE NetworkController.CLOSE()");
 		if(! isClosed())
 		{
-			//System.out.println("CONTINUING WITH WLANCONTROLLER.CLOSE()");
+			//System.out.println("CONTINUING WITH NetworkController.CLOSE()");
 			/*
 			 * TODO add an option (maybe a class with static booleans) for using this library without
 			 *  having it try to clean up for you. Create a contract with a boolean that the user will
@@ -123,7 +123,7 @@ public abstract class WLanController implements Closeable
 	protected final void ensureOpen() throws IOException
 	{
 		if (isClosed())
-			throw new IOException("WLanController closed. Create a new instance to use the WiFi API.");
+			throw new IOException("NetworkController closed. Create a new instance to use the WiFi API.");
 	}
 
 	private void ensureInit()
@@ -190,9 +190,9 @@ public abstract class WLanController implements Closeable
 
 	static class CleaningAction implements Runnable
 	{
-		private WLanController controllerToBeClosed;
+		private NetworkController controllerToBeClosed;
 
-		private CleaningAction(WLanController controllerToBeClosed)
+		private CleaningAction(NetworkController controllerToBeClosed)
 		{
 			this.controllerToBeClosed = controllerToBeClosed;
 		}

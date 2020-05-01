@@ -4,7 +4,7 @@ import com.google.protobuf.Empty;
 import io.github.incplusplus.bigtoolbox.io.filesys.TempFile;
 import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
 import io.github.incplusplus.bigtoolbox.network.wlan.Interface;
-import io.github.incplusplus.bigtoolbox.network.wlan.interop.WLanController;
+import io.github.incplusplus.bigtoolbox.network.wlan.interop.NetworkController;
 import io.github.incplusplus.simplewifijava.SimpleWifiJavaEntryPoint;
 import io.github.incplusplus.simplewifijava.generated.WiFiApiGrpc;
 import io.github.incplusplus.simplewifijava.generated.WlanInterfaceApiGrpc;
@@ -16,10 +16,10 @@ import java.net.URISyntaxException;
 import java.util.stream.Collectors;
 
 /**
- * See {@link WLanController}'s JavaDoc for important information
- * @see io.github.incplusplus.bigtoolbox.network.wlan.interop.WLanController
+ * See {@link NetworkController}'s JavaDoc for important information
+ * @see NetworkController
  */
-public class WindowsInterop extends WLanController
+public class WindowsInterop extends NetworkController
 {
 	private Process dotNetApp;
 	private BufferedReader stdInput;

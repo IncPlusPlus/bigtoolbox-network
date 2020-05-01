@@ -1,10 +1,10 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.interop.lin;
 
-import io.github.incplusplus.bigtoolbox.network.wlan.interop.WLanController;
+import io.github.incplusplus.bigtoolbox.network.wlan.interop.NetworkController;
 import io.github.incplusplus.bigtoolbox.network.wlan.interop.lin.nm.NMInterop;
 
 public class LinuxNetToolFinder {
-	public static WLanController getControllerByInstalledTool() {
+	public static NetworkController getControllerByInstalledTool() {
 		switch (getNetToolInUse()) {
 			case NetworkManager:
 				return new NMInterop();

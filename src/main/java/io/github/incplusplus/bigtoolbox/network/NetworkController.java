@@ -23,7 +23,7 @@ public abstract class NetworkController implements Closeable
 	private static final Cleaner cleaner = Cleaner.create();
 	private static Cleaner.Cleanable cleanable;
 	private static CleaningAction cleaningAction;
-
+	
 	public NetworkController()
 	{
 		ensureInit();

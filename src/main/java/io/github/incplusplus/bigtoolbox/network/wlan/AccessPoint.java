@@ -1,14 +1,16 @@
 package io.github.incplusplus.bigtoolbox.network.wlan;
 
+import io.github.incplusplus.bigtoolbox.network.interfaces.WiFiAdapter;
+
+import java.io.IOException;
+
+/**
+ * Document me for the love of god
+ */
 public interface AccessPoint {
-	/**
-	 * Document me for the love of god
-	 */
-	boolean connect();
+	void connect(WiFiAdapter adapter, AuthRequest authRequest) throws IOException;
 	
-	boolean connect(AuthRequest authRequest);
-	
-	String getProfileXML();
+	//	String getProfileXML();
 	
 	//<editor-fold desc="Getters">
 	String getName();
@@ -17,9 +19,9 @@ public interface AccessPoint {
 	
 	String getInterfaceName();
 	
-	boolean isConnectable();
+	//	boolean isConnectable();
 	
-	String getWlanNotConnectableReason();
+	//	String getWlanNotConnectableReason();
 	
 	String getAuthAlgorithm();
 	

@@ -2,10 +2,8 @@ package org.freedesktop.networkmanager;
 
 import org.freedesktop.Pair;
 import org.freedesktop.dbus.annotations.DBusInterfaceName;
-import org.freedesktop.dbus.exceptions.DBusException;
 import org.freedesktop.dbus.interfaces.DBusInterface;
 import org.freedesktop.dbus.interfaces.Properties;
-import org.freedesktop.dbus.messages.DBusSignal;
 import org.freedesktop.dbus.types.UInt32;
 import org.freedesktop.dbus.types.UInt64;
 import org.freedesktop.dbus.types.Variant;

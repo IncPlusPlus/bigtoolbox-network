@@ -83,12 +83,12 @@ public class WindowsInterop extends NetworkController
 		return true;
 	}
 	
-	public AccessPoint[] getAllAccessPoints() throws IOException {
-		ensureOpen();
-		return wifiApi.listAll(Empty.getDefaultInstance()).getAccessPointsList().stream().map(
-				ap -> new WindowsAccessPoint(ap,
-						wifiApi)).toArray(WindowsAccessPoint[]::new);
-	}
+//	public AccessPoint[] getAllAccessPoints() throws IOException {
+//		ensureOpen();
+//		return wifiApi.listAll(Empty.getDefaultInstance()).getAccessPointsList().stream().map(
+//				ap -> new WindowsAccessPoint(ap,
+//						wifiApi)).toArray(WindowsAccessPoint[]::new);
+//	}
 	
 	@Override
 	public Interface[] getInterfaces() throws IOException {

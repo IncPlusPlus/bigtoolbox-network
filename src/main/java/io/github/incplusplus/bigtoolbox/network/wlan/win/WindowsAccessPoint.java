@@ -6,7 +6,7 @@ import io.github.incplusplus.simplewifijava.generated.ConnectionRequest;
 import io.github.incplusplus.simplewifijava.generated.JAccessPoint;
 import io.github.incplusplus.simplewifijava.generated.WiFiApiGrpc;
 
-public class WindowsAccessPoint implements AccessPoint {
+public abstract class WindowsAccessPoint implements AccessPoint {
 	private final JAccessPoint remoteAccessPointInstance;
 	private final WiFiApiGrpc.WiFiApiBlockingStub api;
 	
@@ -16,7 +16,7 @@ public class WindowsAccessPoint implements AccessPoint {
 		this.api = api;
 	}
 	
-	@Override
+//	@Override
 	public boolean connect() {
 		return api.connectWithAuth(ConnectionRequest.newBuilder()
 				.setAuthRequest(
@@ -25,7 +25,7 @@ public class WindowsAccessPoint implements AccessPoint {
 				.getResult();
 	}
 	
-	@Override
+//	@Override
 	public boolean connect(AuthRequest authRequest) {
 		return api.connectWithAuth(ConnectionRequest.newBuilder().setAuthRequest(
 				io.github.incplusplus.simplewifijava.generated.AuthRequest.newBuilder()
@@ -36,7 +36,7 @@ public class WindowsAccessPoint implements AccessPoint {
 				.getResult();
 	}
 	
-	@Override
+//	@Override
 	public String getProfileXML() {
 		return remoteAccessPointInstance.getProfileXML();
 	}
@@ -56,12 +56,12 @@ public class WindowsAccessPoint implements AccessPoint {
 		return remoteAccessPointInstance.getInterfaceName();
 	}
 	
-	@Override
+//	@Override
 	public boolean isConnectable() {
 		return remoteAccessPointInstance.getConnectable();
 	}
 	
-	@Override
+//	@Override
 	public String getWlanNotConnectableReason() {
 		return remoteAccessPointInstance.getWlanNotConnectableReason();
 	}

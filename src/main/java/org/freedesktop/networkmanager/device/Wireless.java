@@ -7,6 +7,7 @@ import org.freedesktop.dbus.interfaces.DBusInterface;
 import org.freedesktop.dbus.interfaces.Properties;
 import org.freedesktop.dbus.messages.DBusSignal;
 import org.freedesktop.dbus.types.Variant;
+import org.freedesktop.networkmanager.Device;
 
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,7 @@ import java.util.Map;
  * Auto-generated class.
  */
 @DBusInterfaceName("org.freedesktop.NetworkManager.Device.Wireless")
-public interface Wireless extends DBusInterface, Properties {
+public interface Wireless extends DBusInterface, Properties, Device {
 	public List<DBusPath> GetAccessPoints();
 	
 	public List<DBusPath> GetAllAccessPoints();

@@ -3,8 +3,10 @@ package io.github.incplusplus.bigtoolbox.network.interop.lin;
 import io.github.incplusplus.bigtoolbox.network.NetworkController;
 import io.github.incplusplus.bigtoolbox.network.interop.lin.nm.NMInterop;
 
+import java.io.IOException;
+
 public class LinuxNetToolFinder {
-	public static NetworkController getControllerByInstalledTool() {
+	public static NetworkController getControllerByInstalledTool() throws IOException {
 		switch (getNetToolInUse()) {
 			case NetworkManager:
 				return new NMInterop();

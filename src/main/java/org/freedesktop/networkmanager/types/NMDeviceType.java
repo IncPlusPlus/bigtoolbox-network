@@ -157,23 +157,30 @@ public enum NMDeviceType {
 	}
 
 	private static Device getDeviceAtPath(NMDeviceType deviceType, String objectPath) throws IOException {
-		return switch (deviceType) {
-			case NM_DEVICE_TYPE_ETHERNET -> getRemoteObject(NM_BUS_PATH, objectPath, Wired.class);
-			case NM_DEVICE_TYPE_WIFI -> getRemoteObject(NM_BUS_PATH, objectPath, Wireless.class);
-			case NM_DEVICE_TYPE_GENERIC -> getRemoteObject(NM_BUS_PATH, objectPath, Generic.class);
-			default -> getRemoteObject(NM_BUS_PATH, objectPath, Device.class);
-		};
+		switch (deviceType) {
+			case NM_DEVICE_TYPE_ETHERNET:
+				return getRemoteObject(NM_BUS_PATH, objectPath, Wired.class);
+			case NM_DEVICE_TYPE_WIFI:
+				return getRemoteObject(NM_BUS_PATH, objectPath, Wireless.class);
+			case NM_DEVICE_TYPE_GENERIC:
+				return getRemoteObject(NM_BUS_PATH, objectPath, Generic.class);
+			default:
+				return getRemoteObject(NM_BUS_PATH, objectPath, Device.class);
+		}
 	}
 
 	public static Interface encapsulateNMDeviceInInterface(Device device) {
 		if (isNull(device)) {
 			return null;
 		}
-		return switch (deviceTypesByDeviceInterface.get(device.getClass().getInterfaces()[0])) {
-			case NM_DEVICE_TYPE_ETHERNET -> null;
-			case NM_DEVICE_TYPE_WIFI -> new WiFiAdapter(device);
-			default -> null;
-		};
+		switch (deviceTypesByDeviceInterface.get(device.getClass().getInterfaces()[0])) {
+			case NM_DEVICE_TYPE_ETHERNET:
+				return null;
+			case NM_DEVICE_TYPE_WIFI:
+				return new WiFiAdapter(device);
+			default:
+				return null;
+		}
 	}
 
 	public UInt32 getDeviceType() {

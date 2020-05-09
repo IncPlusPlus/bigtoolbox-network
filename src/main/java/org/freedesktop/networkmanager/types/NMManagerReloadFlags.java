@@ -6,9 +6,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
-/**
- * Flags for the manager Reload() call.
- */
+/** Flags for the manager Reload() call. */
 public enum NMManagerReloadFlags {
   /**
    * an alias for numeric zero, no flags set. This reloads everything that is supported and is
@@ -20,9 +18,7 @@ public enum NMManagerReloadFlags {
    * connections, which can be reloaded via Setting's ReloadConnections().
    */
   NM_MANAGER_RELOAD_FLAG_CONF(1),
-  /**
-   * update DNS configuration, which usually involves writing /etc/resolv.conf anew.
-   */
+  /** update DNS configuration, which usually involves writing /etc/resolv.conf anew. */
   NM_MANAGER_RELOAD_FLAG_DNS_RC(2),
   /**
    * means to restart the DNS plugin. This is for example useful when using dnsmasq plugin, which
@@ -30,9 +26,7 @@ public enum NMManagerReloadFlags {
    * can restart the DNS plugin. This action shortly interrupts name resolution.
    */
   NM_MANAGER_RELOAD_FLAG_DNS_FULL(4),
-  /**
-   * all flags.
-   */
+  /** all flags. */
   NM_MANAGER_RELOAD_FLAG_ALL(7);
 
   private static final Map<UInt32, NMManagerReloadFlags> NM_MANAGER_RELOAD_FLAGS_MAP;

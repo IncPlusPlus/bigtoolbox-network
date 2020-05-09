@@ -6,13 +6,9 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
-/**
- * Indicates the 802.11 mode an access point or device is currently in.
- */
+/** Indicates the 802.11 mode an access point or device is currently in. */
 public enum NM80211Mode {
-  /**
-   * the device or access point mode is unknown
-   */
+  /** the device or access point mode is unknown */
   NM_802_11_MODE_UNKNOWN(0),
   /**
    * for both devices and access point objects, indicates the object is part of an Ad-Hoc 802.11
@@ -30,9 +26,7 @@ public enum NM80211Mode {
    * hotspot mode on the local machine.
    */
   NM_802_11_MODE_AP(3),
-  /**
-   * the device is a 802.11s mesh point.
-   */
+  /** the device is a 802.11s mesh point. */
   NM_802_11_MODE_MESH(4);
 
   private static final Map<UInt32, NM80211Mode> NM_80211_MODE_MAP;

@@ -6,21 +6,15 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
-/**
- * Flags for a network interface.
- */
+/** Flags for a network interface. */
 public enum NMDeviceInterfaceFlags {
-  /**
-   * an alias for numeric zero, no flags set.
-   */
+  /** an alias for numeric zero, no flags set. */
   NM_DEVICE_INTERFACE_FLAG_NONE(0),
   /**
    * the interface is enabled from the administrative point of view. Corresponds to kernel IFF_UP.
    */
   NM_DEVICE_INTERFACE_FLAG_UP(1),
-  /**
-   * the physical link is up. Corresponds to kernel IFF_LOWER_UP.
-   */
+  /** the physical link is up. Corresponds to kernel IFF_LOWER_UP. */
   NM_DEVICE_INTERFACE_FLAG_LOWER_UP(2),
   /**
    * the interface has carrier. In most cases this is equal to the value of {@link

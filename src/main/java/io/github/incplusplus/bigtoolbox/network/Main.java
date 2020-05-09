@@ -15,18 +15,25 @@ import org.freedesktop.networkmanager.Device;
 import org.freedesktop.networkmanager.types.NMDeviceType;
 
 public class Main {
-	public static void main(String[] args) throws UnsupportedOSException, IOException, DBusException {
-		try(NetworkController controller = NetworkControllerFactory.createNetworkController()){
-//			System.out.println(Arrays.toString(controller.getInterfaces()));
-			NetworkManager nm = NMInterop.getActiveInstance().getDbusConn().getRemoteObject("org.freedesktop.NetworkManager",
-					"/org/freedesktop/NetworkManager", NetworkManager.class);
-			List<Device> devices = nm.GetDevices().stream().map(NMDeviceType::dbusInterfaceToNMDevice).collect(
-					Collectors.toList());
-			Map<Device, Map<String, Map<String, Variant<?>>>> props = new HashMap<>();
-			for (Device device : devices) {
-				props.put(device, PropertiesExtractor.GetAllFromDevice(device));
-			}
-			System.out.println(props.size());
-		}
-	}
+  public static void main(String[] args) throws UnsupportedOSException, IOException, DBusException {
+    try (NetworkController controller = NetworkControllerFactory.createNetworkController()) {
+      //			System.out.println(Arrays.toString(controller.getInterfaces()));
+      NetworkManager nm =
+          NMInterop.getActiveInstance()
+              .getDbusConn()
+              .getRemoteObject(
+                  "org.freedesktop.NetworkManager",
+                  "/org/freedesktop/NetworkManager",
+                  NetworkManager.class);
+      List<Device> devices =
+          nm.GetDevices().stream()
+              .map(NMDeviceType::dbusInterfaceToNMDevice)
+              .collect(Collectors.toList());
+      Map<Device, Map<String, Map<String, Variant<?>>>> props = new HashMap<>();
+      for (Device device : devices) {
+        props.put(device, PropertiesExtractor.GetAllFromDevice(device));
+      }
+      System.out.println(props.size());
+    }
+  }
 }

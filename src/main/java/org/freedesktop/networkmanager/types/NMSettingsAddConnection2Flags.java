@@ -6,21 +6,13 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
-/**
- * Numeric flags for the "flags" argument of AddConnection2() D-Bus API.
- */
+/** Numeric flags for the "flags" argument of AddConnection2() D-Bus API. */
 public enum NMSettingsAddConnection2Flags {
-  /**
-   * an alias for numeric zero, no flags set.
-   */
+  /** an alias for numeric zero, no flags set. */
   NM_SETTINGS_ADD_CONNECTION2_FLAG_NONE(0),
-  /**
-   * to persist the connection to disk.
-   */
+  /** to persist the connection to disk. */
   NM_SETTINGS_ADD_CONNECTION2_FLAG_TO_DISK(1),
-  /**
-   * to make the connection in-memory only.
-   */
+  /** to make the connection in-memory only. */
   NM_SETTINGS_ADD_CONNECTION2_FLAG_IN_MEMORY(2),
   /**
    * usually, when the connection has autoconnect enabled and gets added, it becomes eligible to

@@ -6,6 +6,4 @@ import org.freedesktop.dbus.interfaces.Properties;
 import org.freedesktop.networkmanager.Device;
 
 @DBusInterfaceName("org.freedesktop.NetworkManager.Device.Ppp")
-public interface Ppp extends DBusInterface, Properties, Device {
-
-}
+public interface Ppp extends DBusInterface, Properties, Device {}

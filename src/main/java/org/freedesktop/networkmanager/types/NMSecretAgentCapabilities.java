@@ -6,17 +6,11 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
-/**
- * NMSecretAgentCapabilities indicate various capabilities of the agent.
- */
+/** NMSecretAgentCapabilities indicate various capabilities of the agent. */
 public enum NMSecretAgentCapabilities {
-  /**
-   * the agent supports no special capabilities
-   */
+  /** the agent supports no special capabilities */
   NM_SECRET_AGENT_CAPABILITY_NONE(0),
-  /**
-   * the agent supports passing hints to VPN plugin authentication dialogs.
-   */
+  /** the agent supports passing hints to VPN plugin authentication dialogs. */
   NM_SECRET_AGENT_CAPABILITY_VPN_HINTS(1);
 
   private static final Map<UInt32, NMSecretAgentCapabilities> NM_SECRET_AGENT_CAPABILITIES_MAP;

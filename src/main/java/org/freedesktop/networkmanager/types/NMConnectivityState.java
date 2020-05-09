@@ -23,8 +23,7 @@ public enum NMConnectivityState {
    * The Internet connection is hijacked by a captive portal gateway. The graphical shell may open a
    * sandboxed web browser window (because the captive portals typically attempt a man-in-the-middle
    * attacks against the https connections) for the purpose of authenticating to a gateway and
-   * retrigger the connectivity check with CheckConnectivity() when the browser window is
-   * dismissed.
+   * retrigger the connectivity check with CheckConnectivity() when the browser window is dismissed.
    */
   NM_CONNECTIVITY_PORTAL(2),
   /**
@@ -32,9 +31,7 @@ public enum NMConnectivityState {
    * a captive portal has not been detected.
    */
   NM_CONNECTIVITY_LIMITED(3),
-  /**
-   * The host is connected to a network, and appears to be able to reach the full Internet.
-   */
+  /** The host is connected to a network, and appears to be able to reach the full Internet. */
   NM_CONNECTIVITY_FULL(4);
 
   private static final Map<UInt32, NMConnectivityState> NM_CONNECTIVITY_STATE_MAP;

@@ -7,13 +7,9 @@ import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
 public enum NMDeviceState {
-  /**
-   * the device's state is unknown
-   */
+  /** the device's state is unknown */
   NM_DEVICE_STATE_UNKNOWN(0),
-  /**
-   * the device is recognized, but not managed by NetworkManager
-   */
+  /** the device is recognized, but not managed by NetworkManager */
   NM_DEVICE_STATE_UNMANAGED(10),
   /**
    * the device is managed by NetworkManager, but is not available for use. Reasons may include the
@@ -21,9 +17,7 @@ public enum NMDeviceState {
    * manager, etc.
    */
   NM_DEVICE_STATE_UNAVAILABLE(20),
-  /**
-   * the device can be activated, but is currently idle and not connected to a network.
-   */
+  /** the device can be activated, but is currently idle and not connected to a network. */
   NM_DEVICE_STATE_DISCONNECTED(30),
   /**
    * the device is preparing the connection to the network. This may include operations like
@@ -56,9 +50,7 @@ public enum NMDeviceState {
    * device can be activated
    */
   NM_DEVICE_STATE_SECONDARIES(90),
-  /**
-   * the device has a network connection, either local or global.
-   */
+  /** the device has a network connection, either local or global. */
   NM_DEVICE_STATE_ACTIVATED(100),
   /**
    * a disconnection from the current network connection was requested, and the device is cleaning
@@ -66,8 +58,7 @@ public enum NMDeviceState {
    */
   NM_DEVICE_STATE_DEACTIVATING(110),
   /**
-   * the device failed to connect to the requested network and is cleaning up the connection
-   * request
+   * the device failed to connect to the requested network and is cleaning up the connection request
    */
   NM_DEVICE_STATE_FAILED(120);
 

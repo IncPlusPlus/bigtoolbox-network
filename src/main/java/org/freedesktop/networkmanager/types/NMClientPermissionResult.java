@@ -11,21 +11,13 @@ import org.freedesktop.dbus.types.UInt32;
  * obtain a given NMClientPermission
  */
 public enum NMClientPermissionResult {
-  /**
-   * unknown or no authorization
-   */
+  /** unknown or no authorization */
   NM_CLIENT_PERMISSION_RESULT_UNKNOWN(0),
-  /**
-   * the permission is available
-   */
+  /** the permission is available */
   NM_CLIENT_PERMISSION_RESULT_YES(1),
-  /**
-   * authorization is necessary before the permission is available
-   */
+  /** authorization is necessary before the permission is available */
   NM_CLIENT_PERMISSION_RESULT_AUTH(2),
-  /**
-   * permission to perform the operation is denied by system policy
-   */
+  /** permission to perform the operation is denied by system policy */
   NM_CLIENT_PERMISSION_RESULT_NO(3);
 
   private static final Map<UInt32, NMClientPermissionResult> NM_CLIENT_PERMISSION_RESULT_MAP;

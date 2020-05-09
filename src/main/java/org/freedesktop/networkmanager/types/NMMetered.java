@@ -49,25 +49,15 @@ import org.freedesktop.dbus.types.UInt32;
  * the per-device's metered states.
  */
 public enum NMMetered {
-  /**
-   * The metered status is unknown
-   */
+  /** The metered status is unknown */
   NM_METERED_UNKNOWN(0),
-  /**
-   * Metered, the value was explicitly configured
-   */
+  /** Metered, the value was explicitly configured */
   NM_METERED_YES(1),
-  /**
-   * Not metered, the value was explicitly configured
-   */
+  /** Not metered, the value was explicitly configured */
   NM_METERED_NO(2),
-  /**
-   * Not metered, the value was explicitly configured
-   */
+  /** Not metered, the value was explicitly configured */
   NM_METERED_GUESS_YES(3),
-  /**
-   * Not metered, the value was guessed
-   */
+  /** Not metered, the value was guessed */
   NM_METERED_GUESS_NO(4);
 
   private static final Map<UInt32, NMMetered> NM_METERED_MAP;

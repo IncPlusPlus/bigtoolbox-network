@@ -32,7 +32,6 @@ public interface Wireless extends DBusInterface, Properties, Device {
     public DBusPath getAccessPoint() {
       return accessPoint;
     }
-
   }
 
   class AccessPointRemoved extends DBusSignal {
@@ -47,6 +46,5 @@ public interface Wireless extends DBusInterface, Properties, Device {
     public DBusPath getAccessPoint() {
       return accessPoint;
     }
-
   }
 }

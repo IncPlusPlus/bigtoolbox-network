@@ -6,25 +6,15 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
-/**
- * The result of a checkpoint Rollback() operation for a specific device.
- */
+/** The result of a checkpoint Rollback() operation for a specific device. */
 public enum NMRollbackResult {
-  /**
-   * the rollback succeeded.
-   */
+  /** the rollback succeeded. */
   NM_ROLLBACK_RESULT_OK(0),
-  /**
-   * the device no longer exists.
-   */
+  /** the device no longer exists. */
   NM_ROLLBACK_RESULT_ERR_NO_DEVICE(1),
-  /**
-   * the device is now unmanaged.
-   */
+  /** the device is now unmanaged. */
   NM_ROLLBACK_RESULT_ERR_DEVICE_UNMANAGED(2),
-  /**
-   * other errors during rollback.
-   */
+  /** other errors during rollback. */
   NM_ROLLBACK_RESULT_ERR_FAILED(3);
 
   private static final Map<UInt32, NMRollbackResult> NM_ROLLBACK_RESULT_MAP;

@@ -6,25 +6,15 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
-/**
- * The flags for CheckpointCreate call
- */
+/** The flags for CheckpointCreate call */
 public enum NMCheckpointCreateFlags {
-  /**
-   * no flags
-   */
+  /** no flags */
   NM_CHECKPOINT_CREATE_FLAG_NONE(0),
-  /**
-   * when creating a new checkpoint, destroy all existing ones.
-   */
+  /** when creating a new checkpoint, destroy all existing ones. */
   NM_CHECKPOINT_CREATE_FLAG_DESTROY_ALL(1),
-  /**
-   * upon rollback, delete any new connection added after the checkpoint
-   */
+  /** upon rollback, delete any new connection added after the checkpoint */
   NM_CHECKPOINT_CREATE_FLAG_DELETE_NEW_CONNECTIONS(2),
-  /**
-   * upon rollback, disconnect any new device appeared after the checkpoint
-   */
+  /** upon rollback, disconnect any new device appeared after the checkpoint */
   NM_CHECKPOINT_CREATE_FLAG_DISCONNECT_NEW_DEVICES(4),
   /**
    * by default, creating a checkpoint fails if there are already existing checkpoints that

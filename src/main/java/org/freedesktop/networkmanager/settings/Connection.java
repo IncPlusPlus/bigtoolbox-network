@@ -7,7 +7,6 @@ import org.freedesktop.dbus.types.Variant;
 
 public interface Connection extends DBusInterface {
 
-
   void Update(Map<String, Map<String, Variant<?>>> properties);
 
   void UpdateUnsaved(Map<String, Map<String, Variant<?>>> properties);
@@ -22,8 +21,6 @@ public interface Connection extends DBusInterface {
 
   void Save();
 
-  Map<String, Variant<?>> Update2(Map<String, Map<String, Variant<?>>> settings, UInt32 flags,
-      Map<String, Variant<?>> args);
-
-
+  Map<String, Variant<?>> Update2(
+      Map<String, Map<String, Variant<?>>> settings, UInt32 flags, Map<String, Variant<?>> args);
 }

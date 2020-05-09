@@ -6,6 +6,4 @@ import org.freedesktop.dbus.interfaces.Properties;
 import org.freedesktop.networkmanager.Device;
 
 @DBusInterfaceName("org.freedesktop.NetworkManager.Device.IPTunnel")
-public interface IPTunnel extends DBusInterface, Properties, Device {
-
-}
+public interface IPTunnel extends DBusInterface, Properties, Device {}

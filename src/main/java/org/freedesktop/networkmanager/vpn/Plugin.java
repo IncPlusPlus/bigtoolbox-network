@@ -9,9 +9,7 @@ import org.freedesktop.dbus.messages.DBusSignal;
 import org.freedesktop.dbus.types.UInt32;
 import org.freedesktop.dbus.types.Variant;
 
-/**
- * This interface is provided by plugins providing VPN services to the NetworkManager daemon.
- */
+/** This interface is provided by plugins providing VPN services to the NetworkManager daemon. */
 @DBusInterfaceName("org.freedesktop.NetworkManager.VPN.Plugin")
 public interface Plugin extends DBusInterface {
 
@@ -29,7 +27,7 @@ public interface Plugin extends DBusInterface {
    * during the connect process).
    *
    * @param connection Describes the connection to be established.
-   * @param details    Additional details about the Connect process.
+   * @param details Additional details about the Connect process.
    */
   void ConnectInteractive(
       Map<String, Map<String, Variant<?>>> connection, Map<String, Variant<?>> details);
@@ -42,9 +40,7 @@ public interface Plugin extends DBusInterface {
    */
   String NeedSecrets(Map<String, Map<String, Variant<?>>> settings);
 
-  /**
-   * Disconnect the plugin.
-   */
+  /** Disconnect the plugin. */
   void Disconnect();
 
   /**
@@ -58,7 +54,7 @@ public interface Plugin extends DBusInterface {
    * Set IPv4 details on the connection.
    *
    * @param config Ip4Config details for the connection. You must call SetConfig() before calling
-   *               this.
+   *     this.
    */
   void SetIp4Config(Map<String, Variant<?>> config);
 
@@ -66,7 +62,7 @@ public interface Plugin extends DBusInterface {
    * Set IPv6 details on the connection.
    *
    * @param config Ip6Config details for the connection. You must call SetConfig() before calling
-   *               this.
+   *     this.
    */
   void SetIp6Config(Map<String, Variant<?>> config);
 
@@ -85,14 +81,10 @@ public interface Plugin extends DBusInterface {
    */
   void NewSecrets(Map<String, Map<String, Variant<?>>> connection);
 
-  /**
-   * Emitted when the plugin state changes.
-   */
+  /** Emitted when the plugin state changes. */
   class StateChanged extends DBusSignal {
 
-    /**
-     * (NMVpnServiceState) The new state of the plugin.
-     */
+    /** (NMVpnServiceState) The new state of the plugin. */
     private final UInt32 state;
 
     StateChanged(String _path, UInt32 _state) throws DBusException {
@@ -138,14 +130,10 @@ public interface Plugin extends DBusInterface {
     }
   }
 
-  /**
-   * The plugin obtained generic configuration information.
-   */
+  /** The plugin obtained generic configuration information. */
   class Config extends DBusSignal {
 
-    /**
-     * The configuration information.
-     */
+    /** The configuration information. */
     private final Map<String, Variant<?>> config;
 
     Config(String _path, Map<String, Variant<?>> _config) throws DBusException {
@@ -158,14 +146,10 @@ public interface Plugin extends DBusInterface {
     }
   }
 
-  /**
-   * The plugin obtained an IPv4 configuration.
-   */
+  /** The plugin obtained an IPv4 configuration. */
   class Ip4Config extends DBusSignal {
 
-    /**
-     * The IPv4 configuration.
-     */
+    /** The IPv4 configuration. */
     private final Map<String, Variant<?>> ip4config;
 
     Ip4Config(String _path, Map<String, Variant<?>> _ip4config) throws DBusException {
@@ -178,14 +162,10 @@ public interface Plugin extends DBusInterface {
     }
   }
 
-  /**
-   * The plugin obtained an IPv6 configuration.
-   */
+  /** The plugin obtained an IPv6 configuration. */
   class Ip6Config extends DBusSignal {
 
-    /**
-     * The IPv6 configuration.
-     */
+    /** The IPv6 configuration. */
     private final Map<String, Variant<?>> ip6config;
 
     Ip6Config(String _path, Map<String, Variant<?>> _ip6config) throws DBusException {
@@ -198,14 +178,10 @@ public interface Plugin extends DBusInterface {
     }
   }
 
-  /**
-   * Emitted when the plugin receives a login banner from the VPN service.
-   */
+  /** Emitted when the plugin receives a login banner from the VPN service. */
   class LoginBanner extends DBusSignal {
 
-    /**
-     * The login banner string.
-     */
+    /** The login banner string. */
     private final String banner;
 
     LoginBanner(String _path, String _banner) throws DBusException {
@@ -218,14 +194,10 @@ public interface Plugin extends DBusInterface {
     }
   }
 
-  /**
-   * Emitted when a failure in the VPN plugin occurs.
-   */
+  /** Emitted when a failure in the VPN plugin occurs. */
   class Failure extends DBusSignal {
 
-    /**
-     * (NMVpnPluginFailure) Reason code for the failure.
-     */
+    /** (NMVpnPluginFailure) Reason code for the failure. */
     private final UInt32 reason;
 
     Failure(String _path, UInt32 _reason) throws DBusException {

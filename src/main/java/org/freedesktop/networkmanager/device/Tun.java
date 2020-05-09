@@ -6,6 +6,4 @@ import org.freedesktop.dbus.interfaces.Properties;
 import org.freedesktop.networkmanager.Device;
 
 @DBusInterfaceName("org.freedesktop.NetworkManager.Device.Tun")
-public interface Tun extends DBusInterface, Properties, Device {
-
-}
+public interface Tun extends DBusInterface, Properties, Device {}

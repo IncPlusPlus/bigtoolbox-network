@@ -6,9 +6,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
-/**
- * NMSecretAgentGetSecretsFlags values modify the behavior of a GetSecrets request.
- */
+/** NMSecretAgentGetSecretsFlags values modify the behavior of a GetSecrets request. */
 public enum NMSecretAgentGetSecretsFlags {
   /**
    * no special behavior; by default no user interaction is allowed and requests for secrets are
@@ -36,13 +34,9 @@ public enum NMSecretAgentGetSecretsFlags {
    * pushes a button on the router instead of supplying a PSK.
    */
   NM_SECRET_AGENT_GET_SECRETS_FLAG_WPS_PBC_ACTIVE(8),
-  /**
-   * Internal flag, not part of the D-Bus API.
-   */
+  /** Internal flag, not part of the D-Bus API. */
   NM_SECRET_AGENT_GET_SECRETS_FLAG_ONLY_SYSTEM(80000000),
-  /**
-   * Internal flag, not part of the D-Bus API.
-   */
+  /** Internal flag, not part of the D-Bus API. */
   NM_SECRET_AGENT_GET_SECRETS_FLAG_NO_ERRORS(40000000);
 
   private static final Map<UInt32, NMSecretAgentGetSecretsFlags>

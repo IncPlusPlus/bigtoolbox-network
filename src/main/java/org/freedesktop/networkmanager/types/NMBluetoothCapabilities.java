@@ -6,21 +6,13 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
-/**
- * NMBluetoothCapabilities values indicate the usable capabilities of a Bluetooth device.
- */
+/** NMBluetoothCapabilities values indicate the usable capabilities of a Bluetooth device. */
 public enum NMBluetoothCapabilities {
-  /**
-   * device has no usable capabilities
-   */
+  /** device has no usable capabilities */
   NM_BT_CAPABILITY_NONE(0),
-  /**
-   * device provides Dial-Up Networking capability
-   */
+  /** device provides Dial-Up Networking capability */
   NM_BT_CAPABILITY_DUN(1),
-  /**
-   * device provides Network Access Point capability
-   */
+  /** device provides Network Access Point capability */
   NM_BT_CAPABILITY_NAP(2);
 
   private static final Map<UInt32, NMBluetoothCapabilities> NM_BLUETOOTH_CAPABILITIES_MAP;

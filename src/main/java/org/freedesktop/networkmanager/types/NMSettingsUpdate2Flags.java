@@ -7,13 +7,9 @@ import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
 public enum NMSettingsUpdate2Flags {
-  /**
-   * an alias for numeric zero, no flags set.
-   */
+  /** an alias for numeric zero, no flags set. */
   NM_SETTINGS_UPDATE2_FLAG_NONE(0),
-  /**
-   * to persist the connection to disk.
-   */
+  /** to persist the connection to disk. */
   NM_SETTINGS_UPDATE2_FLAG_TO_DISK(1),
   /**
    * makes the profile in-memory. Note that such profiles are stored in keyfile format under /run.

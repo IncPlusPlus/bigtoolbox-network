@@ -6,6 +6,4 @@ import org.freedesktop.dbus.interfaces.Properties;
 import org.freedesktop.networkmanager.Device;
 
 @DBusInterfaceName("org.freedesktop.NetworkManager.Device.Bridge")
-public interface Bridge extends DBusInterface, Properties, Device {
-
-}
+public interface Bridge extends DBusInterface, Properties, Device {}

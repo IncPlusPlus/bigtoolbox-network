@@ -6,6 +6,4 @@ import org.freedesktop.dbus.interfaces.Properties;
 import org.freedesktop.networkmanager.Device;
 
 @DBusInterfaceName("org.freedesktop.NetworkManager.Device.Wpan")
-public interface Wpan extends DBusInterface, Properties, Device {
-
-}
+public interface Wpan extends DBusInterface, Properties, Device {}

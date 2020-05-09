@@ -6,6 +6,4 @@ import org.freedesktop.dbus.interfaces.Properties;
 import org.freedesktop.networkmanager.Device;
 
 @DBusInterfaceName("org.freedesktop.NetworkManager.Device.WireGuard")
-public interface WireGuard extends DBusInterface, Properties, Device {
-
-}
+public interface WireGuard extends DBusInterface, Properties, Device {}

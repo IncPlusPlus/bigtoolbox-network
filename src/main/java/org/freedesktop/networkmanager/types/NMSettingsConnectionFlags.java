@@ -6,13 +6,9 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
-/**
- * Flags describing the current activation state.
- */
+/** Flags describing the current activation state. */
 public enum NMSettingsConnectionFlags {
-  /**
-   * an alias for numeric zero, no flags set.
-   */
+  /** an alias for numeric zero, no flags set. */
   NM_SETTINGS_CONNECTION_FLAG_NONE(0),
   /**
    * the connection is not saved to disk. That either means, that the connection is in-memory only

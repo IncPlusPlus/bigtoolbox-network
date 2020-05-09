@@ -4,6 +4,4 @@ import org.freedesktop.dbus.annotations.DBusInterfaceName;
 import org.freedesktop.dbus.interfaces.DBusInterface;
 
 @DBusInterfaceName("org.freedesktop.NetworkManager.AccessPoint")
-public interface AccessPoint extends DBusInterface {
-
-}
+public interface AccessPoint extends DBusInterface {}

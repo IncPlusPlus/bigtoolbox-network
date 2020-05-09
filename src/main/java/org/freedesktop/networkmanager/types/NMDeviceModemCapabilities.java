@@ -12,17 +12,12 @@ import org.freedesktop.dbus.types.UInt32;
  * the ModemManager D-Bus API.
  */
 public enum NMDeviceModemCapabilities {
-  /**
-   * modem has no usable capabilities
-   */
+  /** modem has no usable capabilities */
   NM_DEVICE_MODEM_CAPABILITY_NONE(0),
-  /**
-   * modem uses the analog wired telephone network and is not a wireless/cellular device
-   */
+  /** modem uses the analog wired telephone network and is not a wireless/cellular device */
   NM_DEVICE_MODEM_CAPABILITY_POTS(1),
   /**
-   * modem supports at least one of CDMA 1xRTT, EVDO revision 0, EVDO revision A, or EVDO revision
-   * B
+   * modem supports at least one of CDMA 1xRTT, EVDO revision 0, EVDO revision A, or EVDO revision B
    */
   NM_DEVICE_MODEM_CAPABILITY_CDMA_EVDO(2),
   /**
@@ -30,9 +25,7 @@ public enum NMDeviceModemCapabilities {
    * data capability
    */
   NM_DEVICE_MODEM_CAPABILITY_GSM_UMTS(4),
-  /**
-   * modem has LTE data capability
-   */
+  /** modem has LTE data capability */
   NM_DEVICE_MODEM_CAPABILITY_LTE(8);
 
   private static final Map<UInt32, NMDeviceModemCapabilities> NM_DEVICE_MODEM_CAPABILITIES_MAP;

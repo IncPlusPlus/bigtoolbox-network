@@ -21,18 +21,12 @@ import org.freedesktop.dbus.types.UInt32;
 @DBusInterfaceName("org.freedesktop.NetworkManager.Connection.Active")
 public interface Active extends DBusInterface {
 
-  /**
-   * Emitted when the state of the active connection has changed.
-   */
+  /** Emitted when the state of the active connection has changed. */
   class StateChanged extends DBusSignal {
 
-    /**
-     * (NMActiveConnectionState) The new state of the active connection.
-     */
+    /** (NMActiveConnectionState) The new state of the active connection. */
     private final UInt32 _state;
-    /**
-     * (NMActiveConnectionStateReason) Reason code describing the change to the new state.
-     */
+    /** (NMActiveConnectionStateReason) Reason code describing the change to the new state. */
     private final UInt32 _reason;
 
     StateChanged(String _path, UInt32 _state, UInt32 _reason) throws DBusException {
@@ -49,6 +43,4 @@ public interface Active extends DBusInterface {
       return _reason;
     }
   }
-
-
 }

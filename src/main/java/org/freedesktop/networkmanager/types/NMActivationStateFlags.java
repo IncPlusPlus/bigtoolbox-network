@@ -6,37 +6,21 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
-/**
- * Flags describing the current activation state.
- */
+/** Flags describing the current activation state. */
 public enum NMActivationStateFlags {
-  /**
-   * an alias for numeric zero, no flags set.
-   */
+  /** an alias for numeric zero, no flags set. */
   NM_ACTIVATION_STATE_FLAG_NONE(0),
-  /**
-   * the device is a master.
-   */
+  /** the device is a master. */
   NM_ACTIVATION_STATE_FLAG_IS_MASTER(1),
-  /**
-   * the device is a slave.
-   */
+  /** the device is a slave. */
   NM_ACTIVATION_STATE_FLAG_IS_SLAVE(2),
-  /**
-   * layer2 is activated and ready.
-   */
+  /** layer2 is activated and ready. */
   NM_ACTIVATION_STATE_FLAG_LAYER2_READY(4),
-  /**
-   * IPv4 setting is completed.
-   */
+  /** IPv4 setting is completed. */
   NM_ACTIVATION_STATE_FLAG_IP4_READY(8),
-  /**
-   * IPv6 setting is completed.
-   */
+  /** IPv6 setting is completed. */
   NM_ACTIVATION_STATE_FLAG_IP6_READY(10),
-  /**
-   * The master has any slave devices attached. This only makes sense if the device is a master.
-   */
+  /** The master has any slave devices attached. This only makes sense if the device is a master. */
   NM_ACTIVATION_STATE_FLAG_MASTER_HAS_SLAVES(20),
   /**
    * the lifetime of the activation is bound to the visibility of the connection profile, which in

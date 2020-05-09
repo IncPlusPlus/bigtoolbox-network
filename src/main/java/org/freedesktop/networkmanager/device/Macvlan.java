@@ -6,6 +6,4 @@ import org.freedesktop.dbus.interfaces.Properties;
 import org.freedesktop.networkmanager.Device;
 
 @DBusInterfaceName("org.freedesktop.NetworkManager.Device.Macvlan")
-public interface Macvlan extends DBusInterface, Properties, Device {
-
-}
+public interface Macvlan extends DBusInterface, Properties, Device {}

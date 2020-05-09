@@ -11,25 +11,15 @@ import org.freedesktop.dbus.types.UInt32;
  * is starting, connected, or disconnecting from that network.
  */
 public enum NMActiveConnectionState {
-  /**
-   * the state of the connection is unknown
-   */
+  /** the state of the connection is unknown */
   NM_ACTIVE_CONNECTION_STATE_UNKNOWN(0),
-  /**
-   * a network connection is being prepared
-   */
+  /** a network connection is being prepared */
   NM_ACTIVE_CONNECTION_STATE_ACTIVATING(1),
-  /**
-   * there is a connection to the network
-   */
+  /** there is a connection to the network */
   NM_ACTIVE_CONNECTION_STATE_ACTIVATED(2),
-  /**
-   * the network connection is being torn down and cleaned up
-   */
+  /** the network connection is being torn down and cleaned up */
   NM_ACTIVE_CONNECTION_STATE_DEACTIVATING(3),
-  /**
-   * the network connection is disconnected and will be removed
-   */
+  /** the network connection is disconnected and will be removed */
   NM_ACTIVE_CONNECTION_STATE_DEACTIVATED(4);
 
   private static final Map<UInt32, NMActiveConnectionState> NM_ACTIVE_CONNECTION_STATE_MAP;

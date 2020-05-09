@@ -6,9 +6,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.freedesktop.dbus.types.UInt32;
 
-/**
- * NMState values indicate the current overall networking state.
- */
+/** NMState values indicate the current overall networking state. */
 public enum NMState {
   /**
    * Networking state is unknown. This indicates a daemon error that makes it unable to reasonably
@@ -18,9 +16,7 @@ public enum NMState {
    * be provided.
    */
   NM_STATE_UNKNOWN(0),
-  /**
-   * Networking is not enabled, the system is being suspended or resumed from suspend.
-   */
+  /** Networking is not enabled, the system is being suspended or resumed from suspend. */
   NM_STATE_ASLEEP(10),
   /**
    * There is no active network connection. The graphical shell should indicate no network
@@ -57,8 +53,9 @@ public enum NMState {
   private static final Map<UInt32, NMState> NM_STATE_MAP;
 
   static {
-    NM_STATE_MAP = Arrays.stream(NMState.values()).collect(Collectors.toMap(NMState::getValue,
-        Function.identity()));
+    NM_STATE_MAP =
+        Arrays.stream(NMState.values())
+            .collect(Collectors.toMap(NMState::getValue, Function.identity()));
   }
 
   private final UInt32 value;

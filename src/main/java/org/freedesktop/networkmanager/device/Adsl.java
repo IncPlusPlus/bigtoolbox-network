@@ -6,6 +6,4 @@ import org.freedesktop.dbus.interfaces.Properties;
 import org.freedesktop.networkmanager.Device;
 
 @DBusInterfaceName("org.freedesktop.NetworkManager.Device.Adsl")
-public interface Adsl extends DBusInterface, Properties, Device {
-
-}
+public interface Adsl extends DBusInterface, Properties, Device {}

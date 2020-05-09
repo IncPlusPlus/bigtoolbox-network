@@ -18,21 +18,17 @@ import org.freedesktop.dbus.types.UInt32;
  * target="_top">NMCapability Documentation</a>
  */
 public enum NMCapability {
-  /**
-   * Teams can be managed. This means the team device plugin is loaded.
-   */
+  /** Teams can be managed. This means the team device plugin is loaded. */
   NM_CAPABILITY_TEAM(1),
-  /**
-   * OpenVSwitch can be managed. This means the OVS device plugin is loaded.
-   */
+  /** OpenVSwitch can be managed. This means the OVS device plugin is loaded. */
   NM_CAPABILITY_OVS(2);
 
   private static final Map<UInt32, NMCapability> NM_CAPABILITY_MAP;
 
   static {
-    NM_CAPABILITY_MAP = Arrays.stream(NMCapability.values())
-        .collect(Collectors.toMap(NMCapability::getValue,
-            Function.identity()));
+    NM_CAPABILITY_MAP =
+        Arrays.stream(NMCapability.values())
+            .collect(Collectors.toMap(NMCapability::getValue, Function.identity()));
   }
 
   private final UInt32 value;

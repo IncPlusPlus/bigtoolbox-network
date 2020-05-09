@@ -2,12 +2,11 @@ package io.github.incplusplus.bigtoolbox.network.interop.lin.nm;
 
 import io.github.incplusplus.bigtoolbox.network.Interface;
 import io.github.incplusplus.bigtoolbox.network.NetworkController;
-import io.github.incplusplus.bigtoolbox.network.interop.lin.dbushelpers.DbusHelpers;
+import java.io.IOException;
 import org.freedesktop.NetworkManager;
 import org.freedesktop.dbus.connections.impl.DBusConnection;
 import org.freedesktop.dbus.exceptions.DBusException;
-
-import java.io.IOException;
+import org.freedesktop.networkmanager.types.NMDeviceType;
 
 public class NMInterop extends NetworkController {
 	private final DBusConnection dbusConn;

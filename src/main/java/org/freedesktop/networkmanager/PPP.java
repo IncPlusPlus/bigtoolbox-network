@@ -6,6 +6,7 @@ import org.freedesktop.dbus.interfaces.DBusInterface;
 import org.freedesktop.dbus.types.UInt32;
 import org.freedesktop.dbus.types.Variant;
 
+/** Helper interface for a PPP plugin */
 @DBusInterfaceName("org.freedesktop.NetworkManager.PPP")
 public interface PPP extends DBusInterface {
 

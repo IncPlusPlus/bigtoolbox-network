@@ -209,4 +209,14 @@ public interface Plugin extends DBusInterface {
       return reason;
     }
   }
+
+  class PropertyNames {
+
+    /**
+     * The state of the plugin.
+     *
+     * <p>Returns: {@link org.freedesktop.networkmanager.vpn.types.NMVpnServiceState}
+     */
+    public static final String State = "State";
+  }
 }

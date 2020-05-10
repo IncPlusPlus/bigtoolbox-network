@@ -5,10 +5,11 @@ import org.freedesktop.dbus.interfaces.DBusInterface;
 import org.freedesktop.dbus.interfaces.Properties;
 import org.freedesktop.networkmanager.Device;
 
-@DBusInterfaceName("org.freedesktop.NetworkManager.Device.OvsBridge")
-public interface OvsBridge extends DBusInterface, Properties, Device {
+/** VRF Device */
+@DBusInterfaceName("org.freedesktop.NetworkManager.Device.Vrf")
+public interface Vrf extends DBusInterface, Properties, Device {
   class PropertyNames {
-    /** Array of object paths representing ports which are currently enslaved to this bridge. */
-    public static final String Slaves = "Slaves";
+    /** The routing table of the VRF. */
+    public static final String Table = "Table";
   }
 }

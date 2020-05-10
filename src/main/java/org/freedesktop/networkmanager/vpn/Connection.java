@@ -9,10 +9,17 @@ import org.freedesktop.dbus.types.UInt32;
 
 @DBusInterfaceName("org.freedesktop.NetworkManager.VPN.Connection")
 public interface Connection extends DBusInterface, Properties {
-
+  /** Emitted when the state of the VPN connection has changed. */
   class VpnStateChanged extends DBusSignal {
-
+    /**
+     * The new state of the VPN connection. Can be interpreted with {@link
+     * org.freedesktop.networkmanager.types.NMVpnConnectionState}
+     */
     private final UInt32 _state;
+    /**
+     * Reason code describing the change to the new state. Can be interpreted with {@link
+     * org.freedesktop.networkmanager.types.NMActiveConnectionStateReason}
+     */
     private final UInt32 _reason;
 
     VpnStateChanged(String _path, UInt32 _state, UInt32 _reason) throws DBusException {
@@ -28,5 +35,16 @@ public interface Connection extends DBusInterface, Properties {
     public UInt32 getReason() {
       return _reason;
     }
+  }
+
+  class PropertyNames {
+    /**
+     * The VPN-specific state of the connection.
+     *
+     * <p>Returns {@link org.freedesktop.networkmanager.types.NMVpnConnectionState}
+     */
+    public static final String VpnState = "VpnState";
+    /** The banner string of the VPN connection. */
+    public static final String Banner = "Banner";
   }
 }

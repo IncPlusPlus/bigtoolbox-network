@@ -3,6 +3,7 @@ package org.freedesktop.networkmanager.connection;
 import org.freedesktop.dbus.annotations.DBusInterfaceName;
 import org.freedesktop.dbus.exceptions.DBusException;
 import org.freedesktop.dbus.interfaces.DBusInterface;
+import org.freedesktop.dbus.interfaces.Properties;
 import org.freedesktop.dbus.messages.DBusSignal;
 import org.freedesktop.dbus.types.UInt32;
 
@@ -19,14 +20,22 @@ import org.freedesktop.dbus.types.UInt32;
  * settings-connection as they are waiting to be activated or to be deactivated.
  */
 @DBusInterfaceName("org.freedesktop.NetworkManager.Connection.Active")
-public interface Active extends DBusInterface {
+public interface Active extends DBusInterface, Properties {
 
   /** Emitted when the state of the active connection has changed. */
   class StateChanged extends DBusSignal {
 
-    /** (NMActiveConnectionState) The new state of the active connection. */
+    /**
+     * The new state of the active connection.
+     *
+     * @see org.freedesktop.networkmanager.types.NMActiveConnectionState
+     */
     private final UInt32 _state;
-    /** (NMActiveConnectionStateReason) Reason code describing the change to the new state. */
+    /**
+     * Reason code describing the change to the new state.
+     *
+     * @see org.freedesktop.networkmanager.types.NMActiveConnectionStateReason
+     */
     private final UInt32 _reason;
 
     StateChanged(String _path, UInt32 _state, UInt32 _reason) throws DBusException {
@@ -42,5 +51,87 @@ public interface Active extends DBusInterface {
     public UInt32 getReason() {
       return _reason;
     }
+  }
+
+  class PropertyNames {
+    /** The path of the connection. */
+    public static final String Connection = "Connection";
+    /**
+     * A specific object associated with the active connection. This property reflects the specific
+     * object used during connection activation, and will not change over the lifetime of the
+     * ActiveConnection once set.
+     */
+    public static final String SpecificObject = "SpecificObject";
+    /**
+     * The ID of the connection, provided as a convenience so that clients do not have to retrieve
+     * all connection details.
+     */
+    public static final String Id = "Id";
+    /**
+     * The UUID of the connection, provided as a convenience so that clients do not have to retrieve
+     * all connection details.
+     */
+    public static final String Uuid = "Uuid";
+    /**
+     * The type of the connection, provided as a convenience so that clients do not have to retrieve
+     * all connection details.
+     */
+    public static final String Type = "Type";
+    /** Array of object paths representing devices which are part of this active connection. */
+    public static final String Devices = "Devices";
+    /**
+     * The state of this active connection.
+     *
+     * <p>Returns: {@link org.freedesktop.networkmanager.types.NMActiveConnectionState}
+     */
+    public static final String State = "State";
+    /**
+     * The state flags of this active connection.
+     *
+     * <p>Returns {@link org.freedesktop.networkmanager.types.NMActivationStateFlags}
+     */
+    public static final String StateFlags = "StateFlags";
+    /**
+     * Whether this active connection is the default IPv4 connection, i.e. whether it currently owns
+     * the default IPv4 route.
+     */
+    public static final String Default = "Default";
+    /**
+     * Object path of the Ip4Config object describing the configuration of the connection. Only
+     * valid when the connection is in the {@link
+     * org.freedesktop.networkmanager.types.NMActiveConnectionState#NM_ACTIVE_CONNECTION_STATE_ACTIVATED}
+     * state.
+     */
+    public static final String Ip4Config = "Ip4Config";
+    /**
+     * Object path of the Dhcp4Config object describing the DHCP options returned by the DHCP server
+     * (assuming the connection used DHCP). Only valid when the connection is in the {@link
+     * org.freedesktop.networkmanager.types.NMActiveConnectionState#NM_ACTIVE_CONNECTION_STATE_ACTIVATED}
+     * state.
+     */
+    public static final String Dhcp4Config = "Dhcp4Config";
+    /**
+     * Whether this active connection is the default IPv6 connection, i.e. whether it currently owns
+     * the default IPv6 route.
+     */
+    public static final String Default6 = "Default6";
+    /**
+     * Object path of the Ip6Config object describing the configuration of the connection. Only
+     * valid when the connection is in the {@link
+     * org.freedesktop.networkmanager.types.NMActiveConnectionState#NM_ACTIVE_CONNECTION_STATE_ACTIVATED}
+     * state.
+     */
+    public static final String Ip6Config = "Ip6Config";
+    /**
+     * Object path of the Dhcp6Config object describing the DHCP options returned by the DHCP server
+     * (assuming the connection used DHCP). Only valid when the connection is in the {@link
+     * org.freedesktop.networkmanager.types.NMActiveConnectionState#NM_ACTIVE_CONNECTION_STATE_ACTIVATED}
+     * state.
+     */
+    public static final String Dhcp6Config = "Dhcp6Config";
+    /** Whether this active connection is also a VPN connection. */
+    public static final String Vpn = "Vpn";
+    /** The path to the master device if the connection is a slave. */
+    public static final String Master = "Master";
   }
 }

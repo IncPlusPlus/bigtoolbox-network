@@ -4,6 +4,7 @@ import io.github.incplusplus.bigtoolbox.network.interop.lin.dbushelpers.Properti
 import io.github.incplusplus.bigtoolbox.network.interop.lin.nm.NMInterop;
 import io.github.incplusplus.bigtoolbox.os.UnsupportedOSException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,13 @@ import org.freedesktop.networkmanager.types.NMDeviceType;
 
 public class Main {
   public static void main(String[] args) throws UnsupportedOSException, IOException, DBusException {
+    getAllProps();
+    NetworkController nc = NetworkControllerFactory.createNetworkController();
+    Interface[] ifaces = nc.getInterfaces();
+    System.out.println(Arrays.toString(ifaces));
+  }
+
+  private static void getAllProps() throws UnsupportedOSException, IOException, DBusException {
     try (NetworkController controller = NetworkControllerFactory.createNetworkController()) {
       //			System.out.println(Arrays.toString(controller.getInterfaces()));
       NetworkManager nm =

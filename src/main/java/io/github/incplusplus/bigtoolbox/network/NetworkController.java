@@ -24,24 +24,7 @@ public abstract class NetworkController implements Closeable {
 
   public NetworkController() {
     ensureInit();
-    // System.out.println("IN NetworkController CONSTRUCTOR");
   }
-
-  /**
-   * Ask all WiFi adapters to scan for networks (a.k.a. "refresh").
-   *
-   * @return true if all scans completed successfully; false if any failed
-   * @throws IOException if the controller has already run {@link NetworkController#close()} or if
-   *     some other IOException occurs.
-   */
-  //	public abstract boolean scanAll() throws IOException;
-
-  /**
-   * @return a list of {@linkplain AccessPoint}s. This contains the list of all access points seen
-   *     by all {@linkplain Interface}s. This means it will contain duplicates.
-   * @throws IOException if the controller has already run {@link NetworkController#close()}
-   */
-  //	public abstract AccessPoint[] getAllAccessPoints() throws IOException;
 
   /**
    * Get all wireless adapters/interfaces.

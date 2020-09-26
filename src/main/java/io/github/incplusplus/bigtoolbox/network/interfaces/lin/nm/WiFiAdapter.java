@@ -1,10 +1,10 @@
 package io.github.incplusplus.bigtoolbox.network.interfaces.lin.nm;
 
+import io.github.incplusplus.bigtoolbox.network.interop.lin.nm.org.freedesktop.networkmanager.Device;
+import io.github.incplusplus.bigtoolbox.network.interop.lin.nm.org.freedesktop.networkmanager.device.Wireless;
 import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
 import io.github.incplusplus.bigtoolbox.network.wlan.AuthRequest;
 import java.io.IOException;
-import org.freedesktop.networkmanager.Device;
-import org.freedesktop.networkmanager.device.Wireless;
 
 public class WiFiAdapter extends io.github.incplusplus.bigtoolbox.network.interfaces.WiFiAdapter {
   private final Wireless device;

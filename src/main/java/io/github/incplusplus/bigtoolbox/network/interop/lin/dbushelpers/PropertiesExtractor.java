@@ -3,6 +3,7 @@ package io.github.incplusplus.bigtoolbox.network.interop.lin.dbushelpers;
 import static io.github.incplusplus.bigtoolbox.network.interop.lin.dbushelpers.DbusHelpers.NM_BUS_PATH;
 import static io.github.incplusplus.bigtoolbox.network.interop.lin.dbushelpers.DbusHelpers.getRemoteObject;
 
+import io.github.incplusplus.bigtoolbox.network.interop.lin.nm.org.freedesktop.networkmanager.Device;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +11,6 @@ import org.freedesktop.dbus.annotations.DBusInterfaceName;
 import org.freedesktop.dbus.interfaces.DBusInterface;
 import org.freedesktop.dbus.interfaces.Properties;
 import org.freedesktop.dbus.types.Variant;
-import org.freedesktop.networkmanager.Device;
 
 public final class PropertiesExtractor {
   /**
@@ -21,7 +21,7 @@ public final class PropertiesExtractor {
    * @param device a device to get properties from
    * @return Get all properties from all interfaces this device implements including that of the
    *     device itself
-   * @throws IOException
+   * @throws IOException if a DBus-related exception occurs
    */
   public static Map<String, Map<String, Variant<?>>> GetAllFromDevice(Device device)
       throws IOException {

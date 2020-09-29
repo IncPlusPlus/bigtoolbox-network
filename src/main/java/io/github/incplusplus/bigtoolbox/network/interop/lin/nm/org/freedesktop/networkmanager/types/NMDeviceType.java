@@ -5,6 +5,8 @@ import static io.github.incplusplus.bigtoolbox.network.interop.lin.dbushelpers.D
 import static java.util.Objects.isNull;
 
 import io.github.incplusplus.bigtoolbox.network.Interface;
+import io.github.incplusplus.bigtoolbox.network.interfaces.lin.nm.EthernetAdapter;
+import io.github.incplusplus.bigtoolbox.network.interfaces.lin.nm.GenericAdapter;
 import io.github.incplusplus.bigtoolbox.network.interfaces.lin.nm.WiFiAdapter;
 import io.github.incplusplus.bigtoolbox.network.interop.lin.nm.NMInterop;
 import io.github.incplusplus.bigtoolbox.network.interop.lin.nm.org.freedesktop.networkmanager.Device;
@@ -152,11 +154,11 @@ public enum NMDeviceType {
     }
     switch (deviceTypesByDeviceInterface.get(device.getClass().getInterfaces()[0])) {
       case NM_DEVICE_TYPE_ETHERNET:
-        return null;
+        return new EthernetAdapter(device);
       case NM_DEVICE_TYPE_WIFI:
         return new WiFiAdapter(device);
       default:
-        return null;
+        return new GenericAdapter(device);
     }
   }
 

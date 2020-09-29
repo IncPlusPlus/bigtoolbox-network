@@ -6,20 +6,11 @@ import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
 import io.github.incplusplus.bigtoolbox.network.wlan.AuthRequest;
 import java.io.IOException;
 
-public class WiFiAdapter extends io.github.incplusplus.bigtoolbox.network.interfaces.WiFiAdapter {
-  private final Wireless device;
+public class WiFiAdapter extends GenericDevice implements
+    io.github.incplusplus.bigtoolbox.network.interfaces.WiFiAdapter {
 
   public WiFiAdapter(Device device) {
-    if (device instanceof Wireless) {
-      this.device = (Wireless) device;
-    } else {
-      throw new RuntimeException(
-          "The class '"
-              + WiFiAdapter.class.getName()
-              + "' may only be constructed using a 'device' of type '"
-              + Wireless.class.getName()
-              + "'");
-    }
+    super(device, Wireless.class);
   }
 
   @Override
@@ -32,14 +23,4 @@ public class WiFiAdapter extends io.github.incplusplus.bigtoolbox.network.interf
 
   @Override
   public void connect(AccessPoint accessPoint, AuthRequest request) throws IOException {}
-
-  @Override
-  public String getInterfaceId() {
-    return null;
-  }
-
-  @Override
-  public String getInterfaceDescription() {
-    return null;
-  }
 }

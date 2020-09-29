@@ -16,7 +16,7 @@ import java.lang.ref.Cleaner;
  * @see NetworkControllerFactory#createNetworkController()
  */
 public abstract class NetworkController implements Closeable {
-  private static volatile boolean firstInit = false;
+  private static volatile boolean hasBeenInitializedBefore = false;
   private static volatile boolean closed = false;
   private static final Cleaner cleaner = Cleaner.create();
   private static Cleaner.Cleanable cleanable;
@@ -86,10 +86,10 @@ public abstract class NetworkController implements Closeable {
   }
 
   private void ensureInit() {
-    if (!firstInit) {
+    if (!hasBeenInitializedBefore) {
       cleaningAction = new CleaningAction(this);
       cleanable = cleaner.register(this, cleaningAction);
-      firstInit = true;
+      hasBeenInitializedBefore = true;
 
       /*
        * TODO add an option (maybe a class with static booleans) for using this library without

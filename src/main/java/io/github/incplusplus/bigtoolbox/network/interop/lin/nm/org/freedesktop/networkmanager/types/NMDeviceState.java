@@ -80,7 +80,7 @@ public enum NMDeviceState {
     return value;
   }
 
-  public NMDeviceState getNMDeviceState(UInt32 uInt32) {
+  public static NMDeviceState getNMDeviceState(UInt32 uInt32) {
     return NM_DEVICE_STATE_MAP.get(uInt32);
   }
 }

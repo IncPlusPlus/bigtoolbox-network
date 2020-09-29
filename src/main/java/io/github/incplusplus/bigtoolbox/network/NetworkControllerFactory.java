@@ -71,7 +71,7 @@ public final class NetworkControllerFactory {
         primaryController = getByOSFamily(OperatingSystem.getOSFamily());
         return primaryController;
       } else if (!primaryController.isClosed()) {
-        throw new SingletonUnavailableException();
+        throw new SingletonUnavailableException(NetworkController.class);
       }
     }
     throw new IllegalStateException(

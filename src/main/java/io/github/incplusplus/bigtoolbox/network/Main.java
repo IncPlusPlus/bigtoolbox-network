@@ -1,5 +1,6 @@
 package io.github.incplusplus.bigtoolbox.network;
 
+import io.github.incplusplus.bigtoolbox.network.interfaces.WiFiAdapter;
 import io.github.incplusplus.bigtoolbox.network.interop.lin.dbushelpers.PropertiesExtractor;
 import io.github.incplusplus.bigtoolbox.network.interop.lin.nm.NMInterop;
 import io.github.incplusplus.bigtoolbox.network.interop.lin.nm.org.freedesktop.NetworkManager;
@@ -22,7 +23,10 @@ public class Main {
     try (NetworkController controller = NetworkControllerFactory.createNetworkController()) {
       Interface[] ifaces = controller.getInterfaces();
       for (Interface i : Arrays.stream(ifaces).filter(Objects::nonNull).toArray(Interface[]::new)) {
-        System.out.println(i.toStringRepresentation());
+        if(i instanceof WiFiAdapter) {
+          WiFiAdapter adapter = (WiFiAdapter) i;
+          System.out.println(Arrays.toString(((WiFiAdapter) i).getAccessPoints()));
+        }
       }
     }
   }

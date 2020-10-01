@@ -1,6 +1,9 @@
 package io.github.incplusplus.bigtoolbox.network.interop.lin.nm.org.freedesktop.networkmanager.types;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -52,8 +55,32 @@ public enum NM80211ApSecurityFlags {
     this.value = new UInt32(i);
   }
 
-  public static NM80211ApSecurityFlags getNM80211ApSecurityFlags(UInt32 uInt32) {
-    return NM_80211_AP_SECURITY_FLAGS_MAP.get(uInt32);
+  public static List<NM80211ApSecurityFlags> getNM80211ApSecurityFlags(UInt32 uInt32) {
+    int remainingFlags = uInt32.intValue();
+    List<NM80211ApSecurityFlags> flags = new ArrayList<>();
+    for (NM80211ApSecurityFlags flag :
+        Arrays.stream(NM80211ApSecurityFlags.values())
+            // sort in descending order
+            .sorted(
+                Comparator.comparingInt(
+                        value1 -> ((NM80211ApSecurityFlags) value1).getValue().intValue())
+                    .reversed())
+            .collect(Collectors.toList())) {
+      if (remainingFlags - flag.getValue().intValue() >= 0) {
+        remainingFlags -= flag.getValue().intValue();
+        flags.add(flag);
+      }
+    }
+    if (remainingFlags > 0) {
+      // There are flags we don't know about or the flag values in this code are out of date. This
+      // means we can't rely on any of the info we have here. Throw it all out.
+      // TODO: Create a proper exception
+      throw new RuntimeException(
+          "Failed to find the corresponding NM80211ApSecurityFlags for the provided value. "
+              + "This library may be out of date or incompatible with your version of NetworkManger");
+    }
+
+    return flags;
   }
 
   public UInt32 getValue() {

@@ -55,6 +55,14 @@ public enum NM80211ApSecurityFlags {
     this.value = new UInt32(i);
   }
 
+  /**
+   * Get a list of applicable {@link NM80211ApSecurityFlags} for the provided value.
+   * @param uInt32 the int value to translate to flags
+   * @return the flags for the provided int value
+   * @implNote I would have loved to just use simple bitmask stuff here but the translation from
+   * value to flags works *like* a bitmask but isn't actually a proper bitmask. Consequently,
+   * some eye-watering code exists to do this translation.
+   */
   public static List<NM80211ApSecurityFlags> getNM80211ApSecurityFlags(UInt32 uInt32) {
     int remainingFlags = uInt32.intValue();
     List<NM80211ApSecurityFlags> flags = new ArrayList<>();

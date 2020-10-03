@@ -4,6 +4,8 @@ import com.google.protobuf.Empty;
 import io.github.incplusplus.bigtoolbox.io.filesys.TempFile;
 import io.github.incplusplus.bigtoolbox.network.Interface;
 import io.github.incplusplus.bigtoolbox.network.NetworkController;
+import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
+import io.github.incplusplus.bigtoolbox.network.wlan.win.WindowsAccessPoint;
 import io.github.incplusplus.simplewifijava.SimpleWifiJavaEntryPoint;
 import io.github.incplusplus.simplewifijava.generated.WiFiApiGrpc;
 import io.github.incplusplus.simplewifijava.generated.WlanInterfaceApiGrpc;
@@ -84,16 +86,24 @@ public class WindowsInterop extends NetworkController {
     return true;
   }
 
-  //	public AccessPoint[] getAllAccessPoints() throws IOException {
-  //		ensureOpen();
-  //		return wifiApi.listAll(Empty.getDefaultInstance()).getAccessPointsList().stream().map(
-  //				ap -> new WindowsAccessPoint(ap,
-  //						wifiApi)).toArray(WindowsAccessPoint[]::new);
-  //	}
+  public AccessPoint[] getAllAccessPoints() throws IOException {
+    ensureOpen();
+    return wifiApi.listAll(Empty.getDefaultInstance()).getAccessPointsList().stream()
+        .map(ap -> new WindowsAccessPoint(ap, wifiApi))
+        .toArray(WindowsAccessPoint[]::new);
+  }
+
+  public AccessPoint[] getAccessPoints() throws IOException {
+    ensureOpen();
+    return wifiApi.listAll(Empty.getDefaultInstance()).getAccessPointsList().stream().map(ap -> new WindowsAccessPoint(ap, wifiApi)).toArray(WindowsAccessPoint[]::new);
+  }
 
   @Override
   public Interface[] getInterfaces() throws IOException {
-    return wlanInterfaceApi.getWlanInterfaces(Empty.getDefaultInstance()).getInterfacesList()
+    ensureOpen();
+    return wlanInterfaceApi
+        .getWlanInterfaces(Empty.getDefaultInstance())
+        .getInterfacesList()
         .stream()
         .map(wlanInterface -> new WindowsInterface(wlanInterface, wlanInterfaceApi))
         .toArray(WindowsInterface[]::new);

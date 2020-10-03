@@ -1,12 +1,14 @@
 package io.github.incplusplus.bigtoolbox.network.wlan.win;
 
+import io.github.incplusplus.bigtoolbox.network.interfaces.WiFiAdapter;
 import io.github.incplusplus.bigtoolbox.network.wlan.AccessPoint;
 import io.github.incplusplus.bigtoolbox.network.wlan.AuthRequest;
 import io.github.incplusplus.simplewifijava.generated.ConnectionRequest;
 import io.github.incplusplus.simplewifijava.generated.JAccessPoint;
 import io.github.incplusplus.simplewifijava.generated.WiFiApiGrpc;
+import java.io.IOException;
 
-public abstract class WindowsAccessPoint implements AccessPoint {
+public class WindowsAccessPoint implements AccessPoint {
   private final JAccessPoint remoteAccessPointInstance;
   private final WiFiApiGrpc.WiFiApiBlockingStub api;
 
@@ -42,6 +44,11 @@ public abstract class WindowsAccessPoint implements AccessPoint {
   //	@Override
   public String getProfileXML() {
     return remoteAccessPointInstance.getProfileXML();
+  }
+
+  @Override
+  public void connect(WiFiAdapter adapter, AuthRequest authRequest) throws IOException {
+
   }
 
   @Override

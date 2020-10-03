@@ -4,18 +4,6 @@ jdk: openjdk14
 cache:
   directories:
   - "$HOME/.m2/repository"
-env:
-- CLI_VERSION=latest
-addons:
-  apt:
-    sources:
-    - sourceline: deb https://download.mono-project.com/repo/ubuntu stable-xenial
-        main
-      key_url: http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA6A19B38D3D831EF
-    packages:
-    - mono-devel
-    - msbuild
-    - libmono-system-runtime-interopservices-runtimeinformation4.0-cil
 # See https://github.com/travis-ci/travis-ci/issues/8667
 install: true
 before_script:

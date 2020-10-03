@@ -3,6 +3,7 @@ package io.github.incplusplus.bigtoolbox.network.interop.lin.nm.org.freedesktop.
 import org.freedesktop.dbus.annotations.DBusInterfaceName;
 import org.freedesktop.dbus.interfaces.DBusInterface;
 import org.freedesktop.dbus.interfaces.Properties;
+
 /** IPv4 Configuration Set */
 @DBusInterfaceName("org.freedesktop.NetworkManager.IP4Config")
 public interface IP4Config extends DBusInterface, Properties {

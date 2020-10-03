@@ -102,15 +102,13 @@ public interface Active extends DBusInterface, Properties {
     /**
      * Object path of the Ip4Config object describing the configuration of the connection. Only
      * valid when the connection is in the {@link
-     * NMActiveConnectionState#NM_ACTIVE_CONNECTION_STATE_ACTIVATED}
-     * state.
+     * NMActiveConnectionState#NM_ACTIVE_CONNECTION_STATE_ACTIVATED} state.
      */
     public static final String Ip4Config = "Ip4Config";
     /**
      * Object path of the Dhcp4Config object describing the DHCP options returned by the DHCP server
      * (assuming the connection used DHCP). Only valid when the connection is in the {@link
-     * NMActiveConnectionState#NM_ACTIVE_CONNECTION_STATE_ACTIVATED}
-     * state.
+     * NMActiveConnectionState#NM_ACTIVE_CONNECTION_STATE_ACTIVATED} state.
      */
     public static final String Dhcp4Config = "Dhcp4Config";
     /**
@@ -121,15 +119,13 @@ public interface Active extends DBusInterface, Properties {
     /**
      * Object path of the Ip6Config object describing the configuration of the connection. Only
      * valid when the connection is in the {@link
-     * NMActiveConnectionState#NM_ACTIVE_CONNECTION_STATE_ACTIVATED}
-     * state.
+     * NMActiveConnectionState#NM_ACTIVE_CONNECTION_STATE_ACTIVATED} state.
      */
     public static final String Ip6Config = "Ip6Config";
     /**
      * Object path of the Dhcp6Config object describing the DHCP options returned by the DHCP server
      * (assuming the connection used DHCP). Only valid when the connection is in the {@link
-     * NMActiveConnectionState#NM_ACTIVE_CONNECTION_STATE_ACTIVATED}
-     * state.
+     * NMActiveConnectionState#NM_ACTIVE_CONNECTION_STATE_ACTIVATED} state.
      */
     public static final String Dhcp6Config = "Dhcp6Config";
     /** Whether this active connection is also a VPN connection. */

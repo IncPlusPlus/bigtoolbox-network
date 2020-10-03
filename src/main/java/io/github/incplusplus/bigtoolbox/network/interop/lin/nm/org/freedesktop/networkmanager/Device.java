@@ -75,21 +75,17 @@ public interface Device extends DBusInterface, Properties {
      */
     public static final String FirmwareVersion = "FirmwareVersion";
     /**
-     * Flags describing the capabilities of the device. See {@link
-     * NMDeviceCapabilities} for possible values.
+     * Flags describing the capabilities of the device. See {@link NMDeviceCapabilities} for
+     * possible values.
      */
     public static final String Capabilities = "Capabilities";
     /** @deprecated use the 'Addresses' property of the 'Ip4Config' object instead. */
     @Deprecated public static final String Ip4Address = "Ip4Address";
-    /**
-     * The current state of the device. Returns {@link
-     * NMDeviceState}
-     */
+    /** The current state of the device. Returns {@link NMDeviceState} */
     public static final String State = "State";
     /**
      * The current state and reason for changing to that state. Returns a tuple of {@link
-     * NMDeviceState} and {@link
-     * NMDeviceStateReason}
+     * NMDeviceState} and {@link NMDeviceStateReason}
      */
     public static final String StateReason = "StateReason";
     /**
@@ -142,8 +138,7 @@ public interface Device extends DBusInterface, Properties {
      */
     public static final String NmPluginMissing = "NmPluginMissing";
     /**
-     * The general type of the network device; ie Ethernet, Wi-Fi, etc. Returns {@link
-     * NMDeviceType}
+     * The general type of the network device; ie Ethernet, Wi-Fi, etc. Returns {@link NMDeviceType}
      */
     public static final String DeviceType = "DeviceType";
     /**
@@ -161,8 +156,7 @@ public interface Device extends DBusInterface, Properties {
     public static final String Mtu = "Mtu";
     /**
      * Whether the amount of traffic flowing through the device is subject to limitations, for
-     * example set by service providers. Returns {@link
-     * NMMetered}
+     * example set by service providers. Returns {@link NMMetered}
      */
     public static final String Metered = "Metered";
     /**
@@ -176,19 +170,13 @@ public interface Device extends DBusInterface, Properties {
      * activated.
      */
     public static final String Real = "Real";
-    /**
-     * The result of the last IPv4 connectivity check. Returns {@link
-     * NMConnectivityState}
-     */
+    /** The result of the last IPv4 connectivity check. Returns {@link NMConnectivityState} */
     public static final String Ip4Connectivity = "Ip4Connectivity";
-    /**
-     * The result of the last IPv6 connectivity check. Returns {@link
-     * NMConnectivityState}
-     */
+    /** The result of the last IPv6 connectivity check. Returns {@link NMConnectivityState} */
     public static final String Ip6Connectivity = "Ip6Connectivity";
     /**
-     * The flags of the network interface. See {@link
-     * NMDeviceInterfaceFlags} for the currently defined flags.
+     * The flags of the network interface. See {@link NMDeviceInterfaceFlags} for the currently
+     * defined flags.
      */
     public static final String InterfaceFlags = "InterfaceFlags";
     /**

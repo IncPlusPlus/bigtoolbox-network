@@ -18,14 +18,20 @@ public class AccessPoint implements io.github.incplusplus.bigtoolbox.network.wla
   private final String bssType;
 
   public AccessPoint(
-      io.github.incplusplus.bigtoolbox.network.interop.lin.nm.org.freedesktop.networkmanager.AccessPoint ap) throws IOException {
+      io.github.incplusplus.bigtoolbox.network.interop.lin.nm.org.freedesktop.networkmanager
+              .AccessPoint
+          ap)
+      throws IOException {
     name = new String(getProperty(ap, PropertyNames.Ssid), StandardCharsets.UTF_8);
-    signalStrength = ((((Byte)getProperty(ap, PropertyNames.Strength)).intValue())/2)-100;
-    //It's not trivial to go backwards from AP to NIC because this AP may have been picked up by multiple NICs
+    signalStrength = ((((Byte) getProperty(ap, PropertyNames.Strength)).intValue()) / 2) - 100;
+    // It's not trivial to go backwards from AP to NIC because this AP may have been picked up by
+    // multiple NICs
     interfaceName = "Unknown";
-    authAlgorithm = NM80211ApSecurityFlags.getNM80211ApSecurityFlags(getProperty(ap, PropertyNames.RsnFlags)).toString();
+    authAlgorithm =
+        NM80211ApSecurityFlags.getNM80211ApSecurityFlags(getProperty(ap, PropertyNames.RsnFlags))
+            .toString();
     cipherAlgorithm = "i dunno, m8";
-    //TODO
+    // TODO
     bssType = "NOT IMPLEMENTED";
   }
 

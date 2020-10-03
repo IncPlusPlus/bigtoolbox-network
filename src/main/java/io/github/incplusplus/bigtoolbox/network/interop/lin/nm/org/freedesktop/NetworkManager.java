@@ -15,6 +15,7 @@ import org.freedesktop.dbus.interfaces.Properties;
 import org.freedesktop.dbus.messages.DBusSignal;
 import org.freedesktop.dbus.types.UInt32;
 import org.freedesktop.dbus.types.Variant;
+
 /**
  * Connection Manager
  *
@@ -224,8 +225,7 @@ public interface NetworkManager extends DBusInterface, Properties {
   /**
    * Re-check the network connectivity state.
    *
-   * @return The current connectivity state. Can be interpreted using {@link
-   *     NMState}
+   * @return The current connectivity state. Can be interpreted using {@link NMState}
    */
   public UInt32 CheckConnectivity();
 
@@ -233,8 +233,7 @@ public interface NetworkManager extends DBusInterface, Properties {
    * The overall networking state as determined by the NetworkManager daemon, based on the state of
    * network devices under its management.
    *
-   * @return the current networking state. Can be interpreted using {@link
-   *     NMState}
+   * @return the current networking state. Can be interpreted using {@link NMState}
    */
   public UInt32 state();
 
@@ -246,8 +245,7 @@ public interface NetworkManager extends DBusInterface, Properties {
    *     means all devices.
    * @param rollbackTimeout The time in seconds until NetworkManager will automatically rollback to
    *     the checkpoint. Set to zero for infinite.
-   * @param flags Flags for the creation. (See {@link
-   *     NMCheckpointCreateFlags})
+   * @param flags Flags for the creation. (See {@link NMCheckpointCreateFlags})
    * @return On success, the path of the new checkpoint.
    */
   public DBusInterface CheckpointCreate(
@@ -266,8 +264,7 @@ public interface NetworkManager extends DBusInterface, Properties {
    *
    * @param checkpoint The checkpoint to be rolled back.
    * @return On return, a dictionary of devices and results. Devices are represented by their
-   *     original D-Bus path; each result is a {@link
-   *     NMRollbackResult}.
+   *     original D-Bus path; each result is a {@link NMRollbackResult}.
    */
   public Map<String, UInt32> CheckpointRollback(DBusInterface checkpoint);
 
@@ -295,10 +292,7 @@ public interface NetworkManager extends DBusInterface, Properties {
   }
   /** NetworkManager's state changed. */
   public static class StateChanged extends DBusSignal {
-    /**
-     * The new state of NetworkManager. Can be interpreted as an {@link
-     * NMState}.
-     */
+    /** The new state of NetworkManager. Can be interpreted as an {@link NMState}. */
     public final UInt32 state;
 
     public StateChanged(String path, UInt32 state) throws DBusException {
@@ -404,9 +398,8 @@ public interface NetworkManager extends DBusInterface, Properties {
     /** NetworkManager version. */
     public static final String Version = "Version";
     /**
-     * The current set of capabilities. See {@link
-     * NMCapability} for currently defined capability numbers.
-     * The array is guaranteed to be sorted in ascending order without duplicates.
+     * The current set of capabilities. See {@link NMCapability} for currently defined capability
+     * numbers. The array is guaranteed to be sorted in ascending order without duplicates.
      */
     public static final String Capabilities = "Capabilities";
     /**

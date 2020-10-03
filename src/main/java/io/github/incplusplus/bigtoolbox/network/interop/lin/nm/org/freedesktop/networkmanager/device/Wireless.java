@@ -83,10 +83,7 @@ public interface Wireless extends DBusInterface, Properties, Device {
     @Deprecated public static final String HwAddress = "HwAddress";
     /** Permanent hardware address of the device. */
     public static final String PermHwAddress = "PermHwAddress";
-    /**
-     * The operating mode of the wireless device. Returns {@link
-     * NM80211Mode}
-     */
+    /** The operating mode of the wireless device. Returns {@link NM80211Mode} */
     public static final String Mode = "Mode";
     /** The bit rate currently used by the wireless device, in kilobits/second (Kb/s). */
     public static final String Bitrate = "Bitrate";
@@ -94,10 +91,7 @@ public interface Wireless extends DBusInterface, Properties, Device {
     public static final String AccessPoints = "AccessPoints";
     /** Object path of the access point currently used by the wireless device. */
     public static final String ActiveAccessPoint = "ActiveAccessPoint";
-    /**
-     * The capabilities of the wireless device. Returns {@link
-     * NMDeviceWifiCapabilities}
-     */
+    /** The capabilities of the wireless device. Returns {@link NMDeviceWifiCapabilities} */
     public static final String WirelessCapabilities = "WirelessCapabilities";
     /**
      * The timestamp (in CLOCK_BOOTTIME milliseconds) for the last finished network scan. A value of

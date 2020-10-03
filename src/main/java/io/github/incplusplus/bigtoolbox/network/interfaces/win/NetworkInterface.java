@@ -7,13 +7,13 @@ public class NetworkInterface implements Interface {
 
   @Override
   public String getName() {
-    //TODO
+    // TODO
     return null;
   }
 
   @Override
   public String getDescription() {
-    //TODO
+    // TODO
     return null;
   }
 
@@ -24,13 +24,13 @@ public class NetworkInterface implements Interface {
 
   @Override
   public String getMacAddress() {
-    //TODO
+    // TODO
     return null;
   }
 
   @Override
   public String[] getIpAddresses() {
-    //TODO
+    // TODO
     return new String[0];
   }
 }

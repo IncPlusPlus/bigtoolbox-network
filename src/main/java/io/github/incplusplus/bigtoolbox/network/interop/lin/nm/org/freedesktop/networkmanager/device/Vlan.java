@@ -5,7 +5,7 @@ import org.freedesktop.dbus.annotations.DBusInterfaceName;
 import org.freedesktop.dbus.interfaces.DBusInterface;
 import org.freedesktop.dbus.interfaces.Properties;
 
-/**Virtual LAN Device*/
+/** Virtual LAN Device */
 @DBusInterfaceName("org.freedesktop.NetworkManager.Device.Vlan")
 public interface Vlan extends DBusInterface, Properties, Device {
   class PropertyNames {
@@ -25,13 +25,9 @@ public interface Vlan extends DBusInterface, Properties, Device {
      * @see Device.PropertyNames#InterfaceFlags
      */
     @Deprecated public static final String Carrier = "Carrier";
-    /**Object path of the parent device of this VLAN device.
-
-*/
+    /** Object path of the parent device of this VLAN device. */
     public static final String Parent = "Parent";
-    /**The VLAN ID of this VLAN interface.
-
-*/
+    /** The VLAN ID of this VLAN interface. */
     public static final String VlanId = "VlanId";
   }
 }

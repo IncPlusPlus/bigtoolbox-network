@@ -13,10 +13,7 @@ import org.freedesktop.dbus.types.UInt32;
 public interface Connection extends DBusInterface, Properties {
   /** Emitted when the state of the VPN connection has changed. */
   class VpnStateChanged extends DBusSignal {
-    /**
-     * The new state of the VPN connection. Can be interpreted with {@link
-     * NMVpnConnectionState}
-     */
+    /** The new state of the VPN connection. Can be interpreted with {@link NMVpnConnectionState} */
     private final UInt32 _state;
     /**
      * Reason code describing the change to the new state. Can be interpreted with {@link

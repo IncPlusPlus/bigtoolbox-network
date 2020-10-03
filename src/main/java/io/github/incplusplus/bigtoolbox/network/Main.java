@@ -23,7 +23,7 @@ public class Main {
     try (NetworkController controller = NetworkControllerFactory.createNetworkController()) {
       Interface[] ifaces = controller.getInterfaces();
       for (Interface i : Arrays.stream(ifaces).filter(Objects::nonNull).toArray(Interface[]::new)) {
-        if(i instanceof WiFiAdapter) {
+        if (i instanceof WiFiAdapter) {
           WiFiAdapter adapter = (WiFiAdapter) i;
           System.out.println(Arrays.toString(((WiFiAdapter) i).getAccessPoints()));
         }

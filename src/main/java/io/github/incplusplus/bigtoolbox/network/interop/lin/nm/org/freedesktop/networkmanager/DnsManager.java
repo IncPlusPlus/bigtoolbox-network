@@ -1,6 +1,7 @@
 package io.github.incplusplus.bigtoolbox.network.interop.lin.nm.org.freedesktop.networkmanager;
 
 import org.freedesktop.dbus.annotations.DBusInterfaceName;
+
 /** DNS Configuration State */
 @DBusInterfaceName("org.freedesktop.NetworkManager.DnsManager")
 public interface DnsManager {

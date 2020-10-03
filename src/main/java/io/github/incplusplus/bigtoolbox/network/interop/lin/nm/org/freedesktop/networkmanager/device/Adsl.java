@@ -13,8 +13,8 @@ public interface Adsl extends DBusInterface, Properties, Device {
     /**
      * Indicates whether the physical carrier is found.
      *
-     * @deprecated check for the "carrier" flag in the {@link Device.PropertyNames#InterfaceFlags} property on the
-     *     "org.freedesktop.NetworkManager.Device" interface.
+     * @deprecated check for the "carrier" flag in the {@link Device.PropertyNames#InterfaceFlags}
+     *     property on the "org.freedesktop.NetworkManager.Device" interface.
      * @see NMDeviceInterfaceFlags#NM_DEVICE_INTERFACE_FLAG_CARRIER
      * @see Device
      */

@@ -28,7 +28,8 @@ public final class PropertiesExtractor {
       throws IOException {
     Map<String, Map<String, Variant<?>>> out = new HashMap<>();
     Properties deviceProps = getRemoteObject(NM_BUS_PATH, device.getObjectPath(), Properties.class);
-    //The class itself is com.sun.proxy.$Proxy## but the interface is going to be something like Device
+    // The class itself is com.sun.proxy.$Proxy## but the interface is going to be something like
+    // Device
     for (Class<?> interf : device.getClass().getInterfaces()) {
       String dbusInterfaceName = interf.getAnnotation(DBusInterfaceName.class).value();
       out.put(dbusInterfaceName, deviceProps.GetAll(dbusInterfaceName));
@@ -42,12 +43,12 @@ public final class PropertiesExtractor {
   }
 
   /**
-   * Like {@link DbusHelpers#getProperty(Properties, String)} but gets a property specific to
-   * the {@link Device} interface.
+   * Like {@link DbusHelpers#getProperty(Properties, String)} but gets a property specific to the
+   * {@link Device} interface.
    */
-  public static <A, P extends Device> A getDeviceProperty(P objectWithProperties, String propertyName)
-      throws IOException {
-    Device d = getRemoteObject(NM_BUS_PATH,objectWithProperties.getObjectPath(),Device.class);
+  public static <A, P extends Device> A getDeviceProperty(
+      P objectWithProperties, String propertyName) throws IOException {
+    Device d = getRemoteObject(NM_BUS_PATH, objectWithProperties.getObjectPath(), Device.class);
     return getProperty(d, propertyName);
   }
 }

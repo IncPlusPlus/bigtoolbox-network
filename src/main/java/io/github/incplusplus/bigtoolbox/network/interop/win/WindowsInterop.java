@@ -95,15 +95,15 @@ public class WindowsInterop extends NetworkController {
 
   public AccessPoint[] getAccessPoints() throws IOException {
     ensureOpen();
-    return wifiApi.listAll(Empty.getDefaultInstance()).getAccessPointsList().stream().map(ap -> new WindowsAccessPoint(ap, wifiApi)).toArray(WindowsAccessPoint[]::new);
+    return wifiApi.listAll(Empty.getDefaultInstance()).getAccessPointsList().stream()
+        .map(ap -> new WindowsAccessPoint(ap, wifiApi))
+        .toArray(WindowsAccessPoint[]::new);
   }
 
   @Override
   public Interface[] getInterfaces() throws IOException {
     ensureOpen();
-    return wlanInterfaceApi
-        .getWlanInterfaces(Empty.getDefaultInstance())
-        .getInterfacesList()
+    return wlanInterfaceApi.getWlanInterfaces(Empty.getDefaultInstance()).getInterfacesList()
         .stream()
         .map(wlanInterface -> new WindowsInterface(wlanInterface, wlanInterfaceApi))
         .toArray(WindowsInterface[]::new);

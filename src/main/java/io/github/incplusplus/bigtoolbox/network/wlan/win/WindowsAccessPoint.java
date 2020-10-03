@@ -47,9 +47,7 @@ public class WindowsAccessPoint implements AccessPoint {
   }
 
   @Override
-  public void connect(WiFiAdapter adapter, AuthRequest authRequest) throws IOException {
-
-  }
+  public void connect(WiFiAdapter adapter, AuthRequest authRequest) throws IOException {}
 
   @Override
   public String getName() {

@@ -16,20 +16,17 @@ addons:
     - mono-devel
     - msbuild
     - libmono-system-runtime-interopservices-runtimeinformation4.0-cil
-matrix:
-  include:
-  - jdk: openjdk11
-    # See https://github.com/travis-ci/travis-ci/issues/8667
-    install: true
-    before_script:
-      - 'curl -H ''Cache-Control: no-cache'' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh
-        | sudo bash'
-    script:
-      - mvn clean jacoco:prepare-agent install jacoco:report
-      - fossa init
-      - fossa analyze
-    after_success:
-      - bash <(curl -s https://codecov.io/bash)
+# See https://github.com/travis-ci/travis-ci/issues/8667
+install: true
+before_script:
+  - 'curl -H ''Cache-Control: no-cache'' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh
+    | sudo bash'
+script:
+  - mvn clean jacoco:prepare-agent install jacoco:report
+  - fossa init
+  - fossa analyze
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 deploy:
   - provider: bintray
     file: bintray_info_maven.JSON

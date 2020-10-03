@@ -21,7 +21,6 @@
     <bintray.subject>incplusplus</bintray.subject>
     <grpc.version>1.26.0</grpc.version>
     <protobuf.version>3.11.0</protobuf.version>
-    <protoc.version>3.11.0</protoc.version>
   </properties>
 
   <dependencies>
@@ -72,15 +71,6 @@
 
   <build>
     <finalName>${project.artifactId}-${project.version}</finalName>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <includes>
-          <include>**/*.exe</include>
-          <include>**/*.dll</include>
-        </includes>
-      </resource>
-    </resources>
     <extensions>
       <extension>
         <groupId>kr.motd.maven</groupId>
@@ -89,27 +79,6 @@
       </extension>
     </extensions>
     <plugins>
-    <plugin>
-      <groupId>org.xolstice.maven.plugins</groupId>
-      <artifactId>protobuf-maven-plugin</artifactId>
-      <version>0.6.1</version>
-      <configuration>
-        <protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}</protocArtifact>
-        <pluginId>grpc-java</pluginId>
-        <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
-      </configuration>
-      <executions>
-        <execution>
-          <goals>
-            <goal>compile</goal>
-            <goal>compile-custom</goal>
-          </goals>
-          <configuration>
-            <!--                            <attachProtoSources>false</attachProtoSources>-->
-          </configuration>
-        </execution>
-      </executions>
-    </plugin>
     </plugins>
   </build>
   <url>https://github.com/IncPlusPlus/bigtoolbox-network</url>
@@ -153,60 +122,4 @@
       <url>https://api.bintray.com/maven/${bintray.subject}/${bintray.repo}/${bintray.package}/;publish=1</url>
     </repository>
   </distributionManagement>
-  <profiles>
-    <profile>
-      <id>skip-msbuild-on-lgtm</id>
-      <activation>
-        <property>
-          <name>lgtm</name>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.fortasoft</groupId>
-            <artifactId>gradle-maven-plugin</artifactId>
-            <version>1.0.8</version>
-            <dependencies>
-              <dependency>
-                <groupId>org.gradle</groupId>
-                <artifactId>gradle-tooling-api</artifactId>
-                <!--suppress MavenModelInspection -->
-                <version>5.2.1</version>
-              </dependency>
-            </dependencies>
-            <executions>
-              <execution>
-                <id>gradle-clean</id>
-                <goals>
-                  <goal>invoke</goal>
-                </goals>
-                <phase>clean</phase>
-                <configuration>
-                  <gradleVersion>5.3.1</gradleVersion>
-                  <tasks>
-                    <task>clean</task>
-                  </tasks>
-                </configuration>
-              </execution>
-              <execution>
-                <id>gradle-clean-build</id>
-                <goals>
-                  <goal>invoke</goal>
-                </goals>
-                <phase>generate-resources</phase>
-                <configuration>
-                  <gradleVersion>5.3.1</gradleVersion>
-                  <tasks>
-                    <task>clean</task>
-                    <task>build</task>
-                  </tasks>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 </project>

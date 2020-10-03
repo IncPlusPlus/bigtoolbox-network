@@ -19,7 +19,6 @@
     <bintray.repo>incplusplus/main-maven</bintray.repo>
     <bintray.package>bigtoolbox-network</bintray.package>
     <bintray.subject>incplusplus</bintray.subject>
-    <grpc.version>1.26.0</grpc.version>
     <protobuf.version>3.11.0</protobuf.version>
   </properties>
 
